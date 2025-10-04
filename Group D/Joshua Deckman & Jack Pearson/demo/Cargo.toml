@@ -1,0 +1,16 @@
+[package]
+name = "aes-demo"
+version = "0.1.0"
+edition = "2021"
+build = "build.rs"
+
+[dependencies]
+aes = "0.8"
+cipher = "0.4"    # KeyIvInit/StreamCipher traits
+ctr = "0.9"       # CTR mode wrapper
+
+clap = { version = "4.5", features = ["derive"] }
+rand = "0.8"
+rand_chacha = "0.3"
+anyhow = "1.0"
+

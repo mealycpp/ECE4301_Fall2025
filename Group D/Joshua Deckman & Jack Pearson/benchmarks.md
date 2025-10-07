@@ -21,7 +21,7 @@ All of these instructions get *no benefit* from pipelining, demonstrated by
 the fact that no speedup is observed for these instructions in the throughput
 benchmark in contrast with the latency benchmark.
 
-Some instructions have a latency of ~4.4 cycles per instruction rather than
+Some instructions have a latency of ~4.1 cycles per instruction rather than
 ~2.4. These slower instructions get *some benefit* from pipelining, with the
 average cycles per instruction being reduced to ~2.4 again in the throughput
 benchmark.

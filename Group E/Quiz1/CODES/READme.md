@@ -1,2 +1,2 @@
 .py files are the cryptography Extension files
-.rs files use purely software Encryption in rust
+.rs  and Cargo.toml files use purely software Encryption in rust

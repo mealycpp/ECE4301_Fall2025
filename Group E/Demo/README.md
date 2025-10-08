@@ -19,7 +19,7 @@ python3 plot.py
 This demo evaluates the **Raspberry Pi 5 hardware crypto engine** (AF_ALG interface) against a **pure software AES-128-CBC** implementation.
 
 
-### ⚙️ What the benchmark does
+### What the benchmark does
 1. Encrypts and decrypts random buffers of varying **chunk sizes** (4 KB – 1 MB).  
 2. Measures:
    - **Throughput** (MB/s) — how fast data is processed.

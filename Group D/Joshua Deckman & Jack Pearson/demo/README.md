@@ -5,13 +5,13 @@ The demo simply repreatedly encrypts a random buffer with CTR encryption mode.
 Default size is 256 MiB and default iterations is 20x. So the main instruction
 being exercised is `aese`.
 
-The demo can be run by simply doing `./bench.sh`.
+The demo can be run by simply executing `./bench.sh`.
 
-This will run HW-accelerated and pure-SW versions of the demo.
+This will run hardware-accelerated (HW) and pure-software (SOFT) versions of the demo.
 
-On our pi, we observe that the demo finishes in 24.14 seconds with HW
+On our Pi, we observe that the demo finishes in 24.14 seconds with HW
 acceleration and 59.39 seconds without HW acceleration, meaning the Pi crypto
-engine **does indeed provide a speedup of about 50%**.
+engine **does indeed reduce runtime by about 50%**.
 
 A video of running the demo is in this directory. Below are the results of the
 demo:

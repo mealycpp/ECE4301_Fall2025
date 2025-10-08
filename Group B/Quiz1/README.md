@@ -5,7 +5,7 @@ Currently there is no demo or benchmarks
 
 ## Contents
 - `slides.pptx` – Presentation draft
+- `AES Demo on Hardware (Pi 5 crypto Engine) vs Software (CPU).pptx` - Demo presentation
 
 ## Roadmap
-- Add demo implementation
 - Add performance benchmarks

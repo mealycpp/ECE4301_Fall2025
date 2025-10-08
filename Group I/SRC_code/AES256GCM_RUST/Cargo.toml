@@ -1,0 +1,9 @@
+[package]
+name = "plainrust"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+aes-gcm = "0.10"   # AEAD: AES-GCM (RustCrypto)
+rand = "0.8"
+hex = "0.4"

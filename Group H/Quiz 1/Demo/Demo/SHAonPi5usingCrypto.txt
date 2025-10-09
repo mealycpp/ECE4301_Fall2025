@@ -1,0 +1,216 @@
+/* sha_bench.c
+ *
+ * Simple SHA-256 benchmark harness:
+ * - Mode "evp"  -> uses OpenSSL EVP SHA-256
+ * - Mode "ext"  -> calls an external function `sha256_process(buffer, len, out)`
+ *                which you can implement using ARMv8 intrinsics (see notes)
+ *
+ * Build: see Makefile below
+ *
+ * 
+ */
+
+#define _GNU_SOURCE
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <string.h>
+#include <time.h>
+#include <pthread.h>
+#include <sched.h>
+#include <unistd.h>
+#include <errno.h>
+#include <math.h>
+#include <sys/time.h>
+#include <sys/resource.h>
+
+#include <openssl/evp.h>
+
+typedef enum { MODE_EVP, MODE_EXT } bench_mode_t;
+
+/* If you build a separate intrinsics implementation as a library,
+   export this symbol with that signature and link it in when using mode "ext". */
+int sha256_process_external(const uint8_t *msg, size_t len, uint8_t out32[32]);
+/* If not linked, we fallback to EVP path. */
+
+struct thread_args {
+    int id;
+    int cpu;
+    bench_mode_t mode;
+    size_t message_size;   /* bytes per message */
+    size_t iterations;     /* messages per thread */
+    double *latencies_ms;  /* per-iteration latency storage for this thread (allocated by main) */
+};
+
+static inline double timespec_to_ms(const struct timespec *t) {
+    return (double)t->tv_sec * 1000.0 + (double)t->tv_nsec / 1e6;
+}
+
+static inline void bind_to_cpu(int cpu) {
+    cpu_set_t cpus;
+    CPU_ZERO(&cpus);
+    CPU_SET(cpu, &cpus);
+    if (sched_setaffinity(0, sizeof(cpus), &cpus) != 0) {
+        fprintf(stderr, "warning: sched_setaffinity failed for cpu %d: %s\n", cpu, strerror(errno));
+    }
+}
+
+/* EVP-based SHA256 for one message */
+static void sha256_evp_once(const uint8_t *msg, size_t len, uint8_t out[32]) {
+    EVP_MD_CTX *ctx = EVP_MD_CTX_new();
+    const EVP_MD *md = EVP_sha256();
+    EVP_DigestInit_ex(ctx, md, NULL);
+    EVP_DigestUpdate(ctx, msg, len);
+    unsigned int outlen = 0;
+    EVP_DigestFinal_ex(ctx, out, &outlen);
+    EVP_MD_CTX_free(ctx);
+}
+
+/* thread worker */
+void *worker_main(void *arg) {
+    struct thread_args *a = arg;
+    size_t iters = a->iterations;
+    size_t msize = a->message_size;
+    uint8_t *msg = aligned_alloc(64, ((msize + 63) / 64) * 64);
+    uint8_t out[32];
+    if (!msg) { perror("aligned_alloc"); pthread_exit(NULL); }
+    /* Fill message with pseudo-random pattern */
+    for (size_t i = 0; i < msize; ++i) msg[i] = (uint8_t)(i + a->id);
+
+    /* Optionally pin thread to CPU */
+    if (a->cpu >= 0) bind_to_cpu(a->cpu);
+
+    struct timespec t0, t1;
+    for (size_t i = 0; i < iters; ++i) {
+        clock_gettime(CLOCK_MONOTONIC, &t0);
+
+        if (a->mode == MODE_EVP) {
+            sha256_evp_once(msg, msize, out);
+        } else {
+            if (sha256_process_external(msg, msize, out) != 0) {
+                /* fallback to EVP */
+                sha256_evp_once(msg, msize, out);
+            }
+        }
+
+        clock_gettime(CLOCK_MONOTONIC, &t1);
+        double ms = timespec_to_ms(&t1) - timespec_to_ms(&t0);
+        a->latencies_ms[i] = ms;
+    }
+    free(msg);
+    return NULL;
+}
+
+/* stats helpers */
+static void compute_stats(double *vals, size_t n, double *minp, double *avgp, double *maxp, double *stdp) {
+    if (n == 0) { *minp=*avgp=*maxp=*stdp=0.0; return; }
+    double sum=0.0, minv=vals[0], maxv=vals[0];
+    for (size_t i=0;i<n;++i){ double v=vals[i]; sum+=v; if (v<minv) minv=v; if (v>maxv) maxv=v; }
+    double avg = sum/n;
+    double s2=0.0;
+    for (size_t i=0;i<n;++i){ double d=vals[i]-avg; s2 += d*d; }
+    double std = sqrt(s2 / n);
+    *minp=minv; *avgp=avg; *maxp=maxv; *stdp=std;
+}
+
+static void print_usage(const char *prog) {
+    fprintf(stderr,
+        "Usage: %s --mode evp|ext --threads N --iters I --msgsize BYTES [--pin]\n"
+        "Example: %s --mode evp --threads 4 --iters 1000 --msgsize 4096 --pin\n",
+        prog, prog);
+}
+
+int main(int argc, char **argv) {
+    bench_mode_t mode = MODE_EVP;
+    int threads = 1;
+    size_t iters = 1000;
+    size_t msgsize = 4096;
+    int pin = 0;
+
+    /* parse args (simple) */
+    for (int i=1;i<argc;++i) {
+        if (!strcmp(argv[i],"--mode") && i+1<argc) {
+            ++i;
+            if (!strcmp(argv[i],"evp")) mode = MODE_EVP; else mode = MODE_EXT;
+        } else if (!strcmp(argv[i],"--threads") && i+1<argc) { threads = atoi(argv[++i]); }
+        else if (!strcmp(argv[i],"--iters") && i+1<argc) { iters = strtoull(argv[++i], NULL, 10); }
+        else if (!strcmp(argv[i],"--msgsize") && i+1<argc) { msgsize = strtoull(argv[++i], NULL, 10); }
+        else if (!strcmp(argv[i],"--pin")) { pin = 1; }
+        else { print_usage(argv[0]); return 1; }
+    }
+
+    printf("SHA256 benchmark: mode=%s threads=%d iters=%zu msgsize=%zu pin=%d\n",
+           mode==MODE_EVP ? "evp" : "ext", threads, iters, msgsize, pin);
+
+    pthread_t *tids = calloc(threads, sizeof(pthread_t));
+    struct thread_args *targs = calloc(threads, sizeof(struct thread_args));
+    double **latencies = calloc(threads, sizeof(double*));
+    for (int t=0;t<threads;++t) {
+        latencies[t] = calloc(iters, sizeof(double));
+        targs[t].id = t;
+        targs[t].cpu = pin ? (t % sysconf(_SC_NPROCESSORS_ONLN)) : -1;
+        targs[t].mode = mode;
+        targs[t].message_size = msgsize;
+        targs[t].iterations = iters;
+        targs[t].latencies_ms = latencies[t];
+    }
+
+    /* warm-up */
+    printf("Warming up...\n");
+    for (int w=0; w<4; ++w) {
+        uint8_t tmp[32];
+        if (mode==MODE_EVP) sha256_evp_once((uint8_t*)"warm", 4, tmp);
+        else sha256_process_external((uint8_t*)"warm", 4, tmp);
+    }
+
+    /* measure wall clock time across all threads */
+    struct timespec tstart, tend;
+    clock_gettime(CLOCK_MONOTONIC, &tstart);
+    for (int t=0;t<threads;++t) {
+        if (pthread_create(&tids[t], NULL, worker_main, &targs[t]) != 0) {
+            perror("pthread_create");
+            return 1;
+        }
+    }
+    for (int t=0;t<threads;++t) pthread_join(tids[t], NULL);
+    clock_gettime(CLOCK_MONOTONIC, &tend);
+
+    double wall_ms = timespec_to_ms(&tend) - timespec_to_ms(&tstart);
+    size_t total_messages = threads * iters;
+    double total_bytes = (double)total_messages * (double)msgsize;
+    double throughput_MBps = (total_bytes / (1024.0*1024.0)) / (wall_ms / 1000.0);
+
+    /* aggregate latency stats */
+    double minv=1e9, maxv=0, avgv=0, stdv=0;
+    /* compute per-thread stats and global */
+    printf("\nPer-thread latency (ms):\n");
+    for (int t=0;t<threads;++t) {
+        double min, avg, max, std;
+        compute_stats(latencies[t], iters, &min, &avg, &max, &std);
+        printf(" thread %2d (pinned cpu=%2d): min=%.3f avg=%.3f max=%.3f std=%.3f\n",
+               t, targs[t].cpu, min, avg, max, std);
+        if (min < minv) minv = min;
+        if (max > maxv) maxv = max;
+        avgv += avg;
+    }
+    avgv /= threads;
+    printf("\nAggregate:\n");
+    printf(" wall_time = %.3f ms, messages = %zu, total_bytes = %.0f, throughput = %.3f MB/s\n",
+           wall_ms, total_messages, total_bytes, throughput_MBps);
+    printf(" latency (ms) min=%.3f avg=%.3f max=%.3f\n", minv, avgv, maxv);
+
+    /* cleanup */
+    for (int t=0;t<threads;++t) free(latencies[t]);
+    free(latencies); free(targs); free(tids);
+
+    return 0;
+}
+
+/* stub for external symbol to allow linking without an external library.
+ * If you build an intrinsics library, provide sha256_process_external() there.
+ */
+int sha256_process_external(const uint8_t *msg, size_t len, uint8_t out32[32]) {
+    /* Return non-zero if not implemented (our harness will fallback to EVP) */
+    (void)msg; (void)len; (void)out32;
+    return -1;
+}

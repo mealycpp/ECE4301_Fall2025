@@ -1,4 +1,4 @@
-# Group C
+# Group C Quiz 1
 
 Garima Bhattarai
 

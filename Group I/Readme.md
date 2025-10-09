@@ -1,4 +1,4 @@
 Group Members:
-Aaron Tran
-Quinn Bell
+Aaron Tran, 
+Quinn Bell, 
 Melvin Contreras

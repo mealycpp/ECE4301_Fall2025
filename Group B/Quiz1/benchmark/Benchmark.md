@@ -33,30 +33,6 @@ Algorithms tested:
 
 ---
 
-## Repository Structure
-ECE4301_Fall2025/
-├── demo/
-│ ├── main_hw.rs
-│ ├── main_cpu.rs
-│ ├── AES Demo on Hardware vs Software.pptx
-│ └── ...
-├── benchmarks_aes_only/
-│ ├── run_benchmarks.sh
-│ ├── parse_openssl.py
-│ ├── plot_benchmarks.py
-│ ├── raw/
-│ │ ├── aes-128.txt
-│ │ ├── aes-256.txt
-│ │ ├── sha256.txt
-│ │ └── sha512.txt
-│ ├── benchmarks_combined.csv
-│ ├── throughput_vs_blocksize.png
-│ └── latency_vs_blocksize.png
-└── BENCHMARK.md
-
-
----
-
 ## How to Run the Benchmark Script
 
 ### 1. Run the full benchmark pipeline
@@ -78,9 +54,12 @@ python plot_benchmarks.py
 
 ## 🧩 Observation
 
-The **crypto engine** demonstrates strong parallelism between the CPU and the hardware accelerator.  
-When a cryptographic operation is requested, the **CPU dispatches the task** to the engine through the kernel driver.  
-While the **crypto engine processes data independently**, **DMA** (Direct Memory Access) and **interrupt-driven communication** allow the CPU to continue other tasks — achieving **non-blocking execution**.  
+The **crypto engine** demonstrates strong parallelism between the **CPU** and the **hardware accelerator**.  
+When a cryptographic operation is initiated, the **CPU dispatches the task** through the Linux Crypto API and then continues executing other processes.  
+Meanwhile, the **crypto engine** executes the operation asynchronously, using **DMA (Direct Memory Access)** for data transfer and **interrupt-driven communication** to notify completion.
 
-Among the tested algorithms, **AES-128 and AES-256** achieved the best balance of **throughput** and **latency**, clearly outperforming SHA-based operations in both efficiency and response time on the **Raspberry Pi 5**.
+This non-blocking execution model allows the **OS scheduler** to efficiently allocate CPU time to other threads, improving overall system performance and throughput.  
+When the crypto engine completes a task, it triggers an **interrupt**, signaling the kernel to collect results and return control to the waiting process.
+
+Among the tested algorithms, **AES-128** and **AES-256** achieved the best balance of **throughput** and **latency**, outperforming SHA-based operations in both efficiency and response time on the **Raspberry Pi 5**.
 

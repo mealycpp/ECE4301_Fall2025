@@ -52,14 +52,13 @@ python parse_openssl.py
 python plot_benchmarks.py
 
 
-## 🧩 Observation
+Observation
 
-The **crypto engine** demonstrates strong parallelism between the **CPU** and the **hardware accelerator**.  
-When a cryptographic operation is initiated, the **CPU dispatches the task** through the Linux Crypto API and then continues executing other processes.  
-Meanwhile, the **crypto engine** executes the operation asynchronously, using **DMA (Direct Memory Access)** for data transfer and **interrupt-driven communication** to notify completion.
+The crypto engine demonstrates strong parallelism between the CPU and the hardware accelerator.
+When a cryptographic operation is initiated, the CPU dispatches the task through the Linux Crypto API and then continues executing other processes.
+Meanwhile, the crypto engine executes the operation asynchronously, using DMA (Direct Memory Access) for data transfer and interrupt-driven communication to notify completion.
 
-This non-blocking execution model allows the **OS scheduler** to efficiently allocate CPU time to other threads, improving overall system performance and throughput.  
-When the crypto engine completes a task, it triggers an **interrupt**, signaling the kernel to collect results and return control to the waiting process.
+This non-blocking execution model allows the OS scheduler to efficiently allocate CPU time to other threads, improving overall system performance and throughput.
+When the crypto engine completes a task, it triggers an interrupt, signaling the kernel to collect results and return control to the waiting process.
 
-Among the tested algorithms, **AES-128** and **AES-256** achieved the best balance of **throughput** and **latency**, outperforming SHA-based operations in both efficiency and response time on the **Raspberry Pi 5**.
-
+Among the tested algorithms, AES-128 and AES-256 achieved the best balance of throughput and latency, outperforming SHA-based operations in both efficiency and response time on the Raspberry Pi 5.

@@ -1,0 +1,259 @@
+/* sha_afalg_bench.c
+ *
+ * Build:
+ *   gcc -O2 -pthread sha_afalg_bench.c -o sha_afalg_bench
+ *
+ * Run example (single-threaded, 256 MB total, 64 KB chunks, sha256):
+ *   ./sha_afalg_bench -a sha256 -t 1 -T 268435456 -c 65536
+ *
+ * Notes: requires a kernel with AF_ALG enabled (most modern distros).
+ */
+
+#define _GNU_SOURCE
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <linux/if_alg.h>
+#include <fcntl.h>
+#include <sys/time.h>
+#include <time.h>
+#include <pthread.h>
+#include <sys/resource.h>
+#include <errno.h>
+#include <inttypes.h>
+#include <sys/types.h>
+
+#ifndef SA_RESTART
+#define SA_RESTART 0
+#endif
+
+struct stats {
+    uint64_t chunks;
+    double min_latency_s;
+    double max_latency_s;
+    double sum_latency_s;
+    double sum_latency2_s;
+    uint64_t bytes;
+    struct rusage usage_start;
+    struct rusage usage_end;
+};
+
+struct thread_arg {
+    const char *alg;         // "sha1" or "sha256"
+    size_t total_bytes;
+    size_t chunk_size;
+    struct stats *s;
+};
+
+static inline double timespec_to_sec(const struct timespec *t){
+    return t->tv_sec + t->tv_nsec / 1e9;
+}
+
+static int afalg_hash_once(int sfd, const void *buf, size_t len) {
+    struct msghdr msg = {0};
+    struct iovec iov;
+    iov.iov_base = (void*)buf;
+    iov.iov_len = len;
+    msg.msg_iov = &iov;
+    msg.msg_iovlen = 1;
+    ssize_t wrote = sendmsg(sfd, &msg, 0);
+    if (wrote < 0) return -1;
+
+    unsigned char out[64]; // SHA-256 fits
+    ssize_t r = read(sfd, out, sizeof(out));
+    if (r < 0) return -1;
+    (void)r;
+    return 0;
+}
+
+static int afalg_setup(const char *alg) {
+    int s = socket(AF_ALG, SOCK_SEQPACKET, 0);
+    if (s < 0) return -1;
+
+    struct sockaddr_alg sa = {
+        .salg_family = AF_ALG,
+    };
+    strncpy((char*)sa.salg_type, "hash", sizeof(sa.salg_type));
+    strncpy((char*)sa.salg_name, alg, sizeof(sa.salg_name));
+
+    if (bind(s, (struct sockaddr*)&sa, sizeof(sa)) < 0) {
+        close(s);
+        return -1;
+    }
+
+    int op = accept(s, NULL, NULL);
+    if (op < 0) {
+        close(s);
+        return -1;
+    }
+    close(s);
+    return op;
+}
+
+static double now_sec(void){
+    struct timespec ts;
+    clock_gettime(CLOCK_MONOTONIC, &ts);
+    return timespec_to_sec(&ts);
+}
+
+static void *worker(void *arg) {
+    struct thread_arg *ta = arg;
+    struct stats *s = ta->s;
+    int opfd = afalg_setup(ta->alg);
+    if (opfd < 0) {
+        perror("afalg_setup");
+        return NULL;
+    }
+
+    // allocate buffer with fixed contents
+    void *buf = malloc(ta->chunk_size);
+    if (!buf) { close(opfd); return NULL; }
+    for (size_t i = 0; i < ta->chunk_size; ++i) ((unsigned char*)buf)[i] = (unsigned char)(i & 0xFF);
+
+    // init stats
+    s->chunks = 0;
+    s->min_latency_s = 1e9;
+    s->max_latency_s = 0;
+    s->sum_latency_s = 0;
+    s->sum_latency2_s = 0;
+    s->bytes = 0;
+
+    getrusage(RUSAGE_THREAD, &s->usage_start);
+
+    size_t remaining = ta->total_bytes;
+    while (remaining > 0) {
+        size_t this_chunk = ta->chunk_size;
+        if (this_chunk > remaining) this_chunk = remaining;
+
+        struct timespec t0, t1;
+        clock_gettime(CLOCK_MONOTONIC, &t0);
+        if (afalg_hash_once(opfd, buf, this_chunk) != 0) {
+            fprintf(stderr, "hash failed: %s\n", strerror(errno));
+            break;
+        }
+        clock_gettime(CLOCK_MONOTONIC, &t1);
+
+        double lat = (t1.tv_sec - t0.tv_sec) + (t1.tv_nsec - t0.tv_nsec)/1e9;
+        s->chunks += 1;
+        s->bytes += this_chunk;
+        if (lat < s->min_latency_s) s->min_latency_s = lat;
+        if (lat > s->max_latency_s) s->max_latency_s = lat;
+        s->sum_latency_s += lat;
+        s->sum_latency2_s += lat*lat;
+
+        remaining -= this_chunk;
+    }
+
+    getrusage(RUSAGE_THREAD, &s->usage_end);
+
+    free(buf);
+    close(opfd);
+    return NULL;
+}
+
+static void print_summary(const char *alg, int nthreads, size_t total_bytes, size_t chunk_size, double elapsed, struct stats *per_thread) {
+    uint64_t total_chunks = 0;
+    uint64_t total_bytes_done = 0;
+    double min_lat = 1e9, max_lat = 0, sum_lat = 0, sum_lat2 = 0;
+    long vol_ctx_start=0, vol_ctx_end=0, inv_ctx_start=0, inv_ctx_end=0;
+    struct rusage ru_start_all = {0}, ru_end_all = {0};
+
+    for (int i=0;i<nthreads;i++){
+        total_chunks += per_thread[i].chunks;
+        total_bytes_done += per_thread[i].bytes;
+        if (per_thread[i].min_latency_s < min_lat) min_lat = per_thread[i].min_latency_s;
+        if (per_thread[i].max_latency_s > max_lat) max_lat = per_thread[i].max_latency_s;
+        sum_lat += per_thread[i].sum_latency_s;
+        sum_lat2 += per_thread[i].sum_latency2_s;
+        // accumulate rusage
+        vol_ctx_start += per_thread[i].usage_start.ru_nvcsw;
+        vol_ctx_end   += per_thread[i].usage_end.ru_nvcsw;
+        inv_ctx_start += per_thread[i].usage_start.ru_nivcsw;
+        inv_ctx_end   += per_thread[i].usage_end.ru_nivcsw;
+        // user & sys times added (in timeval)
+        ru_start_all.ru_utime.tv_sec += per_thread[i].usage_start.ru_utime.tv_sec;
+        ru_start_all.ru_utime.tv_usec += per_thread[i].usage_start.ru_utime.tv_usec;
+        ru_start_all.ru_stime.tv_sec += per_thread[i].usage_start.ru_stime.tv_sec;
+        ru_start_all.ru_stime.tv_usec += per_thread[i].usage_start.ru_stime.tv_usec;
+        ru_end_all.ru_utime.tv_sec += per_thread[i].usage_end.ru_utime.tv_sec;
+        ru_end_all.ru_utime.tv_usec += per_thread[i].usage_end.ru_utime.tv_usec;
+        ru_end_all.ru_stime.tv_sec += per_thread[i].usage_end.ru_stime.tv_sec;
+        ru_end_all.ru_stime.tv_usec += per_thread[i].usage_end.ru_stime.tv_usec;
+    }
+
+    double mean_lat = total_chunks ? (sum_lat / (double)total_chunks) : 0;
+    double throughput_mb_s = (double)total_bytes_done / (1024.0*1024.0) / elapsed;
+
+    // compute CPU time
+    double user_start = ru_start_all.ru_utime.tv_sec + ru_start_all.ru_utime.tv_usec/1e6;
+    double sys_start  = ru_start_all.ru_stime.tv_sec + ru_start_all.ru_stime.tv_usec/1e6;
+    double user_end   = ru_end_all.ru_utime.tv_sec + ru_end_all.ru_utime.tv_usec/1e6;
+    double sys_end    = ru_end_all.ru_stime.tv_sec + ru_end_all.ru_stime.tv_usec/1e6;
+    double cpu_user = user_end - user_start;
+    double cpu_sys  = sys_end  - sys_start;
+
+    printf("\n=== SHA AF_ALG benchmark summary ===\n");
+    printf("Algorithm: %s\n", alg);
+    printf("Threads: %d\n", nthreads);
+    printf("Total requested bytes: %zu\n", total_bytes);
+    printf("Chunk size: %zu\n", chunk_size);
+    printf("Total bytes processed: %" PRIu64 "\n", total_bytes_done);
+    printf("Total chunks: %" PRIu64 "\n", total_chunks);
+    printf("Elapsed wall time: %.6f s\n", elapsed);
+    printf("Throughput: %.3f MB/s\n", throughput_mb_s);
+    printf("CPU time (user): %.6f s\n", cpu_user);
+    printf("CPU time (sys):  %.6f s\n", cpu_sys);
+    printf("Context switches (voluntary): %" PRId64 " -> %" PRId64 " (delta: %" PRId64 ")\n", vol_ctx_start, vol_ctx_end, vol_ctx_end - vol_ctx_start);
+    printf("Context switches (involuntary): %" PRId64 " -> %" PRId64 " (delta: %" PRId64 ")\n", inv_ctx_start, inv_ctx_end, inv_ctx_end - inv_ctx_start);
+    printf("Latency (per-chunk) min/mean/max: %.6f / %.6f / %.6f s\n", min_lat, mean_lat, max_lat);
+    printf("====================================\n\n");
+}
+
+int main(int argc, char **argv) {
+    const char *alg = "sha256";
+    size_t total_bytes = 256 * 1024 * 1024; // 256MB default
+    size_t chunk_size = 64 * 1024; // 64KB
+    int nthreads = 1;
+    int opt;
+    while ((opt = getopt(argc, argv, "a:T:c:t:h")) != -1) {
+        switch (opt) {
+            case 'a': alg = optarg; break;
+            case 'T': total_bytes = strtoull(optarg, NULL, 0); break;
+            case 'c': chunk_size = strtoull(optarg, NULL, 0); break;
+            case 't': nthreads = atoi(optarg); break;
+            default:
+            case 'h':
+                fprintf(stderr, "Usage: %s [-a sha1|sha256] [-t threads] [-T total_bytes] [-c chunk_size]\n", argv[0]);
+                return 1;
+        }
+    }
+
+    if (nthreads < 1) nthreads = 1;
+    struct stats *per_thread = calloc(nthreads, sizeof(struct stats));
+    pthread_t *tids = calloc(nthreads, sizeof(pthread_t));
+    struct thread_arg *args = calloc(nthreads, sizeof(struct thread_arg));
+
+    double t0 = now_sec();
+    for (int i=0;i<nthreads;i++){
+        args[i].alg = alg;
+        args[i].total_bytes = total_bytes / nthreads;
+        args[i].chunk_size = chunk_size;
+        args[i].s = &per_thread[i];
+        if (pthread_create(&tids[i], NULL, worker, &args[i]) != 0) {
+            perror("pthread_create");
+            return 1;
+        }
+    }
+
+    for (int i=0;i<nthreads;i++) pthread_join(tids[i], NULL);
+    double t1 = now_sec();
+
+    print_summary(alg, nthreads, total_bytes, chunk_size, t1 - t0, per_thread);
+
+    free(per_thread);
+    free(tids);
+    free(args);
+    return 0;
+}

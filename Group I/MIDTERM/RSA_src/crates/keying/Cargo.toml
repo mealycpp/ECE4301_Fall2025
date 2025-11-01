@@ -1,0 +1,10 @@
+[package]
+name = "keying"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rand = "0.8"
+getrandom = "0.2"
+rsa = { version = "0.9", features = ["sha2"] }
+sha2 = "0.10"

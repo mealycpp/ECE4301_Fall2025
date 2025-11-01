@@ -1,0 +1,17 @@
+[package]
+name = "transport"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0"
+hkdf = "0.12"
+rsa = "0.9"
+rand = "0.8"
+sha2 = "0.10"
+tokio = { version = "1.0", features = ["full"] }
+# use the local aead crate in the workspace (not the crates.io "aead" meta-crate)
+aead = { path = "../aead" }
+metrics = { path = "../metrics" }
+# add keying crate (needed for RSA key ops imported in transport)
+keying = { path = "../keying" }

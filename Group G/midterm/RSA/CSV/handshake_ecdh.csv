@@ -1,0 +1,5 @@
+ts_start,ts_end,mech,bytes_tx,bytes_rx,cpu_avg,mem_mb,energy_j
+ts_start,ts_end,mech,bytes_tx,bytes_rx,cpu_avg,mem_mb,energy_j
+2025-11-01T01:49:49Z,2025-11-01T01:49:51Z,RSA-OAEP-256+AES-GCM,462,389,4.773257,0,0.0
+ts_start,ts_end,mech,bytes_tx,bytes_rx,cpu_avg,mem_mb,energy_j
+2025-11-01T01:50:29Z,2025-11-01T01:50:33Z,RSA-OAEP-256+AES-GCM,462,389,4.7798743,0,0.0

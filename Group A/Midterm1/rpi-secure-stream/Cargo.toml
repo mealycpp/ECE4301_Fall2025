@@ -1,0 +1,17 @@
+[package]
+name = "rpi-secure-stream"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rsa = { version = "0.9", features = ["sha2"] }
+sha2 = "0.10"
+rand = "0.8"
+getrandom = "0.2"
+p256 = { version = "0.13", features = ["ecdh"] }
+hkdf = "0.12"
+clap = { version = "4.5", features = ["derive"] }
+anyhow = "1"
+zeroize = "1"
+
+

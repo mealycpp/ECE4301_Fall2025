@@ -1,0 +1,7 @@
+ts_start,ts_end,mech,bytes_tx,bytes_rx,cpu_avg,mem_mb,energy_j
+ts_start,ts_end,mech,bytes_tx,bytes_rx,cpu_avg,mem_mb,energy_j
+2025-10-31T23:34:13Z,2025-10-31T23:34:13Z,ECDH+HKDF+AES-GCM,95,70,4.3747964,2409648,0.0
+ts_start,ts_end,mech,bytes_tx,bytes_rx,cpu_avg,mem_mb,energy_j
+2025-10-31T23:46:54Z,2025-10-31T23:46:54Z,ECDH+HKDF+AES-GCM,95,70,4.343148,732992,0.0
+ts_start,ts_end,mech,bytes_tx,bytes_rx,cpu_avg,mem_mb,energy_j
+2025-10-31T23:48:54Z,2025-10-31T23:48:54Z,ECDH+HKDF+AES-GCM,95,70,4.3384457,734736,0.0

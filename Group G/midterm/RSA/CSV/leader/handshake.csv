@@ -1,0 +1,5 @@
+ts,role,duration_s,bytes_exchanged,success,note
+ts,role,duration_s,bytes_exchanged,success,note
+2025-11-01T01:49:52Z,leader,2.2319084829999998,816,true,
+ts,role,duration_s,bytes_exchanged,success,note
+2025-11-01T01:50:33Z,leader,3.409533356,816,true,

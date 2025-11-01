@@ -1,1 +1,0 @@
-Each group is required to submit slides for the presentation, a recorded video of the presentation, and one slide poster in a ppt format to leverage the importance of the work that the project has done

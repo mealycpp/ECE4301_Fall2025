@@ -1,0 +1,31 @@
+You have chosen to measure elapsed time instead of user CPU time.
+Doing AES-128-ECB ops for 5s on 16 size blocks: 198730402 AES-128-ECB ops in 5.00s
+Doing AES-128-ECB ops for 5s on 64 size blocks: 114021334 AES-128-ECB ops in 5.00s
+Doing AES-128-ECB ops for 5s on 256 size blocks: 49435524 AES-128-ECB ops in 5.00s
+Doing AES-128-ECB ops for 5s on 1024 size blocks: 15609023 AES-128-ECB ops in 5.00s
+Doing AES-128-ECB ops for 5s on 8192 size blocks: 2103971 AES-128-ECB ops in 5.00s
+Doing AES-128-ECB ops for 5s on 16384 size blocks: 1057610 AES-128-ECB ops in 5.00s
+version: 3.5.1
+built on: Fri Sep 26 19:18:35 2025 UTC
+options: bn(64,64)
+compiler: gcc -fPIC -pthread -Wa,--noexecstack -Wall -fzero-call-used-regs=used-gpr -Wa,--noexecstack -g -O2 -Werror=implicit-function-declaration -ffile-prefix-map=/build/reproducible-path/openssl-3.5.1=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -mbranch-protection=standard -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BUILDING_OPENSSL -DZLIB -DZSTD -DNDEBUG -Wdate-time -D_FORTIFY_SOURCE=2
+CPUINFO: OPENSSL_armcap=0xbd
+The 'numbers' are in 1000s of bytes per second processed.
+type             16 bytes     64 bytes    256 bytes   1024 bytes   8192 bytes  16384 bytes
+AES-128-ECB     635937.29k  1459473.08k  2531098.83k  3196727.91k  3447146.09k  3465576.45k
+
+ Performance counter stats for 'openssl speed -evp aes-128-ecb -elapsed -seconds 5':
+
+    71,943,798,675      cycles:u                         #    2.399 GHz                       
+   204,204,696,146      instructions:u                   #    2.84  insn per cycle            
+         29,991.50 msec task-clock:u                     #    0.999 CPUs utilized             
+                 0      context-switches:u               #    0.000 /sec                      
+    17,469,056,351      branches:u                       #  582.467 M/sec                     
+            78,343      branch-misses:u                  #    0.00% of all branches           
+
+      30.008926401 seconds time elapsed
+
+      29.992009000 seconds user
+       0.000000000 seconds sys
+
+

@@ -1,0 +1,11 @@
+[workspace]
+members = ["crates/aead",
+  "crates/app"
+, "crates/bench", "crates/keying", "crates/metrics", "crates/transport", "crates/video"]
+resolver = "2"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "abort"

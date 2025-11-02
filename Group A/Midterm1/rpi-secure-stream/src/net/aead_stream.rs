@@ -5,13 +5,16 @@ use aes_gcm::{
 use anyhow::{anyhow, Result};
 use zeroize::Zeroize;
 
-/// AES-128-GCM stream with 96-bit nonce base.
 /// Nonce = nonce_base[0..8] || u32_be(seq - base_seq)
+/// This makes sender/receiver robust to drops/reorders.
 pub struct Aes128GcmStream {
     cipher: Aes128Gcm,
     nonce_base: [u8; 12],
     base_seq: u64, // seq where this key started
 }
+
+const NONCE_SPACE: u64 = 1u64 << 32;
+const NONCE_GUARD_WINDOW: u64 = 1u64 << 24; // trigger rekey well before wrap
 
 impl Aes128GcmStream {
     pub fn new(key: [u8; 16], nonce_base: [u8; 12]) -> Result<Self> {
@@ -22,7 +25,7 @@ impl Aes128GcmStream {
         })
     }
 
-    /// Rekey and set the base sequence for this key (usually the "next_seq" from REKEY control).
+    /// Rekey and set the base sequence for this key (usually the "next_seq" from REKEY).
     pub fn rekey_at(&mut self, key: [u8; 16], nonce_base: [u8; 12], next_seq: u64) -> Result<()> {
         self.cipher = Aes128Gcm::new_from_slice(&key)?;
         self.nonce_base = nonce_base;
@@ -36,6 +39,12 @@ impl Aes128GcmStream {
         let mut n = self.nonce_base;
         n[8..12].copy_from_slice(&ctr.to_be_bytes());
         n
+    }
+
+    /// Should we rekey soon? (Guard against u32 counter wrap)
+    pub fn need_rekey(&self, seq: u64) -> bool {
+        let used = seq.wrapping_sub(self.base_seq);
+        used >= (NONCE_SPACE - NONCE_GUARD_WINDOW)
     }
 
     /// Encrypt frame: AAD = seq||pt_len

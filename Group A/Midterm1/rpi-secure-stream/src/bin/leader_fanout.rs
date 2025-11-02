@@ -11,6 +11,8 @@ use tokio::net::TcpStream;
 use tokio::time::{Duration, sleep};
 use rpi_secure_stream::logutil::append_csv;
 use chrono::Utc;
+use dirs;
+
 
 
 
@@ -149,6 +151,7 @@ async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> R
 
         // CSV log
         append_csv(rekey_log, &format!("{},{},{}", now_ns(), next_seq, c.addr));
+        
         eprintln!("[fanout] REKEY applied for {}", c.addr);
     }
     Ok(())
@@ -159,8 +162,11 @@ async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> R
 async fn main() -> Result<()> {
     let args = Args::parse();
     let ts = Utc::now().format("%Y%m%d_%H%M%S").to_string();
-    let tx_log    = "data/stream_tx.csv".to_string();
-    let rekey_log = "data/rekey_tx.csv".to_string();    
+    let log_dir = dirs::home_dir().unwrap().join(".ece4301").join("logs").join(&ts);
+    std::fs::create_dir_all(&log_dir).ok();
+    let tx_log    = log_dir.join("stream_tx.csv").display().to_string();
+    let rekey_log = log_dir.join("rekey_tx.csv").display().to_string();
+    eprintln!("[fanout] CSV logs -> {}", log_dir.display());
 
     if args.listeners.is_empty() {
         return Err(anyhow!("provide at least one --listener ip:port"));

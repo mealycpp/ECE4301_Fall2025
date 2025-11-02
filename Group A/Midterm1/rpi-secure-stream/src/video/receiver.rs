@@ -7,7 +7,7 @@ use gstreamer_app::AppSrc;
 use tokio::net::TcpListener;
 use crate::logutil::append_csv; 
 use chrono::Utc;
-
+use dirs;
 
 
 // ==== CONFIG: where to load the receiver's RSA private key (PEM) ====
@@ -105,8 +105,11 @@ impl Receiver {
             let sk = Self::load_receiver_priv()?; // RSA private key
             
             let ts = Utc::now().format("%Y%m%d_%H%M%S").to_string();
-            let rx_log = format!("data/stream_rx_{ts}.csv");
-            let rekey_log = format!("data/rekey_rx_{ts}.csv");
+            let log_dir = dirs::home_dir().unwrap().join(".ece4301").join("logs").join(&ts);
+            std::fs::create_dir_all(&log_dir).ok();
+            let rx_log    = log_dir.join("stream_rx.csv").display().to_string();
+            let rekey_log = log_dir.join("rekey_rx.csv").display().to_string();
+            eprintln!("[receiver] CSV logs -> {}", log_dir.display());
 
             loop {
                 let msg = match WireMsg::read_from(&mut stream).await {
@@ -177,6 +180,7 @@ impl Receiver {
                             has_key = true;
                             eprintln!("[receiver] REKEY applied at seq={next_seq}");
                             append_csv(&rekey_log, &format!("{},{}", now_ns(), next_seq));
+                            
 
                         }
                         _ => eprintln!("[receiver] unknown REKEY alg_id={alg_id}"),

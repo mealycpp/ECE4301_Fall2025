@@ -26,15 +26,23 @@ impl Receiver {
         self.pipeline.set_state(gst::State::Playing)?;
 
         let mut expect_seq: u64 = 0;
+        let mut last_log = std::time::Instant::now();
+        let mut frames_since_log = 0usize;
 
         loop {
             let msg = match WireMsg::read_from(&mut stream).await {
                 Ok(m) => m,
-                Err(_) => break,
+                Err(e) => {
+                    eprintln!("[receiver] stream closed/error: {e}");
+                    break;
+                }
             };
 
             if (msg.flags & FLAG_REKEY) != 0 {
-                if msg.payload.len() != 8 + 16 + 12 { continue; }
+                if msg.payload.len() != 8 + 16 + 12 {
+                    eprintln!("[receiver] bad REKEY payload size={}", msg.payload.len());
+                    continue;
+                }
                 let next_seq = u64::from_be_bytes(msg.payload[..8].try_into().unwrap());
                 let mut key = [0u8; 16];
                 let mut nb  = [0u8; 12];
@@ -43,12 +51,19 @@ impl Receiver {
 
                 expect_seq = next_seq;
                 self.aead.rekey(key, nb)?;
+                eprintln!("[receiver] REKEY to seq={next_seq}");
                 continue;
             }
 
             if (msg.flags & FLAG_FRAME) == 0 { continue; }
 
-            let pt = self.aead.decrypt_frame(msg.seq, &msg.payload, msg.pt_len)?;
+            let pt = match self.aead.decrypt_frame(msg.seq, &msg.payload, msg.pt_len) {
+                Ok(p) => p,
+                Err(e) => {
+                    eprintln!("[receiver] decrypt failed at seq={} : {e}", msg.seq);
+                    continue;
+                }
+            };
 
             let mut buffer = gst::Buffer::with_size(pt.len()).unwrap();
             {
@@ -59,11 +74,19 @@ impl Receiver {
             self.src.push_buffer(buffer)?;
 
             if msg.seq != expect_seq {
-                // (optional) log reordering or loss
+                eprintln!("[receiver] seq jump: got {}, expect {}", msg.seq, expect_seq);
                 expect_seq = msg.seq;
             }
             expect_seq = expect_seq.wrapping_add(1);
+
+            frames_since_log += 1;
+            if last_log.elapsed() > std::time::Duration::from_secs(1) {
+                eprintln!("[receiver] rx fps≈{} (last seq={})", frames_since_log, msg.seq);
+                frames_since_log = 0;
+                last_log = std::time::Instant::now();
+            }
         }
+
 
         self.pipeline.set_state(gst::State::Null)?;
         Ok(())

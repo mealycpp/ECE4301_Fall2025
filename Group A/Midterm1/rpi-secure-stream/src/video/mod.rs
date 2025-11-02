@@ -56,3 +56,27 @@ pub fn make_receiver_pipeline(width: i32, height: i32, fps: i32)
         .map_err(|_| anyhow!("appsrc downcast failed"))?;
     Ok((pipeline, src))
 }
+
+pub fn make_receiver_pipeline_headless(width: i32, height: i32, fps: i32)
+    -> Result<(gst::Pipeline, AppSrc)>
+{
+    gst_init_once()?;
+
+    // identical to normal, but ends with fakesink so no display is needed
+    let pipeline_desc = format!(
+        "appsrc name=src is-live=true format=time \
+         caps=video/x-raw,format=I420,width={width},height={height},framerate={fps}/1 \
+         ! videoconvert ! fakesink sync=false",
+    );
+
+    let pipeline = gst::parse::launch(&pipeline_desc)?
+        .downcast::<gst::Pipeline>()
+        .map_err(|_| anyhow!("not a pipeline"))?;
+    let src = pipeline
+        .by_name("src")
+        .ok_or_else(|| anyhow!("appsrc not found"))?
+        .downcast::<AppSrc>()
+        .map_err(|_| anyhow!("appsrc downcast failed"))?;
+
+    Ok((pipeline, src))
+}

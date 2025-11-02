@@ -33,17 +33,24 @@ impl Sender {
     }
 
     pub async fn run(mut self, leader_addr: &str) -> Result<()> {
-        // robust connect with retry
+        eprintln!("[sender] connecting to {leader_addr} ...");
         let mut conn = tcp_connect_with_retry(leader_addr, Duration::from_secs(20)).await?;
+        eprintln!("[sender] connected to {leader_addr}");
 
-        // Start pipeline explicitly
         self.pipeline.set_state(gst::State::Playing)?;
+        let (_cur, new, _pend) = self
+            .pipeline
+            .get_state(gst::ClockTime::from_seconds(3))
+            .map_err(|_| anyhow!("camera pipeline failed to preroll"))?;
+        eprintln!("[sender] pipeline state: {:?}", new);
 
         let mut seq: u64 = 0;
         let clock = gst::SystemClock::obtain();
+        let mut last_log = std::time::Instant::now();
+        let mut frames_since_log = 0usize;
 
         loop {
-            // Rekey boundary
+            // Rekey at boundary
             if seq > 0 && seq % REKEY_EVERY_FRAMES == 0 {
                 let next_seq = seq;
 
@@ -66,18 +73,23 @@ impl Sender {
                     payload: Bytes::from(p),
                 };
                 msg.write_to(&mut conn).await?;
+                eprintln!("[sender] REKEY at seq={next_seq}");
 
                 self.aead.rekey(key, nb)?;
             }
 
-            // Pull one frame with timeout
             let sample_opt = self.sink.try_pull_sample(gst::ClockTime::from_mseconds(500));
-            let sample = match sample_opt {
-                Some(s) => s,
-                None => continue,
+            let Some(sample) = sample_opt else {
+                // No frame for 500ms; log once per 2s so we know camera is idle
+                if last_log.elapsed() > std::time::Duration::from_secs(2) {
+                    eprintln!("[sender] waiting for frames (no sample in 500ms)...");
+                    last_log = std::time::Instant::now();
+                }
+                continue;
             };
-            let buffer = sample.buffer().ok_or_else(|| anyhow::anyhow!("no buffer"))?;
-            let map = buffer.map_readable().map_err(|_| anyhow::anyhow!("map failed"))?;
+
+            let buffer = sample.buffer().ok_or_else(|| anyhow::anyhow!("appsink sample had no buffer"))?;
+            let map = buffer.map_readable().map_err(|_| anyhow::anyhow!("appsink map_readable failed"))?;
             let pt = map.as_slice();
             let pt_len = pt.len() as u32;
 
@@ -93,11 +105,15 @@ impl Sender {
             };
             msg.write_to(&mut conn).await?;
 
+            frames_since_log += 1;
+            if last_log.elapsed() > std::time::Duration::from_secs(1) {
+                eprintln!("[sender] tx fps≈{} (seq={})", frames_since_log, seq);
+                frames_since_log = 0;
+                last_log = std::time::Instant::now();
+            }
+
             seq = seq.wrapping_add(1);
         }
-
-        // If you ever break the loop, remember to:
-        // self.pipeline.set_state(gst::State::Null)?;
-        // Ok(())
     }
+
 }

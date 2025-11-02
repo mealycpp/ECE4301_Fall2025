@@ -53,17 +53,29 @@ async fn main() -> Result<()> {
     let mut args = Args::parse();
     if args.print_config {
         #[cfg(target_arch = "aarch64")]
-        eprintln!(
-            "ARMv8 CE — AES:{} PMULL:{} SHA1:{} SHA2:{}",
-            std::arch::is_aarch64_feature_detected!("aes"),
-            std::arch::is_aarch64_feature_detected!("pmull"),
-            std::arch::is_aarch64_feature_detected!("sha1"),
-            std::arch::is_aarch64_feature_detected!("sha2"),
-        );
+        {
+            use std::fs;
+
+            let aes   = std::arch::is_aarch64_feature_detected!("aes");
+            let pmull = std::arch::is_aarch64_feature_detected!("pmull");
+            let sha2  = std::arch::is_aarch64_feature_detected!("sha2");
+
+            // sha1 isn't supported by the macro on stable; detect via /proc/cpuinfo
+            let sha1 = fs::read_to_string("/proc/cpuinfo")
+                .map(|s| s.contains(" sha1"))
+                .unwrap_or(false);
+
+            eprintln!(
+                "ARMv8 Crypto Extensions — AES:{aes} PMULL:{pmull} SHA1:{sha1} SHA2:{sha2}"
+            );
+        }
         #[cfg(not(target_arch = "aarch64"))]
-        eprintln!("(Not ARMv8)");
+        {
+            eprintln!("(Not ARMv8)");
+        }
         return Ok(());
     }
+
 
     if args.prefer_720p {
         args.width = 1280;

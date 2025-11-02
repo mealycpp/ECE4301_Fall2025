@@ -26,47 +26,49 @@ impl Receiver {
         self.pipeline.set_state(gst::State::Playing)?;
 
         let mut expect_seq: u64 = 0;
-        let mut expect_seq: u64 = 0;
-let mut has_key = false;
+        let mut last_log = std::time::Instant::now();
+        let mut frames_since_log: usize = 0;
 
-loop {
-    let msg = match WireMsg::read_from(&mut stream).await {
-        Ok(m) => m,
-        Err(e) => { eprintln!("[receiver] stream closed/error: {e}"); break; }
-    };
+        let mut has_key = false;
 
-    if (msg.flags & FLAG_REKEY) != 0 {
-        if msg.payload.len() != 8 + 16 + 12 {
-            eprintln!("[receiver] bad REKEY payload: {}", msg.payload.len());
-            continue;
-        }
-        let next_seq = u64::from_be_bytes(msg.payload[..8].try_into().unwrap());
-        let mut key = [0u8; 16];
-        let mut nb  = [0u8; 12];
-        key.copy_from_slice(&msg.payload[8..24]);
-        nb.copy_from_slice(&msg.payload[24..36]);
+        loop {
+            let msg = match WireMsg::read_from(&mut stream).await {
+                Ok(m) => m,
+                Err(e) => { eprintln!("[receiver] stream closed/error: {e}"); break; }
+            };
 
-        self.aead.rekey_at(key, nb, next_seq)?; // ← set base_seq
-        expect_seq = next_seq;
-        has_key = true;
-        eprintln!("[receiver] REKEY to seq={next_seq}");
-        continue;
-    }
+            if (msg.flags & FLAG_REKEY) != 0 {
+                if msg.payload.len() != 8 + 16 + 12 {
+                    eprintln!("[receiver] bad REKEY payload: {}", msg.payload.len());
+                    continue;
+                }
+                let next_seq = u64::from_be_bytes(msg.payload[..8].try_into().unwrap());
+                let mut key = [0u8; 16];
+                let mut nb  = [0u8; 12];
+                key.copy_from_slice(&msg.payload[8..24]);
+                nb.copy_from_slice(&msg.payload[24..36]);
 
-    if (msg.flags & FLAG_FRAME) == 0 { continue; }
+                self.aead.rekey_at(key, nb, next_seq)?; // ← set base_seq
+                expect_seq = next_seq;
+                has_key = true;
+                eprintln!("[receiver] REKEY to seq={next_seq}");
+                continue;
+            }
 
-    if !has_key {
-        eprintln!("[receiver] dropping frame seq={} (no key yet)", msg.seq);
-        continue;
-    }
+            if (msg.flags & FLAG_FRAME) == 0 { continue; }
 
-    let pt = match self.aead.decrypt_frame(msg.seq, &msg.payload, msg.pt_len) {
-        Ok(p) => p,
-        Err(e) => {
-            eprintln!("[receiver] decrypt failed at seq={} : {e}", msg.seq);
-            continue;
-        }
-    };
+            if !has_key {
+                eprintln!("[receiver] dropping frame seq={} (no key yet)", msg.seq);
+                continue;
+            }
+
+            let pt = match self.aead.decrypt_frame(msg.seq, &msg.payload, msg.pt_len) {
+                Ok(p) => p,
+                Err(e) => {
+                    eprintln!("[receiver] decrypt failed at seq={} : {e}", msg.seq);
+                    continue;
+                }
+            };
 
             let mut buffer = gst::Buffer::with_size(pt.len()).unwrap();
             {

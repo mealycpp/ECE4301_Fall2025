@@ -57,12 +57,13 @@ impl Sender {
         tokio::time::sleep(Duration::from_millis(150)).await;
 
         // === start GStreamer pipeline ===
-        self.pipeline.set_state(gst::State::Playing)?;
+       self.pipeline.set_state(gst::State::Playing)?;
         let (_cur, new, _pend) = self
             .pipeline
-            .get_state(gst::ClockTime::from_seconds(3))
+            .state(gst::ClockTime::from_seconds(3))
             .map_err(|_| anyhow!("camera pipeline failed to preroll"))?;
         eprintln!("[sender] pipeline state: {:?}", new);
+
 
         let mut seq: u64 = 0;
         let clock = gst::SystemClock::obtain();

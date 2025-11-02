@@ -4,7 +4,7 @@
 
 #### Install Necessary Packages ####
 
-    sudo apt install libx264-dev libjpeg-dev    # Required dependencies
+    sudo apt install libx264-dev libjpeg-dev
     sudo apt install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-ugly gstreamer1.0-tools gstreamer1.0-gl gstreamer1.0-gtk3
     sudo apt install clang pkg-config libssl-dev gstreamer1.0-libav   gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad
 
@@ -22,7 +22,7 @@ Note that debug builds built with `cargo build` will produce a program without v
 
 ### Dependencies ###
 
-System dependencies: `libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev`
+System dependencies: `libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-ugly gstreamer1.0-tools gstreamer1.0-gl gstreamer1.0-gtk3 clang pkg-config libssl-dev gstreamer1.0-libav gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad`
 
 Program Dependencies: `aes-gcm, bytes, csv, getrandom, gobject-sys, gstreamer, gstreamer-app, hkdf, p256, rand, rsa, sha2, sysinfo, clap, fstrings`
 

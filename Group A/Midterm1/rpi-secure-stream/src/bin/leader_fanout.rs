@@ -239,6 +239,9 @@ async fn main() -> Result<()> {
 
     let tx_log = base_log.join("stream_tx.csv").display().to_string();
     let rekey_log = base_log.join("rekey_tx.csv").display().to_string();
+    eprintln!("[fanout] tx_log path = {}", tx_log);
+    eprintln!("[fanout] rekey_log path = {}", rekey_log);
+
     eprintln!("[fanout] CSV logs -> {}", base_log.display());
 
     // Build video pipeline

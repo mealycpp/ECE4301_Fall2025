@@ -1,0 +1,13 @@
+[package]
+name = "bench"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+
+[[bin]]
+name = "bench"
+path = "src/main.rs"
+
+[dependencies]
+aes-gcm.workspace = true
+rand.workspace = true

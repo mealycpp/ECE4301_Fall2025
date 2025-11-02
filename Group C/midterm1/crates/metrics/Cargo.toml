@@ -1,0 +1,17 @@
+[package]
+name = "metrics"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+
+[dependencies]
+anyhow.workspace = true
+chrono.workspace = true
+csv.workspace = true
+serde.workspace = true
+sysinfo.workspace = true
+tokio.workspace = true
+
+[lib]
+name = "metrics"
+path = "src/lib.rs"

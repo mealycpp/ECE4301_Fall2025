@@ -1,0 +1,14 @@
+/home/dragon-scales/4301-workspace/midterm1/target/debug/deps/serde-3a3739ef6acef40f.d: /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /home/dragon-scales/4301-workspace/midterm1/target/debug/build/serde-b306966ab86a4473/out/private.rs
+
+/home/dragon-scales/4301-workspace/midterm1/target/debug/deps/libserde-3a3739ef6acef40f.rlib: /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /home/dragon-scales/4301-workspace/midterm1/target/debug/build/serde-b306966ab86a4473/out/private.rs
+
+/home/dragon-scales/4301-workspace/midterm1/target/debug/deps/libserde-3a3739ef6acef40f.rmeta: /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs /home/dragon-scales/4301-workspace/midterm1/target/debug/build/serde-b306966ab86a4473/out/private.rs
+
+/home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/lib.rs:
+/home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/integer128.rs:
+/home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/mod.rs:
+/home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/de.rs:
+/home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/src/private/ser.rs:
+/home/dragon-scales/4301-workspace/midterm1/target/debug/build/serde-b306966ab86a4473/out/private.rs:
+
+# env-dep:OUT_DIR=/home/dragon-scales/4301-workspace/midterm1/target/debug/build/serde-b306966ab86a4473/out

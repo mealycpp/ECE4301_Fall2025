@@ -1,0 +1,10 @@
+/home/dragon-scales/4301-workspace/midterm1/target/debug/deps/pem_rfc7468-85ec5326412c3943.d: /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/lib.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/decoder.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/encoder.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/error.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/grammar.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/../README.md
+
+/home/dragon-scales/4301-workspace/midterm1/target/debug/deps/libpem_rfc7468-85ec5326412c3943.rmeta: /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/lib.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/decoder.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/encoder.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/error.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/grammar.rs /home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/../README.md
+
+/home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/lib.rs:
+/home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/decoder.rs:
+/home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/encoder.rs:
+/home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/error.rs:
+/home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/grammar.rs:
+/home/dragon-scales/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/pem-rfc7468-0.7.0/src/../README.md:

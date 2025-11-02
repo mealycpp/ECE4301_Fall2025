@@ -1,0 +1,2 @@
+ts_start,ts_end,mechanism,bytes_tx,bytes_rx,cpu_avg,mem_mb,energy_j,success
+2025-11-02T01:50:14.912054097Z,2025-11-02T01:50:14.913518809Z,ECDH-P256,69,69,0.0,0.0,0.0,true

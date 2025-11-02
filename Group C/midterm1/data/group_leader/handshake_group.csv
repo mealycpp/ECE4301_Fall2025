@@ -1,0 +1,2 @@
+ts_start,ts_end,mechanism,bytes_tx,bytes_rx,cpu_avg,mem_mb,energy_j,success
+2025-11-02T01:54:38.804901042Z,2025-11-02T01:54:38.805218579Z,GROUP-PSK,0,0,0.0,0.0,0.0,true

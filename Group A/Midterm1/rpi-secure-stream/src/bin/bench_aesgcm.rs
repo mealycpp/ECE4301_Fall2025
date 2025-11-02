@@ -5,6 +5,11 @@ use rand::RngCore;
 use std::time::Instant;
 use zeroize::Zeroize;
 
+use rpi_secure_stream::crypto;
+use rpi_secure_stream::net;
+use rpi_secure_stream::video;
+
+
 use aes_gcm::{
     aead::{Aead, KeyInit},
     Aes128Gcm, Nonce,
@@ -84,7 +89,8 @@ fn main() -> Result<()> {
     // Warmup a few chunks (fill caches, JITs, etc.)
     for i in 0..16.min(iters.max(1)) {
         let n = Nonce::from(next_nonce(&nonce_base, i as u32));
-        let _ = cipher.encrypt(&n, aes_gcm::aead::Payload { msg: &pt, aad: &aad })?;
+        let _ = cipher.encrypt(&n, aes_gcm::aead::Payload { msg: &pt, aad: &aad })
+    .map_err(|_| anyhow::anyhow!("aes-gcm encrypt failed"))?;
     }
 
     log_arm_crypto_support();
@@ -104,7 +110,8 @@ fn main() -> Result<()> {
 
         // Encrypt
         let out = cipher
-            .encrypt(&n, aes_gcm::aead::Payload { msg: &pt, aad: &aad })?;
+            .encrypt(&n, aes_gcm::aead::Payload { msg: &pt, aad: &aad })
+                .map_err(|_| anyhow::anyhow!("aes-gcm encrypt failed"))?;
         total_tags += 16;
 
         // Copy into ct buffer (fixed size); keep constant-time-ish memory pattern
@@ -116,7 +123,8 @@ fn main() -> Result<()> {
         if args.verify {
             let n2 = Nonce::from(next_nonce(&nonce_base, ctr - 1));
             let _pt = cipher
-                .decrypt(&n2, aes_gcm::aead::Payload { msg: &ct, aad: &aad })?;
+                .encrypt(&n, aes_gcm::aead::Payload { msg: &pt, aad: &aad })
+                    .map_err(|_| anyhow::anyhow!("aes-gcm encrypt failed"))?;
         }
     }
     let dt = t0.elapsed();

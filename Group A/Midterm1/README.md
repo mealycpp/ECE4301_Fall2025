@@ -1,7 +1,9 @@
-cmd process to compile and build
-
+**RUST Commands:**
+Remove excess files:
 cargo clean
+Compile and Build:
 cargo build
+Unit Test Runs:
 cargo test -- --nocapture
 
 

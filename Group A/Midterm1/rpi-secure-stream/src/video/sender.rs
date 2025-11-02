@@ -58,11 +58,14 @@ impl Sender {
 
         // === start GStreamer pipeline ===
        self.pipeline.set_state(gst::State::Playing)?;
-        let (_cur, new, _pend) = self
-            .pipeline
-            .state(gst::ClockTime::from_seconds(3))
-            .map_err(|_| anyhow!("camera pipeline failed to preroll"))?;
+
+        // Wait up to 3s for the pipeline to reach Playing/Paused
+        let (res, new, _pend) = self.pipeline.state(gst::ClockTime::from_seconds(3));
+        if let Err(_e) = res {
+            return Err(anyhow!("camera pipeline failed to preroll"));
+        }
         eprintln!("[sender] pipeline state: {:?}", new);
+
 
 
         let mut seq: u64 = 0;

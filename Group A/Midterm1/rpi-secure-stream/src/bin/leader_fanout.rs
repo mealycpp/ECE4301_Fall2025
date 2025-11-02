@@ -16,13 +16,13 @@ use dirs;
 use rpi_secure_stream::metrics::{read_sample, cpu_pct, mem_mb, cpu_pct_over};
 use rpi_secure_stream::logutil::append_csv_with_header;
 use tokio::time::timeout;
-use std::time::Duration;
+
 
 
 
 use rpi_secure_stream::net::aead_stream::Aes128GcmStream;
 use rpi_secure_stream::net::transport::{
-    tcp_connect_with_retry, WireMsg, FLAG_CAPS, FLAG_FRAME, FLAG_REKEY
+    tcp_connect_with_retry, WireMsg, FLAG_CAPS, FLAG_FRAME, FLAG_REKEY_ACK
 };
 use rsa::{pkcs8::DecodePublicKey, Oaep, RsaPublicKey};
 use sha2::Sha256;
@@ -134,14 +134,21 @@ async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> R
             .map_err(|e| anyhow!("RSA-OAEP wrap to {} failed: {e}", c.addr))?;
 
         // payload and send...
+        // Build REKEY payload: [u64 next_seq][u16 alg_id=1][u16 wrap_len][wrapped...]
         let mut p = Vec::with_capacity(8 + 2 + 2 + wrapped.len());
         p.extend_from_slice(&next_seq.to_be_bytes());
-        p.extend_from_slice(&1u16.to_be_bytes()); // alg_id=1
+        p.extend_from_slice(&1u16.to_be_bytes()); // 1 = RSA-OAEP-256 (your choice)
         p.extend_from_slice(&(wrapped.len() as u16).to_be_bytes());
         p.extend_from_slice(&wrapped);
 
-
-        let msg = WireMsg { flags: FLAG_REKEY, ts_ns: now_ns(), seq: next_seq, pt_len: 0, payload: Bytes::from(p) };
+        // Construct full wire message
+        let msg = WireMsg {
+            flags:   FLAG_REKEY,
+            ts_ns:   now_ns(),
+            seq:     next_seq,
+            pt_len:  0,
+            payload: bytes::Bytes::from(p),
+        };
         let mech = "RSA-OAEP-256";
         let ts_start = now_ns();
         let s0 = read_sample();
@@ -165,6 +172,7 @@ async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> R
             _ => { eprintln!("[fanout] ACK timeout from {}", c.addr); continue; }
         };
 
+
         let ts_end = now_ns();
         let s1 = read_sample();
         let cpu = cpu_pct(s0, s1);
@@ -175,14 +183,18 @@ async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> R
         let energy_j = -1.0f32;
 
         // write handshake_<addr>.csv
-        let file = base_log.join(format!("handshake_{}.csv", c.addr.replace('.', "_").replace(':', "_")))
-                        .display().to_string();
+        let file = base_log
+            .join(format!("handshake_{}.csv", c.addr.replace('.', "_").replace(':', "_")))
+            .display()
+            .to_string();
+
         append_csv_with_header(
             &file,
             "ts_start,ts_end,mech,bytes_tx,bytes_rx,cpu_avg,mem_mb,energy_j",
             &format!("{},{},{},{},{},{:.1},{:.1},{:.3}",
-                    ts_start, ts_end, mech, tx_bytes, bytes_rx, cpu, mem, energy_j)
+                    ts_start, ts_end, "RSA-OAEP-256", tx_bytes, bytes_rx, cpu, mem, energy_j)
         );
+
 
         if let Err(e) = msg.write_to(&mut c.tcp).await {
             eprintln!("[fanout] rekey to {} failed: {e}", c.addr);
@@ -255,7 +267,7 @@ async fn main() -> Result<()> {
     }
 
     // Bootstrap rekey at seq=0 for all
-    send_rekey_all(&mut conns, 0, &rekey_log).await?;
+    send_rekey_all(&mut conns, 0, &rekey_log, &base_log).await?;
     sleep(Duration::from_millis(150)).await;
 
     let mut seq: u64 = 0;
@@ -266,7 +278,7 @@ async fn main() -> Result<()> {
         // Periodic/group rekey every ~30s @15fps OR guard against wrap
         let need_guard = conns.iter().any(|c| c.aead.need_rekey(seq));
         if need_guard || (seq > 0 && seq % 450 == 0) { // 450 ≈ 30s @15fps
-            send_rekey_all(&mut conns, seq, &rekey_log).await?;
+            send_rekey_all(&mut conns, seq, &rekey_log, &base_log).await?;
         }
 
         // Pull one frame

@@ -85,8 +85,9 @@ fn main() -> Result<()> {
             if let Some(buffer) = sample.buffer() {
                 if let Ok(map) = buffer.map_readable() {
                     let pt = map.as_slice();
-                    // Encrypt each frame
-                    let ct = aead.encrypt_frame(frames as u64, pt)?;
+                    let pt_len = pt.len() as u32;          // ← add this
+                    let ct = aead.encrypt_frame(frames as u64, pt, pt_len)?;  // ← pass pt_len
+
                     frames += 1;
                     bytes_pt += pt.len();
                     bytes_ct += ct.len();

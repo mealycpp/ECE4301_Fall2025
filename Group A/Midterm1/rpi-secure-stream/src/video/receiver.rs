@@ -49,11 +49,14 @@ impl Receiver {
         Ok(())
     }
 
-    pub async fn run(mut self, bind_addr: &str) -> Result<()> {
+        pub async fn run(mut self, bind_addr: &str) -> Result<()> {
+        eprintln!("[receiver] start role=receiver bind={bind_addr} (default w={} h={} fps=?)", self.width, self.height);
         let listener: TcpListener = tcp_bind(bind_addr).await?;
-        let (mut stream, _addr) = listener.accept().await?;
-        eprintln!("[receiver] connected from {}", _addr);
+        eprintln!("[receiver] listening...");
+        let (mut stream, addr) = listener.accept().await?;
+        eprintln!("[receiver] TCP accepted from {}", addr);
 
+        // Start the pipeline in case caps don't change; we may rebuild later on CAPS
         self.pipeline.set_state(gst::State::Playing)?;
         let (res, new, _pend) = self.pipeline.state(gst::ClockTime::from_seconds(3));
         if let Err(_e) = res {
@@ -74,7 +77,13 @@ impl Receiver {
                 Err(e) => { eprintln!("[receiver] stream closed/error: {e}"); break; }
             };
 
+            if (msg.flags & FLAG_PING) != 0 {
+                eprintln!("[receiver] PING seq={} received", msg.seq);
+                continue;
+            }
+
             if (msg.flags & FLAG_CAPS) != 0 {
+                eprintln!("[receiver] CAPS received ({} bytes)", msg.payload.len());
                 if msg.payload.len() != 16 {
                     eprintln!("[receiver] bad CAPS payload ({})", msg.payload.len());
                     continue;
@@ -86,14 +95,16 @@ impl Receiver {
                 let fps = (fps_num as i32) / (fps_den as i32);
                 if let Err(e) = self.rebuild_caps(w, h, fps) {
                     eprintln!("[receiver] CAPS apply failed: {e}");
+                } else {
+                    eprintln!("[receiver] CAPS applied w={} h={} fps={}", w, h, fps);
                 }
-                // after caps, wait for a REKEY; do not accept frames yet
-                has_key = false;
+                has_key = false; // wait for REKEY
                 continue;
             }
 
             if (msg.flags & FLAG_REKEY) != 0 {
-                if msg.payload.len() < 8 + 2 + 2 {
+                eprintln!("[receiver] REKEY received ({} bytes)", msg.payload.len());
+                if msg.payload.len() < 12 {
                     eprintln!("[receiver] bad REKEY header ({})", msg.payload.len());
                     continue;
                 }
@@ -108,30 +119,34 @@ impl Receiver {
                     1 => { // RSA-OAEP-256
                         let wrapped = &msg.payload[12..];
                         let label = Oaep::new::<Sha256>();
-                        let secret = sk.decrypt(label, wrapped)
-                            .map_err(|e| anyhow!("RSA-OAEP unwrap failed: {e}"))?;
+                        let secret = match sk.decrypt(label, wrapped) {
+                            Ok(s) => s,
+                            Err(e) => { eprintln!("[receiver] RSA-OAEP unwrap failed: {e}"); continue; }
+                        };
                         if secret.len() != 28 {
                             eprintln!("[receiver] REKEY secret wrong size: {}", secret.len());
                             continue;
                         }
                         let mut key = [0u8;16];
-                        let mut nb  = [u8;12];
+                        let mut nb  = [0u8;12];
                         key.copy_from_slice(&secret[..16]);
                         nb.copy_from_slice(&secret[16..28]);
 
-                        self.aead.rekey_at(key, nb, next_seq)?;
+                        if let Err(e) = self.aead.rekey_at(key, nb, next_seq) {
+                            eprintln!("[receiver] rekey_at failed: {e}");
+                            continue;
+                        }
                         expect_seq = next_seq;
                         has_key = true;
-                        eprintln!("[receiver] REKEY (RSA-OAEP) to seq={next_seq}");
+                        eprintln!("[receiver] REKEY applied at seq={next_seq}");
                     }
-                    _ => {
-                        eprintln!("[receiver] unknown REKEY alg_id={alg_id} (ignored)");
-                    }
+                    _ => eprintln!("[receiver] unknown REKEY alg_id={alg_id}"),
                 }
                 continue;
             }
 
             if (msg.flags & FLAG_FRAME) == 0 {
+                eprintln!("[receiver] unknown/ignored flags={:#x}", msg.flags);
                 continue;
             }
 
@@ -140,21 +155,17 @@ impl Receiver {
                 continue;
             }
 
-            // Replay/drop notice
             if msg.seq < expect_seq {
                 eprintln!("[receiver] replay/late frame: got {}, expect {}", msg.seq, expect_seq);
                 continue;
             } else if msg.seq > expect_seq {
                 eprintln!("[receiver] seq jump: got {}, expect {}", msg.seq, expect_seq);
-                // we still try to decrypt; seq-based nonce makes this safe
+                // still try to decrypt
             }
 
             let pt = match self.aead.decrypt_frame(msg.seq, &msg.payload, msg.pt_len) {
                 Ok(p) => p,
-                Err(e) => {
-                    eprintln!("[receiver] decrypt failed at seq={} : {e}", msg.seq);
-                    continue;
-                }
+                Err(e) => { eprintln!("[receiver] decrypt failed at seq={} : {e}", msg.seq); continue; }
             };
 
             let mut buffer = gst::Buffer::with_size(pt.len()).unwrap();
@@ -163,13 +174,16 @@ impl Receiver {
                 let mut map = bufref.map_writable().map_err(|_| anyhow::anyhow!("map_writable failed"))?;
                 map.as_mut_slice().copy_from_slice(&pt);
             }
-            self.src.push_buffer(buffer)?;
+            if let Err(e) = self.src.push_buffer(buffer) {
+                eprintln!("[receiver] push_buffer failed: {e}");
+                continue;
+            }
 
             expect_seq = msg.seq.wrapping_add(1);
 
             frames_since_log += 1;
             if last_log.elapsed() > std::time::Duration::from_secs(1) {
-                eprintln!("[receiver] rx fps≈{} (last seq={})", frames_since_log, msg.seq);
+                eprintln!("[receiver] RX fps≈{} (last seq={})", frames_since_log, msg.seq);
                 frames_since_log = 0;
                 last_log = std::time::Instant::now();
             }
@@ -178,4 +192,5 @@ impl Receiver {
         self.pipeline.set_state(gst::State::Null)?;
         Ok(())
     }
+
 }

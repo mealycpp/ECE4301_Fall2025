@@ -92,20 +92,35 @@ impl Sender {
         Ok(())
     }
 
-    pub async fn run(mut self, leader_addr: &str) -> Result<()> {
-        eprintln!("[sender] connecting to {leader_addr} ...");
+        pub async fn run(mut self, leader_addr: &str) -> Result<()> {
+        eprintln!("[sender] start role=sender addr={leader_addr} w={} h={} fps={}", self.width, self.height, self.fps);
         let mut conn = tcp_connect_with_retry(leader_addr, Duration::from_secs(20)).await?;
-        eprintln!("[sender] connected to {leader_addr}");
+        eprintln!("[sender] TCP connected, nodelay set");
 
-        // Send caps then bootstrap REKEY(seq=0), and give the receiver a blink to apply.
+        // --- Sanity: tell receiver our caps
         self.send_caps(&mut conn).await?;
-        eprintln!("[sender] sent CAPS w={} h={} fps={}", self.width, self.height, self.fps);
+        eprintln!("[sender] sent CAPS");
 
+        // --- Handshake: REKEY(seq=0) via RSA-OAEP
         self.send_rekey_rsa(&mut conn, 0).await?;
-        eprintln!("[sender] bootstrap REKEY (RSA-OAEP) sent (seq=0)");
+        eprintln!("[sender] sent REKEY(seq=0) RSA-OAEP");
         tokio::time::sleep(Duration::from_millis(150)).await;
 
-        // Start pipeline
+        // --- Optional: heartbeat PING (helps confirm transport)
+        for i in 0..3 {
+            let msg = WireMsg {
+                flags: FLAG_PING,
+                ts_ns: Self::now_ns(),
+                seq: i,
+                pt_len: 0,
+                payload: Bytes::new(),
+            };
+            msg.write_to(&mut conn).await?;
+            eprintln!("[sender] PING seq={i} sent");
+            tokio::time::sleep(Duration::from_millis(50)).await;
+        }
+
+        // --- Start pipeline
         self.pipeline.set_state(gst::State::Playing)?;
         let (res, new, _pending) = self.pipeline.state(gst::ClockTime::from_seconds(3));
         if let Err(_e) = res {
@@ -118,14 +133,14 @@ impl Sender {
         let mut frames_since_log = 0usize;
 
         loop {
-            // Guard: force rekey long before nonce space wraps.
+            // Guard + periodic rekey
             if self.aead.need_rekey(seq) || (seq > 0 && seq % REKEY_EVERY_FRAMES == 0) {
                 let next_seq = seq;
                 self.send_rekey_rsa(&mut conn, next_seq).await?;
                 eprintln!("[sender] REKEY at seq={next_seq}");
             }
 
-            // Pull frame (500ms timeout)
+            // Pull frame
             let Some(sample) = self.sink.try_pull_sample(gst::ClockTime::from_mseconds(500)) else {
                 if last_log.elapsed() > std::time::Duration::from_secs(2) {
                     eprintln!("[sender] waiting for frames...");
@@ -154,7 +169,7 @@ impl Sender {
 
             frames_since_log += 1;
             if last_log.elapsed() > std::time::Duration::from_secs(1) {
-                eprintln!("[sender] tx fps≈{} (seq={})", frames_since_log, seq);
+                eprintln!("[sender] TX fps≈{} (last seq={})", frames_since_log, seq);
                 frames_since_log = 0;
                 last_log = std::time::Instant::now();
             }
@@ -165,4 +180,5 @@ impl Sender {
         self.pipeline.set_state(gst::State::Null)?;
         Ok(())
     }
+
 }

@@ -8,6 +8,7 @@ use rand::Rng; // jitter
 pub const FLAG_FRAME: u8 = 0x01;
 pub const FLAG_REKEY: u8 = 0x02;
 pub const FLAG_CAPS:  u8 = 0x04;
+pub const FLAG_PING:  u8 = 0x08;
 
 /// Length-prefixed message:
 /// [u32 len][u8 flags][u64 ts_ns][u64 seq][u32 pt_len][payload...]
@@ -78,7 +79,10 @@ pub async fn tcp_connect_with_retry(addr: &str, total_timeout: Duration) -> Resu
 
     loop {
         match TcpStream::connect(addr).await {
-            Ok(s) => return Ok(s),
+            Ok(s) => {
+        let _ = s.set_nodelay(true); // best-effort
+        return Ok(s);
+    },
             Err(e) => {
                 if start.elapsed() >= total_timeout {
                     return Err(anyhow!("connect {} failed after {:?}: {}", addr, total_timeout, e));

@@ -80,3 +80,56 @@ pub fn make_receiver_pipeline_headless(width: i32, height: i32, fps: i32)
 
     Ok((pipeline, src))
 }
+
+// src/video/mod.rs (receiver/display)
+pub fn make_receiver_pipeline(width: i32, height: i32, fps: i32)
+    -> anyhow::Result<(gst::Pipeline, gstreamer_app::AppSrc)>
+{
+    gst_init_once()?;
+
+    let desc = format!(
+        "appsrc name=src is-live=true format=time do-timestamp=true block=false
+         caps=video/x-raw,format=I420,width={width},height={height},framerate={fps}/1 !
+         queue max-size-buffers=10 leaky=downstream !
+         videoconvert !
+         autovideosink sync=false"
+    );
+
+    let pipeline = gst::parse::launch(&desc)?
+        .downcast::<gst::Pipeline>()
+        .map_err(|_| anyhow::anyhow!("not a pipeline"))?;
+
+    let src = pipeline
+        .by_name("src").ok_or_else(|| anyhow::anyhow!("appsrc not found"))?
+        .downcast::<gstreamer_app::AppSrc>()
+        .map_err(|_| anyhow::anyhow!("appsrc downcast failed"))?;
+
+    Ok((pipeline, src))
+}
+
+// src/video/mod.rs (sender side)
+pub fn make_sender_pipeline(device: &str, width: i32, height: i32, fps: i32)
+    -> anyhow::Result<(gst::Pipeline, gstreamer_app::AppSink)>
+{
+    gst_init_once()?;
+
+    let desc = format!(
+        "v4l2src device={device} do-timestamp=true !
+         queue max-size-buffers=5 leaky=downstream !
+         videoconvert !
+         video/x-raw,format=I420,width={width},height={height},framerate={fps}/1 !
+         queue max-size-buffers=5 leaky=downstream !
+         appsink name=sink sync=false max-buffers=2 drop=true emit-signals=false"
+    );
+
+    let pipeline = gst::parse::launch(&desc)?
+        .downcast::<gst::Pipeline>()
+        .map_err(|_| anyhow::anyhow!("not a pipeline"))?;
+
+    let sink = pipeline
+        .by_name("sink").ok_or_else(|| anyhow::anyhow!("appsink not found"))?
+        .downcast::<gstreamer_app::AppSink>()
+        .map_err(|_| anyhow::anyhow!("appsink downcast failed"))?;
+
+    Ok((pipeline, sink))
+}

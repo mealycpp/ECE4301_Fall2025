@@ -32,6 +32,8 @@ impl Receiver {
         Ok(RsaPrivateKey::from_pkcs8_pem(&pem)?)
     }
 
+    
+
     fn rebuild_caps(&mut self, width: i32, height: i32, fps: i32) -> Result<()> {
         self.pipeline.set_state(gst::State::Null)?;
 

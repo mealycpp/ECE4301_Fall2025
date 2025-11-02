@@ -42,3 +42,7 @@ Receiver with ECDH rekeying example:
 
 ![Network Diagram](./20251031_214802.jpg "Network Diagram")
 
+
+### Version History ###
+
+ - Version 0.1.0: First Working Version with Benchmark Logging

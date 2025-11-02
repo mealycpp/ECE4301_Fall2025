@@ -112,9 +112,12 @@ async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> R
     let label = Oaep::new::<Sha256>();
 
     for c in conns.iter_mut() {
-        // wrap for this listener
-        let wrapped = pk.encrypt(&mut OsRng, label, &secret)
-            .map_err(|e| anyhow!("RSA-OAEP wrap to {} failed: {e}", c.addr))?;
+    let wrapped = pk.encrypt(&mut OsRng, Oaep::new::<Sha256>(), &secret)
+        .map_err(|e| anyhow!("RSA-OAEP wrap to {} failed: {e}", c.addr))?;
+    // ...
+    }
+
+
 
         let mut p = Vec::with_capacity(8 + 2 + 2 + wrapped.len());
         p.extend_from_slice(&next_seq.to_be_bytes());

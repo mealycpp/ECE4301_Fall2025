@@ -48,6 +48,15 @@ struct Conn {
     has_key: bool,
 }
 
+fn key_path_for(addr: &str) -> std::path::PathBuf {
+    let mut p = dirs::home_dir().expect("no home dir");
+    // e.g., ~/.ece4301/192_168_1_101_5000_pub.pem
+    p.push(".ece4301");
+    p.push(format!("{}_pub.pem", addr.replace('.', "_").replace(':', "_")));
+    p
+}
+
+
 fn now_ns() -> u64 {
     gst::SystemClock::obtain().time().map(|t| t.nseconds()).unwrap_or(0) as u64
 }

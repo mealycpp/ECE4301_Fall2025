@@ -11,7 +11,12 @@ use chrono::Utc;
 
 
 // ==== CONFIG: where to load the receiver's RSA private key (PEM) ====
-const KEY_PATH_RECEIVER_PRIV: &str = "/home/pi/.ece4301/receiver_priv.pem";
+fn key_path_receiver_priv() -> std::path::PathBuf {
+    let mut p = dirs::home_dir().expect("no home dir");
+    p.push(".ece4301/receiver_priv.pem");
+    p
+}
+
 
 // RSA-OAEP-256
 use rsa::{pkcs8::DecodePrivateKey, Oaep, RsaPrivateKey};
@@ -39,8 +44,9 @@ impl Receiver {
     }
 
     fn load_receiver_priv() -> Result<RsaPrivateKey> {
-        let pem = std::fs::read_to_string(KEY_PATH_RECEIVER_PRIV)
-            .map_err(|e| anyhow!("read receiver privkey {}: {}", KEY_PATH_RECEIVER_PRIV, e))?;
+        let pem = std::fs::read_to_string(key_path_receiver_priv())
+                .map_err(|e| anyhow!("read receiver privkey: {e}"))?;
+
         Ok(RsaPrivateKey::from_pkcs8_pem(&pem)?)
     }
 

@@ -19,6 +19,8 @@ gstreamer-app = "0.22"
 tokio = { version = "1", features = ["full"] }
 chrono = { version = "0.4", default-features = false, features = ["clock"] }
 bytes = "1"
+dirs = "5"
+
 [[bin]]
 name = "leader_fanout"
 path = "src/bin/leader_fanout.rs"

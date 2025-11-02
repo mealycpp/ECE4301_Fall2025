@@ -12,7 +12,12 @@ use rand::RngCore;
 use tokio::time::Duration;
 
 // ==== CONFIG: where to load the receiver's RSA public key (PEM) ====
-const KEY_PATH_RECEIVER_PUB: &str = "/home/pi/.ece4301/receiver_pub.pem";
+fn key_path_receiver_pub() -> std::path::PathBuf {
+    let mut p = dirs::home_dir().expect("no home dir");
+    p.push(".ece4301/receiver_pub.pem");
+    p
+}
+
 
 const REKEY_EVERY_FRAMES: u64 = 900; // ~30s @30fps
 
@@ -46,8 +51,9 @@ impl Sender {
     }
 
     fn load_receiver_pub() -> Result<RsaPublicKey> {
-        let pem = std::fs::read_to_string(KEY_PATH_RECEIVER_PUB)
-            .map_err(|e| anyhow!("read receiver pubkey {}: {}", KEY_PATH_RECEIVER_PUB, e))?;
+        let pem = std::fs::read_to_string(key_path_receiver_pub())
+            .map_err(|e| anyhow!("read receiver pubkey: {e}"))?;
+
         Ok(RsaPublicKey::from_public_key_pem(&pem)?)
     }
 

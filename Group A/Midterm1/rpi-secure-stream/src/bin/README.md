@@ -43,10 +43,10 @@ cargo run --release --bin bench_kex -- --iters 1000 --rsa-bits 2048 --salt-len 3
 
 Leader_fanout
 ./target/release/leader_fanout \
-  --listener 192.168.1.117:5000 \
-  --listener 192.168.1.118:5000 \
+  --listener 192.168.0.117:5000 \
+  --listener 192.168.0.118:5000 \
   --device /dev/video0 --width 640 --height 480 --fps 15
 
   # on each listener Pi:
-./target/release/rpi-secure-stream --role receiver --bind 192.168.1.120:5000 --width 640 --height 480 --fps 15
+./target/release/rpi-secure-stream --role receiver --bind 192.168.0.120:5000 --width 640 --height 480 --fps 15
 

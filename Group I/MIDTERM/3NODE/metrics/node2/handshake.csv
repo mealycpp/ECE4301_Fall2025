@@ -1,0 +1,11 @@
+timestamp,method,duration_s,bytes_sent,bytes_received,success,failure_reason,peer
+2025-11-02T02:47:39.225653229Z,ECDH,0.001884392,75,75,true,,10.42.0.1:37070
+2025-11-02T02:47:40.526073315Z,ECDH,0.001736596,75,75,true,,10.42.0.3:41552
+timestamp,method,duration_s,bytes_sent,bytes_received,success,failure_reason,peer
+2025-11-02T02:58:36.234101568Z,ECDH,0.020726911,75,75,true,,10.42.0.1:5000
+timestamp,method,duration_s,bytes_sent,bytes_received,success,failure_reason,peer
+2025-11-02T03:01:58.569330359Z,ECDH,0.017425795,75,75,true,,10.42.0.3:5000
+2025-11-02T03:01:58.571111622Z,ECDH,0.018720797,75,75,true,,10.42.0.1:5000
+timestamp,method,duration_s,bytes_sent,bytes_received,success,failure_reason,peer
+2025-11-02T03:07:40.285887148Z,ECDH,0.012278988,75,75,true,,10.42.0.1:5000
+2025-11-02T03:07:40.291429799Z,ECDH,0.017845823,75,75,true,,10.42.0.3:5000

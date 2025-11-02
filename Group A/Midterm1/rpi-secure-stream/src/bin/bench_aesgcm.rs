@@ -5,11 +5,6 @@ use rand::RngCore;
 use std::time::Instant;
 use zeroize::Zeroize;
 
-use rpi_secure_stream::crypto;
-use rpi_secure_stream::net;
-use rpi_secure_stream::video;
-
-
 use aes_gcm::{
     aead::{Aead, KeyInit},
     Aes128Gcm, Nonce,
@@ -126,7 +121,7 @@ fn main() -> Result<()> {
 
         // Optional verify
         if args.verify {
-            let n2 = Nonce::from(next_nonce(&nonce_base, ctr - 1));
+            let _n2 = Nonce::from(next_nonce(&nonce_base, ctr - 1));
             let _pt = cipher
                 .encrypt(&n, aes_gcm::aead::Payload { msg: &pt, aad: &aad })
                     .map_err(|_| anyhow::anyhow!("aes-gcm encrypt failed"))?;

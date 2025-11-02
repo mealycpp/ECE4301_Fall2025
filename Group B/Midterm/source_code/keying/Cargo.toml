@@ -1,0 +1,14 @@
+[package]
+name = "keying"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+aes-gcm = { version = "0.10", features = ["aes"] }
+hkdf = { workspace = true }
+sha2 = { workspace = true }
+rand = { workspace = true }
+getrandom = { workspace = true }
+p256 = { workspace = true }
+rsa = { workspace = true }
+

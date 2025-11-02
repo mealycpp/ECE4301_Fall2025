@@ -1,0 +1,14 @@
+[package]
+name = "transport"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+rand  = "0.8"
+hkdf  = "0.12"
+sha2  = "0.10"
+p256  = { version = "0.13", features = ["ecdh"] }
+anyhow = "1"
+aead  = { path = "../aead" }
+metrics = { path = "../metrics" }

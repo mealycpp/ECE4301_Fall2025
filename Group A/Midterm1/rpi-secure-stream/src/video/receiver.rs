@@ -5,8 +5,7 @@ use gstreamer as gst;
 use gstreamer::prelude::*;
 use gstreamer_app::AppSrc;
 use tokio::net::TcpListener;
-use rpi_secure_stream::logutil::append_csv;
-use chrono::Utc;
+use crate::logutil::append_csv; 
 
 
 // ==== CONFIG: where to load the receiver's RSA private key (PEM) ====
@@ -23,6 +22,14 @@ pub struct Receiver {
     pub width: i32,
     pub height: i32,
 }
+
+fn now_ns() -> u64 {
+    gst::SystemClock::obtain()
+        .time()
+        .map(|t| t.nseconds())
+        .unwrap_or(0) as u64
+}
+
 
 impl Receiver {
     pub fn new(aead: Aes128GcmStream, pipeline: gst::Pipeline, src: AppSrc, width: i32, height: i32) -> Self {
@@ -63,8 +70,9 @@ impl Receiver {
 
         pub async fn run(mut self, bind_addr: &str) -> Result<()> {
             let ts = Utc::now().format("%Y%m%d_%H%M%S").to_string();
-            let rx_log = format!("data/stream_rx_{ts}.csv");
-            let rekey_log = format!("data/rekey_rx_{ts}.csv");
+            let rx_log = "data/stream_rx.csv".to_string();
+            let rekey_log = "data/rekey_rx.csv".to_string();
+
 
             eprintln!("[receiver] start role=receiver bind={bind_addr} (default w={} h={} fps=?)", self.width, self.height);
             let listener: TcpListener = tcp_bind(bind_addr).await?;
@@ -74,7 +82,8 @@ impl Receiver {
 
             // Start the pipeline in case caps don't change; we may rebuild later on CAPS
             self.pipeline.set_state(gst::State::Playing)?;
-            let (res, new, _pend) = self.pipeline.state(gst::ClockTime::from_seconds(3));
+            let (res, _new, _pend) = self.pipeline.state(gst::ClockTime::from_seconds(3));
+
             if let Err(_e) = res {
                 return Err(anyhow!("receiver pipeline failed to preroll"));
             }

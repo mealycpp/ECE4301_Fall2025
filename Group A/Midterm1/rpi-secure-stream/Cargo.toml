@@ -21,6 +21,7 @@ bytes = "1"
 [[bin]]
 name = "leader_fanout"
 path = "src/bin/leader_fanout.rs"
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
 
 
 

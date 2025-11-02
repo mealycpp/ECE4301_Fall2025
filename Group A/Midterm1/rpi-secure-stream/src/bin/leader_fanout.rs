@@ -9,8 +9,9 @@ use rand::RngCore;
 use std::time::Instant;
 use tokio::net::TcpStream;
 use tokio::time::{Duration, sleep};
-use rpi_secure_stream::logutil::append_csv;
+use crate::logutil::append_csv;
 use chrono::Utc;
+
 
 
 use rpi_secure_stream::net::aead_stream::Aes128GcmStream;
@@ -143,8 +144,8 @@ async fn send_rekey_all(conns: &mut [Conn], next_seq: u64) -> Result<()> {
 async fn main() -> Result<()> {
     let args = Args::parse();
     let ts = Utc::now().format("%Y%m%d_%H%M%S").to_string();
-    let tx_log = format!("data/stream_tx_{ts}.csv");
-    let rekey_log = format!("data/rekey_tx_{ts}.csv");
+    let tx_log = "data/stream_tx.csv".to_string();
+    let rekey_log = "data/rekey_tx.csv".to_string();
 
     if args.listeners.is_empty() {
         return Err(anyhow!("provide at least one --listener ip:port"));

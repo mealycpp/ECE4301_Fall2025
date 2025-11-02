@@ -84,7 +84,7 @@ impl Receiver {
 
             // Start the pipeline in case caps don't change; we may rebuild later on CAPS
             self.pipeline.set_state(gst::State::Playing)?;
-            let (res, _new, _pend) = self.pipeline.state(gst::ClockTime::from_seconds(3));
+            let (res, new, _pend) = self.pipeline.state(gst::ClockTime::from_seconds(3));
 
             if let Err(_e) = res {
                 return Err(anyhow!("receiver pipeline failed to preroll"));

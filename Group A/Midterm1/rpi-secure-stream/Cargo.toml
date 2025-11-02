@@ -17,11 +17,12 @@ aes-gcm = { version = "0.10", features = ["aes"] }
 gstreamer = "0.22"
 gstreamer-app = "0.22"
 tokio = { version = "1", features = ["full"] }
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
 bytes = "1"
 [[bin]]
 name = "leader_fanout"
 path = "src/bin/leader_fanout.rs"
-chrono = { version = "0.4", default-features = false, features = ["clock"] }
+
 
 
 

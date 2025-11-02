@@ -6,9 +6,7 @@ use gstreamer::prelude::*;
 use gstreamer_app::{AppSink, AppSrc};
 
 pub fn gst_init_once() -> Result<()> {
-    if !gst::is_initialized() {
-        gst::init()?;
-    }
+    gst::init()?;
     Ok(())
 }
 

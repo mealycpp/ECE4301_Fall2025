@@ -1,6 +1,5 @@
-// src/video/receiver.rs
-use crate::net::aead_stream::Aes128GcmStream;                 // ← was crate::aead_stream
-use crate::net::transport::{tcp_bind, WireMsg, FLAG_FRAME};    // ← was crate::transport
+use crate::net::aead_stream::Aes128GcmStream;
+use crate::net::transport::{tcp_bind, WireMsg, FLAG_FRAME, FLAG_REKEY};
 use anyhow::Result;
 use gstreamer as gst;
 use gstreamer::prelude::*;
@@ -26,31 +25,53 @@ impl Receiver {
         let pipeline = self.src.parent().unwrap().downcast::<gst::Pipeline>().unwrap();
         pipeline.set_state(gst::State::Playing)?;
 
-        let mut expected_seq: u64 = 0;
+        let mut expect_seq: u64 = 0;
 
         loop {
             let msg = match WireMsg::read_from(&mut stream).await {
                 Ok(m) => m,
                 Err(_) => break,
             };
-            if msg.flags & FLAG_FRAME == 0 { continue; }
 
-            // Plain I420 size (YUV 4:2:0): width*height*1.5
-            let frame_size = (self.width * self.height * 3 / 2) as u32;
+            if (msg.flags & FLAG_REKEY) != 0 {
+                // payload = [u64 next_seq][key[16]][nonce_base[12]]
+                if msg.payload.len() != 8 + 16 + 12 {
+                    continue;
+                }
+                let next_seq = u64::from_be_bytes(msg.payload[..8].try_into().unwrap());
+                let mut key = [0u8; 16];
+                let mut nb  = [0u8; 12];
+                key.copy_from_slice(&msg.payload[8..24]);
+                nb.copy_from_slice(&msg.payload[24..36]);
 
-            let pt = self.aead.decrypt_frame(expected_seq, &msg.payload, frame_size)?;
-            expected_seq = expected_seq.wrapping_add(1);
+                // Align our sequence to sender’s announced boundary
+                expect_seq = next_seq;
+                self.aead.rekey(key, nb)?;
+                continue;
+            }
 
+            if (msg.flags & FLAG_FRAME) == 0 {
+                continue;
+            }
+
+            // Strong AAD: use sender-provided seq + pt_len
+            let pt = self.aead.decrypt_frame(msg.seq, &msg.payload, msg.pt_len)?;
+
+            // Push into appsrc (I420)
             let mut buffer = gst::Buffer::with_size(pt.len()).unwrap();
             {
-                // Ensure we have a unique, writable buffer ref
-                let bufref = buffer.make_mut(); // returns &mut gst::BufferRef
-                let mut map = bufref
-                    .map_writable()
-                    .map_err(|_| anyhow::anyhow!("buffer map_writable failed"))?;
+                let bufref = buffer.make_mut();
+                let mut map = bufref.map_writable().map_err(|_| anyhow::anyhow!("map_writable failed"))?;
                 map.as_mut_slice().copy_from_slice(&pt);
             }
             self.src.push_buffer(buffer)?;
+
+            // Keep a simple continuity check (optional)
+            if msg.seq != expect_seq {
+                // out-of-order or dropped; you could log here
+                expect_seq = msg.seq;
+            }
+            expect_seq = expect_seq.wrapping_add(1);
         }
 
         pipeline.set_state(gst::State::Null)?;

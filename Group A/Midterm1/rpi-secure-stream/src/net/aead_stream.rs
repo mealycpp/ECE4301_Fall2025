@@ -1,4 +1,3 @@
-// src/aead_stream.rs
 use aes_gcm::{
     aead::{Aead, KeyInit, Payload},
     Aes128Gcm, Nonce,
@@ -6,17 +5,28 @@ use aes_gcm::{
 use anyhow::{anyhow, Result};
 use zeroize::Zeroize;
 
-/// 16-byte AES-128 key, 12-byte GCM nonce base
+/// AES-128-GCM stream with 96-bit nonce base and 32-bit counter.
 pub struct Aes128GcmStream {
     cipher: Aes128Gcm,
-    nonce_base: [u8; 12], // first 8 bytes base, last 4 used for counter
+    nonce_base: [u8; 12],
     ctr: u32,
 }
 
 impl Aes128GcmStream {
     pub fn new(key: [u8; 16], nonce_base: [u8; 12]) -> Result<Self> {
-        let cipher = Aes128Gcm::new_from_slice(&key)?;
-        Ok(Self { cipher, nonce_base, ctr: 0 })
+        Ok(Self {
+            cipher: Aes128Gcm::new_from_slice(&key)?,
+            nonce_base,
+            ctr: 0,
+        })
+    }
+
+    /// Rekey and reset the internal nonce counter.
+    pub fn rekey(&mut self, key: [u8; 16], nonce_base: [u8; 12]) -> Result<()> {
+        self.cipher = Aes128Gcm::new_from_slice(&key)?;
+        self.nonce_base = nonce_base;
+        self.ctr = 0;
+        Ok(())
     }
 
     #[inline]
@@ -27,32 +37,33 @@ impl Aes128GcmStream {
         n
     }
 
-    /// Encrypt a frame with AAD = seq (u64) + size (u32)
-    pub fn encrypt_frame(&mut self, seq: u64, plaintext: &[u8]) -> Result<Vec<u8>> {
+    /// Encrypt frame: AAD = seq||pt_len
+    pub fn encrypt_frame(&mut self, seq: u64, pt: &[u8], pt_len: u32) -> Result<Vec<u8>> {
         let mut aad = [0u8; 12];
         aad[..8].copy_from_slice(&seq.to_be_bytes());
-        aad[8..12].copy_from_slice(&(plaintext.len() as u32).to_be_bytes());
+        aad[8..12].copy_from_slice(&pt_len.to_be_bytes());
+
         let nonce = Nonce::from(self.next_nonce());
-        let ct = self.cipher.encrypt(&nonce, Payload { msg: plaintext, aad: &aad })
-            .map_err(|_| anyhow!("aes-gcm encrypt failed"))?;
-        Ok(ct)
+        self.cipher
+            .encrypt(&nonce, Payload { msg: pt, aad: &aad })
+            .map_err(|_| anyhow!("aes-gcm encrypt failed"))
     }
 
-    /// Decrypt a frame with the same AAD = seq + size
-    pub fn decrypt_frame(&mut self, seq: u64, ciphertext: &[u8], size_hint: u32) -> Result<Vec<u8>> {
+    /// Decrypt frame: AAD must match sender (seq||pt_len)
+    pub fn decrypt_frame(&mut self, seq: u64, ct: &[u8], pt_len: u32) -> Result<Vec<u8>> {
         let mut aad = [0u8; 12];
         aad[..8].copy_from_slice(&seq.to_be_bytes());
-        aad[8..12].copy_from_slice(&size_hint.to_be_bytes());
+        aad[8..12].copy_from_slice(&pt_len.to_be_bytes());
+
         let nonce = Nonce::from(self.next_nonce());
-        let pt = self.cipher.decrypt(&nonce, Payload { msg: ciphertext, aad: &aad })
-            .map_err(|_| anyhow!("aes-gcm decrypt failed (tag)"))?;
-        Ok(pt)
+        self.cipher
+            .decrypt(&nonce, Payload { msg: ct, aad: &aad })
+            .map_err(|_| anyhow!("aes-gcm decrypt failed (tag)"))
     }
 }
 
 impl Drop for Aes128GcmStream {
     fn drop(&mut self) {
         self.nonce_base.zeroize();
-        // cipher key is internal; rely on type drop + process isolation; avoid logging keys
     }
 }

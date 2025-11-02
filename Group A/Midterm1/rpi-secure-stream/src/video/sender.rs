@@ -1,13 +1,14 @@
-// src/video/sender.rs
-use crate::net::aead_stream::Aes128GcmStream;                // ← was crate::aead_stream
-use crate::net::transport::{tcp_connect, WireMsg, FLAG_FRAME}; // ← was crate::transport
+use crate::net::aead_stream::Aes128GcmStream;
+use crate::net::transport::{tcp_connect, WireMsg, FLAG_FRAME, FLAG_REKEY};
 use anyhow::Result;
 use bytes::Bytes;
 use gstreamer as gst;
 use gstreamer::prelude::*;
 use gstreamer_app::AppSink;
-// (You can delete this; we don't use Duration/Instant here)
-// use std::time::{Duration, Instant};
+use rand::rngs::OsRng;
+use rand::RngCore;
+
+const REKEY_EVERY_FRAMES: u64 = 900; // ~30s @ 30fps
 
 pub struct Sender {
     pub aead: Aes128GcmStream,
@@ -33,34 +34,60 @@ impl Sender {
         let clock = gst::SystemClock::obtain();
 
         loop {
-            // Use try_pull_sample with a timeout (e.g., 2s)
-            let sample_opt = self.sink.try_pull_sample(gst::ClockTime::from_seconds(2));
+            // Rekey boundary: send control message that tells receiver the *next* seq to start with.
+            if seq > 0 && seq % REKEY_EVERY_FRAMES == 0 {
+                let next_seq = seq; // apply new key starting at this upcoming frame index
+
+                // TODO: wrap with RSA/ECDH before shipping!
+                let mut key = [0u8; 16];
+                let mut nb  = [0u8; 12];
+                OsRng.fill_bytes(&mut key);
+                OsRng.fill_bytes(&mut nb);
+
+                // payload = [u64 next_seq][key[16]][nonce_base[12]]
+                let mut p = Vec::with_capacity(8 + 16 + 12);
+                p.extend_from_slice(&next_seq.to_be_bytes());
+                p.extend_from_slice(&key);
+                p.extend_from_slice(&nb);
+
+                let ts = clock.time().map(|t| t.nseconds()).unwrap_or(0) as u64;
+                let msg = WireMsg {
+                    flags: FLAG_REKEY,
+                    ts_ns: ts,
+                    seq: next_seq, // for logging; not used by decrypt
+                    pt_len: 0,
+                    payload: Bytes::from(p),
+                };
+                msg.write_to(&mut conn).await?;
+
+                // Switch locally *after* sending control (so receiver can catch up)
+                self.aead.rekey(key, nb)?;
+            }
+
+            // Pull one frame
+            let sample_opt = self.sink.try_pull_sample(gst::ClockTime::from_mseconds(500));
             let sample = match sample_opt {
                 Some(s) => s,
-                None => continue, // no frame in timeout window; keep looping
+                None => continue,
             };
-
             let buffer = sample.buffer().ok_or_else(|| anyhow::anyhow!("no buffer"))?;
             let map = buffer.map_readable().map_err(|_| anyhow::anyhow!("map failed"))?;
-
-            // ClockTime is Option<ClockTime>; get nanoseconds if present
-            let ts = clock.time().map(|t| t.nseconds()).unwrap_or(0) as u64;
-
-            // Encrypt the raw frame (I420)
             let pt = map.as_slice();
-            let ct = self.aead.encrypt_frame(seq, pt)?;
+            let pt_len = pt.len() as u32;
+
+            let ts = clock.time().map(|t| t.nseconds()).unwrap_or(0) as u64;
+            let ct = self.aead.encrypt_frame(seq, pt, pt_len)?;
 
             let msg = WireMsg {
                 flags: FLAG_FRAME,
                 ts_ns: ts,
+                seq,
+                pt_len,
                 payload: Bytes::from(ct),
             };
             msg.write_to(&mut conn).await?;
 
             seq = seq.wrapping_add(1);
         }
-        // (unreachable normally; if you add a break, remember to set to Null)
-        // pipeline.set_state(gst::State::Null)?;
-        // Ok(())
     }
 }

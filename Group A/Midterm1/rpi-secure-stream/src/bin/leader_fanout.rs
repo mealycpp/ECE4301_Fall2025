@@ -96,7 +96,7 @@ async fn send_caps(conn: &mut TcpStream, w: i32, h: i32, fps: i32) -> Result<()>
 }
 
 /// Send REKEY(seq=next_seq) using **group key** wrapped once per listener (RSA-OAEP-256)
-async fn send_rekey_all(conns: &mut [Conn], next_seq: u64) -> Result<()> {
+async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> Result<()> {
     // generate new group key
     let mut key = [0u8; 16];
     let mut nb  = [0u8; 12];
@@ -181,7 +181,7 @@ async fn main() -> Result<()> {
     }
 
     // Bootstrap rekey at seq=0 for all
-    send_rekey_all(&mut conns, 0).await?;
+    send_rekey_all(&mut conns, 0, &rekey_log).await?;
     sleep(Duration::from_millis(150)).await;
 
     let mut seq: u64 = 0;
@@ -192,7 +192,7 @@ async fn main() -> Result<()> {
         // Periodic/group rekey every ~30s @15fps OR guard against wrap
         let need_guard = conns.iter().any(|c| c.aead.need_rekey(seq));
         if need_guard || (seq > 0 && seq % 450 == 0) { // 450 ≈ 30s @15fps
-            send_rekey_all(&mut conns, seq).await?;
+            send_rekey_all(&mut conns, seq, &rekey_log).await?;
         }
 
         // Pull one frame
@@ -219,30 +219,30 @@ async fn main() -> Result<()> {
             if !c.has_key { continue; }
             match c.aead.encrypt_frame(seq, pt, pt_len) {
                 Ok(ct) => {
+                    let ct_len = ct.len();                   // <-- take length before move
                     let msg = WireMsg {
                         flags: FLAG_FRAME,
                         ts_ns: now_ns(),
                         seq,
                         pt_len,
-                        payload: Bytes::from(ct),
+                        payload: Bytes::from(ct),            // <-- ct moved here
                     };
                     if let Err(e) = msg.write_to(&mut c.tcp).await {
                         eprintln!("[fanout] write {} failed: {e}", c.addr);
-                        c.has_key = false; // mark unhealthy; optionally reconnect
+                        c.has_key = false;
+                    } else {
+                        // per-frame TX CSV log (now using ct_len)
                         append_csv(
                             &tx_log,
-                            &format!("{},{},{},{},{}", 
-                                now_ns(),          // timestamp
-                                seq,                // sequence number
-                                pt_len,             // plaintext size
-                                ct.len(),           // ciphertext size
-                                c.addr              // which listener
+                            &format!("{},{},{},{},{}",
+                                now_ns(), seq, pt_len, ct_len, c.addr
                             )
                         );
                     }
                 }
                 Err(e) => eprintln!("[fanout] encrypt {} failed: {e}", c.addr),
             }
+
         }
 
         tx_frames += 1;

@@ -32,48 +32,35 @@ impl Sender {
         Self { aead, pipeline, sink, width, height, fps }
     }
 
-    pub async fn run(mut self, leader_addr: &str) -> Result<()> {
-        eprintln!("[sender] connecting to {leader_addr} ...");
-        let mut conn = tcp_connect_with_retry(leader_addr, Duration::from_secs(20)).await?;
-        eprintln!("[sender] connected to {leader_addr}");
+        pub async fn run(mut self, leader_addr: &str) -> Result<()> {
+            eprintln!("[sender] connecting to {leader_addr} ...");
+            let mut conn = tcp_connect_with_retry(leader_addr, Duration::from_secs(20)).await?;
+            eprintln!("[sender] connected to {leader_addr}");
 
-        self.pipeline.set_state(gst::State::Playing)?;
-        let (_cur, new, _pend) = self
-            .pipeline
-            .get_state(gst::ClockTime::from_seconds(3))
-            .map_err(|_| anyhow!("camera pipeline failed to preroll"))?;
-        eprintln!("[sender] pipeline state: {:?}", new);
+            // === NEW: send bootstrap REKEY for seq=0 ===
+            let mut key0 = [0u8; 16];
+            let mut nb0  = [0u8; 12];
+            OsRng.fill_bytes(&mut key0);
+            OsRng.fill_bytes(&mut nb0);
 
-        let mut seq: u64 = 0;
-        let clock = gst::SystemClock::obtain();
-        let mut last_log = std::time::Instant::now();
-        let mut frames_since_log = 0usize;
+            let mut p0 = Vec::with_capacity(8 + 16 + 12);
+            p0.extend_from_slice(&0u64.to_be_bytes());   // next_seq = 0
+            p0.extend_from_slice(&key0);
+            p0.extend_from_slice(&nb0);
 
-        loop {
-            // Rekey at boundary
-            if seq > 0 && seq % REKEY_EVERY_FRAMES == 0 {
-                let next_seq = seq;
+            let ts0 = gst::SystemClock::obtain().time().map(|t| t.nseconds()).unwrap_or(0) as u64;
+            let msg0 = WireMsg {
+                flags: FLAG_REKEY,
+                ts_ns: ts0,
+                seq: 0,
+                pt_len: 0,
+                payload: Bytes::from(p0),
+            };
+            msg0.write_to(&mut conn).await?;
+            self.aead.rekey(key0, nb0)?;                 // switch locally
+            eprintln!("[sender] bootstrap REKEY sent (seq=0)");
+        
 
-                let mut key = [0u8; 16];
-                let mut nb  = [0u8; 12];
-                OsRng.fill_bytes(&mut key);
-                OsRng.fill_bytes(&mut nb);
-
-                let mut p = Vec::with_capacity(8 + 16 + 12);
-                p.extend_from_slice(&next_seq.to_be_bytes());
-                p.extend_from_slice(&key);
-                p.extend_from_slice(&nb);
-
-                let ts = clock.time().map(|t| t.nseconds()).unwrap_or(0) as u64;
-                let msg = WireMsg {
-                    flags: FLAG_REKEY,
-                    ts_ns: ts,
-                    seq: next_seq,
-                    pt_len: 0,
-                    payload: Bytes::from(p),
-                };
-                msg.write_to(&mut conn).await?;
-                eprintln!("[sender] REKEY at seq={next_seq}");
 
                 self.aead.rekey(key, nb)?;
             }

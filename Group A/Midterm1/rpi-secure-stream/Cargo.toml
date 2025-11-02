@@ -18,6 +18,10 @@ gstreamer = "0.22"
 gstreamer-app = "0.22"
 tokio = { version = "1", features = ["full"] }
 bytes = "1"
+[[bin]]
+name = "leader_fanout"
+path = "src/bin/leader_fanout.rs"
+
 
 
 

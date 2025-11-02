@@ -38,3 +38,16 @@ THREE SCENARIOS
 ./target/release/bench_stream --seconds 30 --width 1280 --height 720 --fps 30 --device /dev/video0
 RUSTFLAGS="-C target-feature=-aes,-pmull" cargo run --release --bin bench_aesgcm -- --total-bytes 268435456 --chunk 16384
 cargo run --release --bin bench_kex -- --iters 1000 --rsa-bits 2048 --salt-len 32
+
+
+
+Leader_fanout
+./target/release/leader_fanout \
+  --listener 192.168.1.101:5000 \
+  --listener 192.168.1.102:5000 \
+  --listener 192.168.1.103:5000 \
+  --device /dev/video0 --width 640 --height 480 --fps 15
+
+  # on each listener Pi:
+./target/release/rpi-secure-stream --role receiver --bind 0.0.0.0:5000 --width 640 --height 480 --fps 15
+

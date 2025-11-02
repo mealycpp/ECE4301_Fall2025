@@ -52,9 +52,12 @@ fn now_ns() -> u64 {
     gst::SystemClock::obtain().time().map(|t| t.nseconds()).unwrap_or(0) as u64
 }
 
-fn load_receiver_pub() -> Result<RsaPublicKey> {
-    let pem = std::fs::read_to_string(KEY_PATH_RECEIVER_PUB)
-        .map_err(|e| anyhow!("read receiver pubkey {}: {}", KEY_PATH_RECEIVER_PUB, e))?;
+
+fn load_receiver_pub_for(addr: &str) -> Result<RsaPublicKey> {
+    // Simple naming convention: ~/.ece4301/<ip>.pem or listenerX_pub.pem
+    let filename = format!("/home/pi/.ece4301/{}_pub.pem", addr.replace('.', "_"));
+    let pem = std::fs::read_to_string(&filename)
+        .map_err(|e| anyhow!("read pubkey {}: {}", filename, e))?;
     Ok(RsaPublicKey::from_public_key_pem(&pem)?)
 }
 
@@ -108,7 +111,7 @@ async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> R
     secret[..16].copy_from_slice(&key);
     secret[16..].copy_from_slice(&nb);
 
-    let pk = load_receiver_pub()?;
+    let pk = load_receiver_pub_for(&c.addr)?;
     let label = Oaep::new::<Sha256>();
 
     for c in conns.iter_mut() {

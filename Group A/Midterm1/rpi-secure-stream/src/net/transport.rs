@@ -9,6 +9,8 @@ pub const FLAG_FRAME: u8 = 0x01;
 pub const FLAG_REKEY: u8 = 0x02;
 pub const FLAG_CAPS:  u8 = 0x04;
 pub const FLAG_PING:  u8 = 0x08;
+pub const FLAG_REKEY_ACK: u8 = 0x10;
+
 
 /// Length-prefixed message:
 /// [u32 len][u8 flags][u64 ts_ns][u64 seq][u32 pt_len][payload...]

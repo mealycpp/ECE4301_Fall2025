@@ -1,5 +1,5 @@
 use crate::net::aead_stream::Aes128GcmStream;
-use crate::net::transport::{tcp_bind, WireMsg, FLAG_FRAME, FLAG_REKEY, FLAG_CAPS, FLAG_PING};
+use crate::net::transport::{tcp_bind, WireMsg, FLAG_FRAME, FLAG_REKEY, FLAG_CAPS, FLAG_PING,FLAG_REKEY_ACK};
 use anyhow::{anyhow, Result};
 use gstreamer as gst;
 use gstreamer::prelude::*;
@@ -8,6 +8,10 @@ use tokio::net::TcpListener;
 use crate::logutil::append_csv; 
 use chrono::Utc;
 use dirs;
+
+use crate::metrics::{read_sample, cpu_pct, mem_mb};
+use crate::logutil::append_csv_with_header;
+use tokio::io::AsyncWriteExt; // to write ACK quickly
 
 
 // ==== CONFIG: where to load the receiver's RSA private key (PEM) ====
@@ -110,6 +114,25 @@ impl Receiver {
             let rx_log    = log_dir.join("stream_rx.csv").display().to_string();
             let rekey_log = log_dir.join("rekey_rx.csv").display().to_string();
             eprintln!("[receiver] CSV logs -> {}", log_dir.display());
+            
+            // logs
+            let ts_run = chrono::Utc::now().format("%Y%m%d_%H%M%S").to_string();
+            let log_dir = dirs::home_dir().unwrap().join(".ece4301").join("logs").join(&ts_run);
+            let _ = std::fs::create_dir_all(&log_dir);
+            let steady_csv = log_dir.join("steady_stream.csv").display().to_string();
+            eprintln!("[receiver] CSV steady -> {}", steady_csv);
+
+            // per-second stats
+            let mut last_stat = std::time::Instant::now();
+            let mut stat_frames = 0usize;
+            let mut stat_bits = 0u64;
+            let mut last_seq: Option<u64> = None;
+            let mut drops_accum: u64 = 0;
+            let mut tag_fail_accum: u64 = 0;
+
+            // for CPU% delta
+            let mut cpu_prev = read_sample();
+
 
             loop {
                 let msg = match WireMsg::read_from(&mut stream).await {
@@ -180,7 +203,20 @@ impl Receiver {
                             has_key = true;
                             eprintln!("[receiver] REKEY applied at seq={next_seq}");
                             append_csv(&rekey_log, &format!("{},{}", now_ns(), next_seq));
-                            
+                            // send ACK to leader (minimal payload: next_seq and ts_apply)
+                            let mut ack_payload = Vec::with_capacity(8 + 8);
+                            ack_payload.extend_from_slice(&next_seq.to_be_bytes());
+                            ack_payload.extend_from_slice(&now_ns().to_be_bytes());
+                            let ack = WireMsg {
+                                flags: FLAG_REKEY_ACK,
+                                ts_ns: now_ns(),
+                                seq: next_seq,
+                                pt_len: 0,
+                                payload: bytes::Bytes::from(ack_payload),
+                            };
+                            // write back on same stream
+                            ack.write_to(&mut stream).await.ok();
+
 
                         }
                         _ => eprintln!("[receiver] unknown REKEY alg_id={alg_id}"),
@@ -230,6 +266,45 @@ impl Receiver {
                     );
 
                     continue;
+                }
+                // latency from sender ts to now
+                let now = now_ns();
+                let send_ts = msg.ts_ns;
+                let latency_ms = if now >= send_ts { (now - send_ts) as f64 / 1_000_000.0 } else { 0.0 };
+
+                // update counters
+                stat_frames += 1;
+                stat_bits += (msg.pt_len as u64) * 8;
+
+                // drops
+                if let Some(prev) = last_seq {
+                    if msg.seq != prev.wrapping_add(1) {
+                        let missed = msg.seq.wrapping_sub(prev).saturating_sub(1);
+                        drops_accum = drops_accum.saturating_add(missed);
+                    }
+                }
+                last_seq = Some(msg.seq);
+
+                // once per second, flush steady_stream row
+                if last_stat.elapsed() >= std::time::Duration::from_secs(1) {
+                    let cpu_now = read_sample();
+                    let cpu = cpu_pct(cpu_prev, cpu_now);
+                    let mem = mem_mb(cpu_now);
+                    let temp_c = cpu_now.temp_c;
+                    let fps = stat_frames as f64 / last_stat.elapsed().as_secs_f64();
+                    let goodput_mbps = (stat_bits as f64 / last_stat.elapsed().as_secs_f64()) / 1_000_000.0;
+
+                    append_csv_with_header(
+                        &steady_csv,
+                        "ts,fps,goodput_mbps,latency_ms,cpu_pct,mem_mb,temp_c,drops,tag_fail",
+                        &format!("{},{:.2},{:.3},{:.2},{:.1},{:.1},{:.1},{},{}",
+                                now, fps, goodput_mbps, latency_ms, cpu, mem, temp_c, drops_accum, tag_fail_accum)
+                    );
+
+                    // reset window
+                    cpu_prev = cpu_now;
+                    stat_frames = 0; stat_bits = 0;
+                    last_stat = std::time::Instant::now();
                 }
 
                 expect_seq = msg.seq.wrapping_add(1);

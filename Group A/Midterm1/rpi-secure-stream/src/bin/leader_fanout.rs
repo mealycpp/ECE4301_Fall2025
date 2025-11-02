@@ -13,6 +13,10 @@ use rpi_secure_stream::logutil::append_csv;
 use chrono::Utc;
 use dirs;
 
+use rpi_secure_stream::metrics::{read_sample, cpu_pct, mem_mb, cpu_pct_over};
+use rpi_secure_stream::logutil::append_csv_with_header;
+use tokio::time::timeout;
+use std::time::Duration;
 
 
 
@@ -136,7 +140,50 @@ async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> R
         p.extend_from_slice(&(wrapped.len() as u16).to_be_bytes());
         p.extend_from_slice(&wrapped);
 
+
         let msg = WireMsg { flags: FLAG_REKEY, ts_ns: now_ns(), seq: next_seq, pt_len: 0, payload: Bytes::from(p) };
+        let mech = "RSA-OAEP-256";
+        let ts_start = now_ns();
+        let s0 = read_sample();
+
+        // build message `msg` as you already do...
+        let msg = WireMsg { /* ... */ };
+
+        // Account TX bytes as the on-wire size of this REKEY (header + payload).
+        let tx_bytes = 4 + 1 + 8 + 8 + 4 + msg.payload.len(); // if your write_to encodes [len][flags][ts][seq][pt_len][payload]
+
+        // send
+        if let Err(e) = msg.write_to(&mut c.tcp).await {
+            eprintln!("[fanout] rekey to {} failed: {e}", c.addr);
+            continue;
+        }
+
+        // Await ACK (2s timeout)
+        let ack = match timeout(Duration::from_secs(2), WireMsg::read_from(&mut c.tcp)).await {
+            Ok(Ok(m)) if (m.flags & FLAG_REKEY_ACK) != 0 => m,
+            Ok(Ok(other)) => { eprintln!("[fanout] expected ACK, got flags=0x{:02x}", other.flags); continue; }
+            _ => { eprintln!("[fanout] ACK timeout from {}", c.addr); continue; }
+        };
+
+        let ts_end = now_ns();
+        let s1 = read_sample();
+        let cpu = cpu_pct(s0, s1);
+        let mem = mem_mb(s1);
+        let bytes_rx = 4 + 1 + 8 + 8 + 4 + ack.payload.len(); // symmetrical calc
+
+        // energy: placeholder (wire your INA219 if available)
+        let energy_j = -1.0f32;
+
+        // write handshake_<addr>.csv
+        let file = base_log.join(format!("handshake_{}.csv", c.addr.replace('.', "_").replace(':', "_")))
+                        .display().to_string();
+        append_csv_with_header(
+            &file,
+            "ts_start,ts_end,mech,bytes_tx,bytes_rx,cpu_avg,mem_mb,energy_j",
+            &format!("{},{},{},{},{},{:.1},{:.1},{:.3}",
+                    ts_start, ts_end, mech, tx_bytes, bytes_rx, cpu, mem, energy_j)
+        );
+
         if let Err(e) = msg.write_to(&mut c.tcp).await {
             eprintln!("[fanout] rekey to {} failed: {e}", c.addr);
             continue;
@@ -160,7 +207,13 @@ async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> R
 
 #[tokio::main]
 async fn main() -> Result<()> {
+
     let args = Args::parse();
+    let ts_run = chrono::Utc::now().format("%Y%m%d_%H%M%S").to_string();
+    let base_log = dirs::home_dir().unwrap().join(".ece4301").join("logs").join(&ts_run);
+    std::fs::create_dir_all(&base_log).ok();
+    eprintln!("[fanout] logs -> {}", base_log.display());
+
     let ts = Utc::now().format("%Y%m%d_%H%M%S").to_string();
     let log_dir = dirs::home_dir().unwrap().join(".ece4301").join("logs").join(&ts);
     std::fs::create_dir_all(&log_dir).ok();

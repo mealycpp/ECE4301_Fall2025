@@ -39,31 +39,37 @@ fn main() -> Result<()> {
     stream.set_nodelay(true)?;
     let stream = Arc::new(Mutex::new(stream));
 
-    // Pipeline: camera -> H.264 encoder -> appsink
+    // Updated pipeline: AU-aligned H.264 and signal emission enabled
     let launch = format!(
-        "libcamerasrc ! video/x-raw,format=NV12,width={w},height={h},framerate={f}/1 \
-         ! videoconvert \
-         ! x264enc tune=zerolatency speed-preset=ultrafast key-int-max={gop} bitrate=1200 \
-         ! video/x-h264,stream-format=byte-stream,alignment=au \
-         ! appsink name=appsink emit-signals=false sync=false max-buffers=1 drop=true",
+        concat!(
+            "libcamerasrc ! ",
+            "video/x-raw,format=NV12,width={w},height={h},framerate={fps}/1 ! ",
+            "videoconvert ! ",
+            "x264enc tune=zerolatency speed-preset=ultrafast bitrate=800 key-int-max=30 ! ",
+            "h264parse config-interval=1 ! ",
+            "video/x-h264,stream-format=avc,alignment=au ! ",
+            "appsink name=sink emit-signals=true sync=false drop=true max-buffers=4"
+        ),
         w = args.width,
         h = args.height,
-        f = args.fps,
-        gop = args.fps * 2
+        fps = args.fps
     );
 
-    // ✅ Updated for GStreamer 0.22:
     let pipeline = gst::parse::launch(&launch)?
         .downcast::<gst::Pipeline>()
         .expect("not a pipeline");
 
     let appsink: AppSink = pipeline
-        .by_name("appsink")
+        .by_name("sink")
         .expect("appsink not found")
         .dynamic_cast::<AppSink>()
         .expect("appsink has wrong type");
 
+    // Shared stream handle for callback
     let stream_for_cb = Arc::clone(&stream);
+
+    // === Frame logging counter (sanity check) ===
+    static FRAME_CT: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
 
     appsink.set_callbacks(
         AppSinkCallbacks::builder()
@@ -79,6 +85,12 @@ fn main() -> Result<()> {
                 let len: u32 = data.len().try_into().unwrap_or(u32::MAX);
                 guard.write_all(&len.to_be_bytes()).map_err(|_| gst::FlowError::Error)?;
                 guard.write_all(data).map_err(|_| gst::FlowError::Error)?;
+
+                // --- New log for every 30 frames ---
+                let n = FRAME_CT.fetch_add(1, std::sync::atomic::Ordering::Relaxed) + 1;
+                if n % 30 == 0 {
+                    eprintln!("sender: pushed {} frames (last {} bytes)", n, data.len());
+                }
 
                 Ok(gst::FlowSuccess::Ok)
             })

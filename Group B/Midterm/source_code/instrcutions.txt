@@ -1,0 +1,16 @@
+To run eliptic curve(ecdh) handshake
+receiver - cd ~/midterm
+./target/release/receiver_ecdh --listen 0.0.0.0:7000
+
+sender - ./target/release/sender_ecdh --dest <RECEIVER_IP>:7000
+
+To run rsa handshake
+receiver - ./target/release/receiver_rsa --listen 0.0.0.0:7000
+
+sender - ./target/release/sender_rsa --dest <RECEIVER_IP>:7000
+
+plot graphs
+- pyhton3 plot_results.py
+
+copying results/ from pi to local machine
+- scp -r pi@<pi_ip_address>:/home/pi/midterm/results ~/Downloads

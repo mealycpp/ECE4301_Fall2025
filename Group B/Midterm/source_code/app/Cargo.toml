@@ -1,18 +1,49 @@
 [package]
 name = "app"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 
 [dependencies]
-# pull these from the workspace root
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+
+# Use the versions already pinned in your workspace root:
+aes-gcm = { workspace = true, features = ["aes"] }
+hkdf = { workspace = true }
+sha2 = { workspace = true }
+rand = { workspace = true }
+p256 = { workspace = true, features = ["ecdh"] }
+keying = { path = "../keying" }
+metrics = { path = "../metrics" }
+
 gstreamer = { workspace = true }
 gstreamer-app = { workspace = true }
+bytes = { workspace = true }
+tokio = { workspace = true }
+serde = { workspace = true }
+csv = { workspace = true }
+sysinfo = { workspace = true }
 
-# local (not in workspace root yet)
-clap = { version = "4", features = ["derive"] }
-anyhow = "1"
+[[bin]]
+name = "sender_plain"
+path = "src/bin/sender_plain.rs"
 
-# (optional but handy if you use async later)
-tokio = { workspace = true, optional = true }
-bytes = { workspace = true, optional = true }
+[[bin]]
+name = "receiver_plain"
+path = "src/bin/receiver_plain.rs"
 
+[[bin]]
+name = "sender_ecdh"
+path = "src/bin/sender_ecdh.rs"
+
+[[bin]]
+name = "receiver_ecdh"
+path = "src/bin/receiver_ecdh.rs"
+
+[[bin]]
+name = "sender_rsa"
+path = "src/bin/sender_rsa.rs"
+
+[[bin]]
+name = "receiver_rsa"
+path = "src/bin/receiver_rsa.rs"

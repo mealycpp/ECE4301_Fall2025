@@ -7,7 +7,9 @@ https://youtube.com/shorts/jws7VQcnI1A
 
 
 =========================================================================
+
 To run direct secure streaming (2 PI’s)
+
 =========================================================================
 
 Commands to run in terminal to run to get all necessary libraries
@@ -93,7 +95,9 @@ pkill -f 'rpi-secure-stream.*--payload=video'
 
 
 =========================================================================
+
 To run 3 node secure streaming
+
 =========================================================================
 
 Open up the 3node Folder and enter its directory in terminal

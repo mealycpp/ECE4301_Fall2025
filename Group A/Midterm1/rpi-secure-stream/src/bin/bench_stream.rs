@@ -65,7 +65,7 @@ fn main() -> Result<()> {
     let mut nb  = [0u8; 12];
     OsRng.fill_bytes(&mut key);
     OsRng.fill_bytes(&mut nb);
-    let mut aead = Aes128GcmStream::new(key, nb)?;
+    let aead = Aes128GcmStream::new(key, nb)?;
 
     // Start pipeline
     pipeline.set_state(gst::State::Playing)?;

@@ -5,6 +5,18 @@ use gstreamer as gst;
 use gstreamer::prelude::*;
 use gstreamer_app::{AppSink, AppSrc};
 
+// src/video/mod.rs
+
+pub mod sender;
+pub mod receiver;
+
+// Re-export so code can do `video::Sender` and `video::Receiver`
+pub use sender::Sender;
+pub use receiver::Receiver;
+
+// ... keep your existing gst_init_once(), make_sender_pipeline(), make_receiver_pipeline() ...
+
+
 pub fn gst_init_once() -> Result<()> {
     gst::init()?;
     Ok(())

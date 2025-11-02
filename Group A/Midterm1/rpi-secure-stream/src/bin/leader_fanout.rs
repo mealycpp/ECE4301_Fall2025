@@ -51,13 +51,15 @@ struct Conn {
 fn now_ns() -> u64 {
     gst::SystemClock::obtain().time().map(|t| t.nseconds()).unwrap_or(0) as u64
 }
-
+fn key_path_for(addr: &str) -> String {
+    // e.g., 192.168.1.101:5000 -> /home/pi/.ece4301/192_168_1_101_5000_pub.pem
+    format!("/home/pi/.ece4301/{}_pub.pem", addr.replace('.', "_").replace(':', "_"))
+}
 
 fn load_receiver_pub_for(addr: &str) -> Result<RsaPublicKey> {
-    // Simple naming convention: ~/.ece4301/<ip>.pem or listenerX_pub.pem
-    let filename = format!("/home/pi/.ece4301/{}_pub.pem", addr.replace('.', "_"));
-    let pem = std::fs::read_to_string(&filename)
-        .map_err(|e| anyhow!("read pubkey {}: {}", filename, e))?;
+    let path = key_path_for(addr);
+    let pem = std::fs::read_to_string(&path)
+        .map_err(|e| anyhow!("read pubkey {}: {}", path, e))?;
     Ok(RsaPublicKey::from_public_key_pem(&pem)?)
 }
 
@@ -100,28 +102,25 @@ async fn send_caps(conn: &mut TcpStream, w: i32, h: i32, fps: i32) -> Result<()>
 
 /// Send REKEY(seq=next_seq) using **group key** wrapped once per listener (RSA-OAEP-256)
 async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> Result<()> {
-    // generate new group key
+    // generate group key
     let mut key = [0u8; 16];
     let mut nb  = [0u8; 12];
     OsRng.fill_bytes(&mut key);
     OsRng.fill_bytes(&mut nb);
 
-    // common plaintext (key||nonce_base)
     let mut secret = [0u8; 28];
     secret[..16].copy_from_slice(&key);
     secret[16..].copy_from_slice(&nb);
 
-    let pk = load_receiver_pub_for(&c.addr)?;
-    let label = Oaep::new::<Sha256>();
-
     for c in conns.iter_mut() {
-    let wrapped = pk.encrypt(&mut OsRng, Oaep::new::<Sha256>(), &secret)
-        .map_err(|e| anyhow!("RSA-OAEP wrap to {} failed: {e}", c.addr))?;
-    // ...
-    
+        // 🔧 load the correct public key for THIS listener
+        let pk = load_receiver_pub_for(&c.addr)?;
 
+        // wrap for this listener (fresh OAEP each time)
+        let wrapped = pk.encrypt(&mut OsRng, Oaep::new::<Sha256>(), &secret)
+            .map_err(|e| anyhow!("RSA-OAEP wrap to {} failed: {e}", c.addr))?;
 
-
+        // payload and send...
         let mut p = Vec::with_capacity(8 + 2 + 2 + wrapped.len());
         p.extend_from_slice(&next_seq.to_be_bytes());
         p.extend_from_slice(&1u16.to_be_bytes()); // alg_id=1
@@ -133,18 +132,21 @@ async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> R
             eprintln!("[fanout] rekey to {} failed: {e}", c.addr);
             continue;
         }
+
         // swap locally
         if let Err(e) = c.aead.rekey_at(key, nb, next_seq) {
             eprintln!("[fanout] local rekey_at {} failed: {e}", c.addr);
-            append_csv(&rekey_log, &format!("{},{},{}", now_ns(), next_seq, c.addr));
-
             continue;
         }
         c.has_key = true;
+
+        // CSV log
+        append_csv(rekey_log, &format!("{},{},{}", now_ns(), next_seq, c.addr));
         eprintln!("[fanout] REKEY applied for {}", c.addr);
     }
     Ok(())
 }
+
 
 #[tokio::main]
 async fn main() -> Result<()> {

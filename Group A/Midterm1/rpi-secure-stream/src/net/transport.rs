@@ -2,6 +2,8 @@ use anyhow::{anyhow, Result};
 use bytes::{Buf, BufMut, Bytes, BytesMut};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::net::{TcpListener, TcpStream};
+use tokio::time::{sleep, Duration, Instant};
+use rand::Rng; // jitter
 
 pub const FLAG_FRAME: u8 = 0x01;
 pub const FLAG_REKEY: u8 = 0x02;
@@ -62,3 +64,30 @@ pub async fn tcp_bind(addr: &str) -> Result<TcpListener> {
 pub async fn tcp_connect(addr: &str) -> Result<TcpStream> {
     Ok(TcpStream::connect(addr).await?)
 }
+
+/// Try to connect repeatedly with exponential backoff + jitter.
+/// - Starts at 200ms, doubles each time, capped at 3s
+/// - Gives up after `total_timeout`
+/// - Prints a brief status on each retry
+pub async fn tcp_connect_with_retry(addr: &str, total_timeout: Duration) -> Result<TcpStream> {
+    let start = Instant::now();
+    let mut delay = Duration::from_millis(200);
+    let mut rng = rand::thread_rng();
+    let max_delay = Duration::from_secs(3);
+
+    loop {
+        match TcpStream::connect(addr).await {
+            Ok(s) => return Ok(s),
+            Err(e) => {
+                if start.elapsed() >= total_timeout {
+                    return Err(anyhow!("connect {} failed after {:?}: {}", addr, total_timeout, e));
+                }
+                let jitter = Duration::from_millis(rng.gen_range(0..100));
+                eprintln!("connect to {} failed: {} — retrying in {:?}...", addr, e, delay + jitter);
+                sleep(delay + jitter).await;
+                delay = std::cmp::min(delay * 2, max_delay);
+            }
+        }
+    }
+}
+

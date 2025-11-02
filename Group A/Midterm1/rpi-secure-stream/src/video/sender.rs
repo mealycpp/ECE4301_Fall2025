@@ -7,6 +7,7 @@ use gstreamer::prelude::*;
 use gstreamer_app::AppSink;
 use rand::rngs::OsRng;
 use rand::RngCore;
+use tokio::time::Duration; // add at top of file if not present
 
 const REKEY_EVERY_FRAMES: u64 = 900; // ~30s @ 30fps
 
@@ -24,7 +25,7 @@ impl Sender {
     }
 
     pub async fn run(mut self, leader_addr: &str) -> Result<()> {
-        let mut conn = tcp_connect(leader_addr).await?;
+        let mut conn = crate::net::transport::tcp_connect_with_retry(leader_addr, Duration::from_secs(20)).await?;
 
         // Start pipeline
         let pipeline = self.sink.parent().unwrap().downcast::<gst::Pipeline>().unwrap();

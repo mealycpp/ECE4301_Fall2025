@@ -115,7 +115,7 @@ async fn send_rekey_all(conns: &mut [Conn], next_seq: u64, rekey_log: &str) -> R
     let wrapped = pk.encrypt(&mut OsRng, Oaep::new::<Sha256>(), &secret)
         .map_err(|e| anyhow!("RSA-OAEP wrap to {} failed: {e}", c.addr))?;
     // ...
-    }
+    
 
 
 

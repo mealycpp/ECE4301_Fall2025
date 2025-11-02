@@ -10,7 +10,7 @@ pub fn append_csv(path: &str, line: &str) {
         if let Err(e) = writeln!(f, "{line}") {
             eprintln!("[logutil] write {path} failed: {e}");
         } else {
-            eprintln!("[logutil] wrote line to {path}");
+            //eprintln!("[logutil] wrote line to {path}");
         }
     } else {
         eprintln!("[logutil] open {path} failed");

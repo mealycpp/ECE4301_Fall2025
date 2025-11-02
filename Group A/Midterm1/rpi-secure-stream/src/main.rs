@@ -97,16 +97,14 @@ async fn main() -> Result<()> {
         "sender" => {
             let device = args.video_src.strip_prefix("v4l2:").unwrap_or("/dev/video0");
             let (pipeline, sink) = video::make_sender_pipeline(device, args.width, args.height, args.fps)?;
-            drop(pipeline); // owned by sink parent; kept alive
-            let aead = Aes128GcmStream::new(key, nonce_base)?;   // was aead_stream::Aes128GcmStream
-            let app  = Sender::new(aead, sink, args.width, args.height, args.fps); // was sender::Sender
+            let aead = Aes128GcmStream::new(key, nonce_base)?;
+            let app  = video::Sender::new(aead, pipeline, sink, args.width, args.height, args.fps);
             app.run(&args.leader).await?;
         }
         "receiver" => {
             let (pipeline, src) = video::make_receiver_pipeline(args.width, args.height, args.fps)?;
-            drop(pipeline);
             let aead = Aes128GcmStream::new(key, nonce_base)?;
-            let app  = Receiver::new(aead, src, args.width, args.height); // was receiver::Receiver
+            let app  = video::Receiver::new(aead, pipeline, src, args.width, args.height);
             app.run(&args.bind).await?;
         }
         _ => eprintln!("--role must be sender or receiver"),

@@ -60,17 +60,15 @@ fn key_path_for(addr: &str) -> std::path::PathBuf {
 fn now_ns() -> u64 {
     gst::SystemClock::obtain().time().map(|t| t.nseconds()).unwrap_or(0) as u64
 }
-fn key_path_for(addr: &str) -> String {
-    // e.g., 192.168.1.101:5000 -> /home/pi/.ece4301/192_168_1_101_5000_pub.pem
-    format!("/home/pi/.ece4301/{}_pub.pem", addr.replace('.', "_").replace(':', "_"))
-}
+
 
 fn load_receiver_pub_for(addr: &str) -> Result<RsaPublicKey> {
     let path = key_path_for(addr);
     let pem = std::fs::read_to_string(&path)
-        .map_err(|e| anyhow!("read pubkey {}: {}", path, e))?;
+        .map_err(|e| anyhow!("read pubkey {}: {}", path.display(), e))?;
     Ok(RsaPublicKey::from_public_key_pem(&pem)?)
 }
+
 
 /// sender-side pipeline (queues + drop=true)
 fn make_sender_pipeline(device: &str, w: i32, h: i32, fps: i32)

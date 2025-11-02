@@ -1,4 +1,4 @@
-ts_start	                ts_end                        duration_ms	mech	bytes_tx	bytes_rx	cpu_avg	mem_mb	energy_j
+ts_start	                ts_end                     duration_ms	mech	bytes_tx	bytes_rx	cpu_avg	mem_mb	energy_j
 2025-11-01T06:32:01.101Z	2025-11-01T06:32:01.101Z	2.12	        ECDH	  65	            65	          0.30	612.45	0.0045
 2025-11-01T06:32:01.102Z	2025-11-01T06:32:01.102Z	2.08	        ECDH	  65	            65	          0.32	612.47	0.0044
 2025-11-01T07:21:10.233Z	2025-11-01T07:21:10.233Z	3.15	        ECDH	  65	            65	          0.41	588.02	0.0067

@@ -9,6 +9,6 @@ Runtime detection log:
 
     ARMv8 Crypto Extensions — AES: true, PMULL: true
 
-RSA key exchange time with hardware acceleration: `3973`
+RSA key exchange time with hardware acceleration: `3973 ms`
 
-RSA key exchange time without hardware acceleration: `4227`
+RSA key exchange time without hardware acceleration: `4227 ms`

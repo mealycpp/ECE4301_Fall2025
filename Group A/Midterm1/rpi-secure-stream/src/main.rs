@@ -55,10 +55,10 @@ async fn main() -> Result<()> {
         #[cfg(target_arch = "aarch64")]
         eprintln!(
             "ARMv8 CE — AES:{} PMULL:{} SHA1:{} SHA2:{}",
-            std::is_aarch64_feature_detected!("aes"),
-            std::is_aarch64_feature_detected!("pmull"),
-            std::is_aarch64_feature_detected!("sha1"),
-            std::is_aarch64_feature_detected!("sha2"),
+            std::arch::is_aarch64_feature_detected!("aes"),
+            std::arch::is_aarch64_feature_detected!("pmull"),
+            std::arch::is_aarch64_feature_detected!("sha1"),
+            std::arch::is_aarch64_feature_detected!("sha2"),
         );
         #[cfg(not(target_arch = "aarch64"))]
         eprintln!("(Not ARMv8)");

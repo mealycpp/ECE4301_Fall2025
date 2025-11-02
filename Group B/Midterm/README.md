@@ -119,14 +119,7 @@ Generates:
 
 ## 6. Power and Thermal Monitoring
 
-Example values:
-
-| Mode | Voltage (V) | Current (A) | Power (W) |
-|:--|:--:|:--:|:--:|
-| RSA | 5.02 | 0.81 | **4.06 W** |
-| ECDH | 5.02 | 0.59 | **2.96 W** |
-
----
+Plugable USB-C Power Meter Tester
 
 ## 7. Network Diagram
 
@@ -160,20 +153,7 @@ Example values:
 
 ---
 
-## 9. Example Metrics
-
-| Metric | RSA Mean | ECDH Mean | Δ (%) |
-|:--|:--:|:--:|:--:|
-| FPS | 8.5 | **13.2** | +55 |
-| Goodput (Mb/s) | 1.21 | **1.86** | +54 |
-| Latency p50 (ms) | 4.9 | **1.1** | −77 |
-| Latency p95 (ms) | 13.8 | **6.1** | −56 |
-| CPU (%) | 11.7 | **9.2** | −21 |
-| Temp (°C) | 69.8 | **65.1** | −6.7 |
-
----
-
-## 10. Troubleshooting
+## 9. Troubleshooting
 
 | Issue | Fix |
 |:--|:--|

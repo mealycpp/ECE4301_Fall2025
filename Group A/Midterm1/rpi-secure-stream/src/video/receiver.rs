@@ -1,5 +1,5 @@
 use crate::net::aead_stream::Aes128GcmStream;
-use crate::net::transport::{tcp_bind, WireMsg, FLAG_FRAME, FLAG_REKEY, FLAG_CAPS};
+use crate::net::transport::{tcp_bind, WireMsg, FLAG_FRAME, FLAG_REKEY, FLAG_CAPS, FLAG_PING};
 use anyhow::{anyhow, Result};
 use gstreamer as gst;
 use gstreamer::prelude::*;
@@ -33,11 +33,17 @@ impl Receiver {
     }
 
     fn rebuild_caps(&mut self, width: i32, height: i32, fps: i32) -> Result<()> {
-        // Stop current pipeline, rebuild caps on the existing appsrc element.
         self.pipeline.set_state(gst::State::Null)?;
-        let caps_str = format!("video/x-raw,format=I420,width={width},height={height},framerate={fps}/1");
-        let caps = gst::Caps::from_str(&caps_str)?;
+
+        let caps = gst::Caps::builder("video/x-raw")
+            .field("format", "I420")
+            .field("width", width)
+            .field("height", height)
+            .field("framerate", gst::Fraction::new(fps, 1))
+            .build();
+
         self.src.set_caps(Some(&caps));
+
         self.pipeline.set_state(gst::State::Playing)?;
         let (res, new, _pend) = self.pipeline.state(gst::ClockTime::from_seconds(3));
         if let Err(_e) = res {
@@ -48,6 +54,7 @@ impl Receiver {
         self.height = height;
         Ok(())
     }
+
 
         pub async fn run(mut self, bind_addr: &str) -> Result<()> {
         eprintln!("[receiver] start role=receiver bind={bind_addr} (default w={} h={} fps=?)", self.width, self.height);

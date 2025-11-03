@@ -27,6 +27,10 @@ def plot_latency_cdf(csv_path, output_path='plots/latency_cdf.png'):
         return
     
     latencies = df['latency_ms'].dropna().values
+    if len(latencies) == 0:
+        print(f"Warning: No valid latency values in {csv_path}")
+        return
+        
     latencies_sorted = np.sort(latencies)
     cdf = np.arange(1, len(latencies_sorted) + 1) / len(latencies_sorted)
     
@@ -97,9 +101,12 @@ def plot_energy_comparison(handshake_files, steady_csv, output_path='plots/energ
                 })
     
     # Steady-state energy (compute from power samples)
-    if Path(steady_csv).exists():
+    if Path('power_samples.csv').exists():
         df_power = pd.read_csv('power_samples.csv')
-        df_steady = df_power[df_power['phase'] == 'steady']
+        if 'phase' in df_power.columns:
+            df_steady = df_power[df_power['phase'] == 'steady']
+        else:
+            df_steady = df_power
         
         if len(df_steady) > 1:
             df_steady['ts'] = pd.to_datetime(df_steady['ts'])
@@ -125,7 +132,7 @@ def plot_energy_comparison(handshake_files, steady_csv, output_path='plots/energ
     df_plot = pd.DataFrame(energy_data)
     
     fig, ax = plt.subplots(figsize=(8, 6))
-    colors = ['#2E86AB', '#A23B72', '#F18F01']
+    colors = ['#2E86AB', '#A23B72', '#F18F01', '#C73E1D']
     bars = ax.bar(df_plot['Phase'], df_plot['Energy (J)'], 
                    color=colors[:len(df_plot)], edgecolor='black', linewidth=1.2)
     
@@ -169,18 +176,22 @@ def plot_scaling_analysis(csv_path, output_path='plots/scaling_curve.png'):
         marker = markers.get(protocol, 'o')
         
         # Energy plot
-        ax1.plot(df_measured['n_members'], df_measured['energy_j'], 
-                marker=marker, markersize=10, linewidth=0, 
-                label=f'{protocol} (measured)', color=color)
-        ax1.plot(df_predicted['n_members'], df_predicted['energy_j'], 
-                linestyle='--', linewidth=2, alpha=0.7, color=color)
+        if not df_measured.empty:
+            ax1.plot(df_measured['n_members'], df_measured['energy_j'], 
+                    marker=marker, markersize=10, linewidth=0, 
+                    label=f'{protocol} (measured)', color=color)
+        if not df_predicted.empty:
+            ax1.plot(df_predicted['n_members'], df_predicted['energy_j'], 
+                    linestyle='--', linewidth=2, alpha=0.7, color=color)
         
         # Latency plot
-        ax2.plot(df_measured['n_members'], df_measured['latency_s'] * 1000, 
-                marker=marker, markersize=10, linewidth=0,
-                label=f'{protocol} (measured)', color=color)
-        ax2.plot(df_predicted['n_members'], df_predicted['latency_s'] * 1000, 
-                linestyle='--', linewidth=2, alpha=0.7, color=color)
+        if not df_measured.empty:
+            ax2.plot(df_measured['n_members'], df_measured['latency_s'] * 1000, 
+                    marker=marker, markersize=10, linewidth=0,
+                    label=f'{protocol} (measured)', color=color)
+        if not df_predicted.empty:
+            ax2.plot(df_predicted['n_members'], df_predicted['latency_s'] * 1000, 
+                    linestyle='--', linewidth=2, alpha=0.7, color=color)
     
     ax1.set_xlabel('Number of Group Members (N)')
     ax1.set_ylabel('Handshake Energy (J)')
@@ -241,6 +252,67 @@ def plot_cpu_memory(csv_path, output_path='plots/system_metrics.png'):
     print(f"Saved: {output_path}")
     plt.close()
 
+def plot_power_timeseries(csv_path, output_path='plots/power_timeseries.png'):
+    """Plot power consumption over time with phase annotations."""
+    if not Path(csv_path).exists():
+        print(f"Warning: {csv_path} not found")
+        return
+    
+    df = pd.read_csv(csv_path)
+    
+    if 'ts' not in df.columns or 'watts' not in df.columns:
+        print(f"Warning: Missing required columns in {csv_path}")
+        return
+    
+    df['ts'] = pd.to_datetime(df['ts'])
+    df['elapsed_s'] = (df['ts'] - df['ts'].iloc[0]).dt.total_seconds()
+    
+    fig, ax = plt.subplots(figsize=(12, 6))
+    
+    # Plot power
+    ax.plot(df['elapsed_s'], df['watts'], linewidth=1.5, color='#2E86AB', label='Power Consumption')
+    
+    # Add phase annotations if available
+    if 'phase' in df.columns:
+        phases = df['phase'].unique()
+        phase_colors = {'handshake': '#A23B72', 'steady': '#F18F01', 'handshake_in': '#C73E1D', 'handshake_out': '#8B4789'}
+        
+        for phase in phases:
+            phase_df = df[df['phase'] == phase]
+            if not phase_df.empty:
+                start_time = phase_df['elapsed_s'].min()
+                end_time = phase_df['elapsed_s'].max()
+                color = phase_colors.get(phase, '#888888')
+                ax.axvspan(start_time, end_time, alpha=0.2, color=color, label=f'{phase} phase')
+    
+    # Event annotations
+    events = [
+        (10, 'Receiving Started', '#2E86AB'),
+        (15, 'Sending Started', '#A23B72'),
+        (50, 'Stream Ended', '#F18F01')
+    ]
+    
+    for time, label, color in events:
+        if time <= df['elapsed_s'].max():
+            ax.axvline(time, color=color, linestyle='--', alpha=0.7, linewidth=1.5)
+            y_pos = ax.get_ylim()[1] * 0.95
+            ax.text(time, y_pos, label, rotation=90, 
+                    verticalalignment='top', horizontalalignment='right',
+                    fontsize=9, color=color, fontweight='bold',
+                    bbox=dict(boxstyle='round,pad=0.3', facecolor='white', alpha=0.8))
+    
+    ax.set_xlabel('Time (seconds)')
+    ax.set_ylabel('Power (Watts)')
+    ax.set_title('Power Consumption Over Time')
+    ax.grid(True, alpha=0.3)
+    ax.legend(loc='upper left')
+    ax.set_ylim(bottom=0)
+    
+    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+    plt.savefig(output_path, bbox_inches='tight')
+    print(f"Saved: {output_path}")
+    plt.close()
+
 def main():
     print("Generating plots from CSV data...")
     
@@ -258,13 +330,23 @@ def main():
     # Energy comparison
     handshake_files = {
         'RSA': 'handshake_rsa.csv',
-        'ECDH': 'handshake_ecdh.csv'
+        'ECDH': 'handshake_ecdh.csv',
+        'Group': 'handshake_group.csv'
     }
     plot_energy_comparison(handshake_files, 'power_samples.csv')
+    
+    # Power time series
+    if Path('power_samples.csv').exists():
+        plot_power_timeseries('power_samples.csv')
     
     # Scaling analysis (if available)
     if Path('scaling_analysis.csv').exists():
         plot_scaling_analysis('scaling_analysis.csv')
+    
+    # Relay metrics (if available)
+    if Path('relay_stream.csv').exists():
+        print("Generating relay-specific plots...")
+        plot_cpu_memory('relay_stream.csv', 'plots/relay_system_metrics.png')
     
     print("\nAll plots generated successfully!")
     print("Output directory: plots/")

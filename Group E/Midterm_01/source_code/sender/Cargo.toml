@@ -1,0 +1,14 @@
+[package]
+name = "sender"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+common = { path = "../common" }
+tokio = { version = "1", features = ["full"] }
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+rsa = { version = "0.9", features = ["sha2"] }
+rand = "0.8"
+sha2 = "0.10"
+

@@ -150,6 +150,18 @@ This encrypts 256MB of data and reports throughput. Expected: >200 MB/s with har
 ./target/release/stream --mode sender --mechanism ecdh --host <receiver-ip>
 ```
 
+### Options for video stream source
+
+#To send with the Pi camera
+./target/release/stream --mode sender --mechanism ecdh --host <receiver-ip> --video-source libcamera
+
+#To send with USB
+./target/release/stream --mode sender --mechanism ecdh --host <receiver-ip> --video-source v4l2 --video-device /dev/video0
+
+#To simulate a feed (rather than falling back onto sim)
+./target/release/s
+
+
 ### Advanced Options
 
 ```bash
@@ -165,6 +177,12 @@ Options:
   --rekey-interval <SECS>    Rekey interval in seconds [default: 600]
   --rsa-bits <BITS>          RSA key size: 2048 or 3072 [default: 2048]
   --print-config             Print configuration and exit
+```
+
+Example: Stream ECC at a specific resolution
+# 720p @ 30fps
+```bash
+./target/release/stream --mode sender --mechanism ecdh --host <receiver-ip> --video-source v4l2 --video-width 1280 --video-height 720 --video-fps 30
 ```
 
 ## Output Files
@@ -212,6 +230,49 @@ The leader generates a group key and securely distributes it to all members via 
 ./target/release/group-member \
     --node-id pi-1 \
     --listen 0.0.0.0:8443
+```
+
+##Two options for streaming mode: Broadcast or Relay
+
+**Broadcast Mode**
+Run two instances of this code from the sender:
+#To Pi-2
+```bash
+./target/release/stream
+  --mode sender --mechanism group --host 192.168.1.102 --port 8443 --video-source v4l2 --video-device /dev/video0 --group-key-file group_key.bin
+```
+#To Pi-3
+```bash
+./target/release/stream
+  --mode sender --mechanism group --host 192.168.1.102 --port 8443 --video-source v4l2 --video-device /dev/video0 --group-key-file group_key.bin
+```
+
+For receivers:
+#Metrics only, Pi-2 example
+```bash
+./target/release/stream --mode receiver --mechanism group --port 8443 --group-key-file group_key.bin
+```
+#With display, Pi-3 example
+```bash
+./target/release/stream --mode receiver --mechanism group --port 8444 --display --group-key-file group_key.bin
+```
+
+**Relay mode**
+Sender:
+```bash
+./target/release/stream --mode sender --mechanism group --host 192.168.1.102 --port 8443 --video-source v4l2 --group-key-file group_key.bin
+```
+
+Receivers:
+
+#Pi-2 as relay
+```bash
+./target/release/stream --mode relay --mechanism group --host 0.0.0.0 --port 8443 --relay-host 192.168.1.103 --relay-port 8444 --group-key-file group_key.bin
+```
+
+#Pi-3 as receiver with video display
+```bash
+./target/release/stream --mode receiver --mechanism group --port 8444 --display --group-key-file group_key.bin
 ```
 
 ### Scaling Analysis
@@ -334,17 +395,6 @@ rpi-secure-stream/
 ├── README.md                # This file
 └── HW_ACCEL.md             # Hardware acceleration proof
 ```
-
-## Contributing
-
-This is a course project. For production use, consider:
-
-- Implementing full GStreamer integration
-- Adding QUIC support (quinn crate)
-- Real-time FEC for packet loss
-- INA219 I²C power sensor integration
-- Certificate-based authentication
-- DoS protection
 
 ## License
 

@@ -1,0 +1,10 @@
+[package]
+name = "bench_aesgcm"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+aes-gcm = { version = "0.10", features = ["aes"] }
+rand = "0.8"
+getrandom = "0.2"
+instant = "0.1"

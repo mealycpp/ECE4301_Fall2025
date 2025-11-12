@@ -1,0 +1,4 @@
+Rekey Start Time (since epoch),End Time,Rekey Time (ms),Rekey Mechanism,Bytes Transmitted,Bytes Received
+1.76188E+12,1.76188E+12,3973,RSA,398,384
+1.76188E+12,1.76188E+12,2181,RSA,398,384
+1.76188E+12,1.76188E+12,2342,RSA,398,384

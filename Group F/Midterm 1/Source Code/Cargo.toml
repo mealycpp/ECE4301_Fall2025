@@ -1,0 +1,37 @@
+[package]
+name = "rpi-secure-stream"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+thiserror = "1"
+clap = { version = "4", features = ["derive"] }
+
+# RNG / KDF / AEAD / RSA / ECDH / HMAC
+rand = "0.8"
+getrandom = "0.2"
+hkdf = "0.12"
+sha2 = "0.10"
+aes-gcm = { version = "0.10", features = ["aes"] }
+aead = "0.5"
+zeroize = { version = "1", features = ["zeroize_derive"] }
+rsa = { version = "0.9", default-features = false, features = ["sha2"] }
+p256 = { version = "0.13", features = ["ecdh"] }   # P-256
+x25519-dalek = "2"                                  # X25519 (optional)
+ring = "0.17"                                       # HMAC fast path
+
+# async transport + framing
+tokio = { version = "1", features = ["full"] }
+bytes = "1"
+
+# video
+gstreamer = "0.22"
+gstreamer-app = "0.22"
+
+# metrics/logging
+sysinfo = "0.30"
+csv = "1.3"
+time = { version = "0.3", features = ["formatting"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["fmt"] }

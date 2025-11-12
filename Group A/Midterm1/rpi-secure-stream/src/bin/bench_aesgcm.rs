@@ -38,10 +38,15 @@ struct Args {
 fn log_arm_crypto_support() {
     #[cfg(target_arch = "aarch64")]
     {
-        let aes = std::is_aarch64_feature_detected!("aes");
-        let pmull = std::is_aarch64_feature_detected!("pmull");
-        let sha1 = std::is_aarch64_feature_detected!("sha1");
-        let sha2 = std::is_aarch64_feature_detected!("sha2");
+        use std::fs;
+
+        let aes   = std::arch::is_aarch64_feature_detected!("aes");
+        let pmull = std::arch::is_aarch64_feature_detected!("pmull");
+        let sha2  = std::arch::is_aarch64_feature_detected!("sha2");
+        let sha1  = fs::read_to_string("/proc/cpuinfo")
+            .map(|s| s.contains(" sha1"))
+            .unwrap_or(false);
+
         eprintln!("ARMv8 CE — AES:{aes} PMULL:{pmull} SHA1:{sha1} SHA2:{sha2}");
     }
     #[cfg(not(target_arch = "aarch64"))]
@@ -84,7 +89,8 @@ fn main() -> Result<()> {
     // Warmup a few chunks (fill caches, JITs, etc.)
     for i in 0..16.min(iters.max(1)) {
         let n = Nonce::from(next_nonce(&nonce_base, i as u32));
-        let _ = cipher.encrypt(&n, aes_gcm::aead::Payload { msg: &pt, aad: &aad })?;
+        let _ = cipher.encrypt(&n, aes_gcm::aead::Payload { msg: &pt, aad: &aad })
+    .map_err(|_| anyhow::anyhow!("aes-gcm encrypt failed"))?;
     }
 
     log_arm_crypto_support();
@@ -104,7 +110,8 @@ fn main() -> Result<()> {
 
         // Encrypt
         let out = cipher
-            .encrypt(&n, aes_gcm::aead::Payload { msg: &pt, aad: &aad })?;
+            .encrypt(&n, aes_gcm::aead::Payload { msg: &pt, aad: &aad })
+                .map_err(|_| anyhow::anyhow!("aes-gcm encrypt failed"))?;
         total_tags += 16;
 
         // Copy into ct buffer (fixed size); keep constant-time-ish memory pattern
@@ -114,9 +121,10 @@ fn main() -> Result<()> {
 
         // Optional verify
         if args.verify {
-            let n2 = Nonce::from(next_nonce(&nonce_base, ctr - 1));
+            let _n2 = Nonce::from(next_nonce(&nonce_base, ctr - 1));
             let _pt = cipher
-                .decrypt(&n2, aes_gcm::aead::Payload { msg: &ct, aad: &aad })?;
+                .encrypt(&n, aes_gcm::aead::Payload { msg: &pt, aad: &aad })
+                    .map_err(|_| anyhow::anyhow!("aes-gcm encrypt failed"))?;
         }
     }
     let dt = t0.elapsed();

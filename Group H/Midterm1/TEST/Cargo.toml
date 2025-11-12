@@ -1,0 +1,44 @@
+[package]
+name = "rpi-secure-stream"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+# crypto & keying
+# Crypto deps
+rsa = "0.9.8"          # no features ? defaults include pkcs1/pkcs8
+sha2 = "0.10"
+p256  = { version = "0.13", features = ["ecdh"] }
+aes-gcm = { version = "0.10", features = ["aes"] }
+hkdf  = "0.12"
+rand  = "0.8"
+
+
+# async & wire
+tokio = { version = "1", features = ["full"] }
+bytes = "1"
+serde = { version = "1", features = ["derive"] }
+bincode = "1"
+
+
+# system & misc
+anyhow = "1"
+chrono = { version = "0.4", features = ["clock"] }
+
+
+# gstreamer
+gstreamer = "0.22"
+gstreamer-app = "0.22"
+
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+
+
+[[bin]]
+name = "bench_aesgcm"
+path = "benches/bench_aesgcm.rs"

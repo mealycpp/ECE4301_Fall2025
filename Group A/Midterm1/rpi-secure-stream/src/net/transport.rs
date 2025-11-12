@@ -1,0 +1,99 @@
+use anyhow::{anyhow, Result};
+use bytes::{Buf, BufMut, Bytes, BytesMut};
+use tokio::io::{AsyncReadExt, AsyncWriteExt};
+use tokio::net::{TcpListener, TcpStream};
+use tokio::time::{sleep, Duration, Instant};
+use rand::Rng; // jitter
+
+pub const FLAG_FRAME: u8 = 0x01;
+pub const FLAG_REKEY: u8 = 0x02;
+pub const FLAG_CAPS:  u8 = 0x04;
+pub const FLAG_PING:  u8 = 0x08;
+pub const FLAG_REKEY_ACK: u8 = 0x10;
+
+
+/// Length-prefixed message:
+/// [u32 len][u8 flags][u64 ts_ns][u64 seq][u32 pt_len][payload...]
+/// len = 1 + 8 + 8 + 4 + payload.len()
+#[derive(Clone, Debug)]
+pub struct WireMsg {
+    pub flags: u8,
+    pub ts_ns: u64,
+    pub seq: u64,
+    pub pt_len: u32,
+    pub payload: Bytes,
+}
+
+impl WireMsg {
+    pub fn encode(&self) -> Bytes {
+        let body_len = 1 + 8 + 8 + 4 + self.payload.len();
+        let mut b = BytesMut::with_capacity(4 + body_len);
+        b.put_u32(body_len as u32);
+        b.put_u8(self.flags);
+        b.put_u64(self.ts_ns);
+        b.put_u64(self.seq);
+        b.put_u32(self.pt_len);
+        b.extend_from_slice(&self.payload);
+        b.freeze()
+    }
+
+    pub async fn write_to(&self, s: &mut TcpStream) -> Result<()> {
+        let buf = self.encode();
+        s.write_all(&buf).await?;
+        Ok(())
+    }
+
+    pub async fn read_from(s: &mut TcpStream) -> Result<WireMsg> {
+        let mut len4 = [0u8; 4];
+        s.read_exact(&mut len4).await?;
+        let len = u32::from_be_bytes(len4) as usize;
+        if len < (1 + 8 + 8 + 4) {
+            return Err(anyhow!("short frame: {}", len));
+        }
+        let mut body = vec![0u8; len];
+        s.read_exact(&mut body).await?;
+
+        let mut rd = &body[..];
+        let flags = rd.get_u8();
+        let ts_ns = rd.get_u64();
+        let seq    = rd.get_u64();
+        let pt_len = rd.get_u32();
+        let payload = Bytes::copy_from_slice(rd);
+
+        Ok(WireMsg { flags, ts_ns, seq, pt_len, payload })
+    }
+}
+
+pub async fn tcp_bind(addr: &str) -> Result<TcpListener> {
+    Ok(TcpListener::bind(addr).await?)
+}
+
+pub async fn tcp_connect(addr: &str) -> Result<TcpStream> {
+    Ok(TcpStream::connect(addr).await?)
+}
+
+/// Exponential backoff connect with jitter; fails after `total_timeout`.
+pub async fn tcp_connect_with_retry(addr: &str, total_timeout: Duration) -> Result<TcpStream> {
+    let start = Instant::now();
+    let mut delay = Duration::from_millis(200);
+    let mut rng = rand::thread_rng();
+    let max_delay = Duration::from_secs(3);
+
+    loop {
+        match TcpStream::connect(addr).await {
+            Ok(s) => {
+        let _ = s.set_nodelay(true); // best-effort
+        return Ok(s);
+    },
+            Err(e) => {
+                if start.elapsed() >= total_timeout {
+                    return Err(anyhow!("connect {} failed after {:?}: {}", addr, total_timeout, e));
+                }
+                let jitter = Duration::from_millis(rng.gen_range(0..100));
+                eprintln!("connect to {} failed: {} — retrying in {:?}...", addr, e, delay + jitter);
+                sleep(delay + jitter).await;
+                delay = std::cmp::min(delay * 2, max_delay);
+            }
+        }
+    }
+}

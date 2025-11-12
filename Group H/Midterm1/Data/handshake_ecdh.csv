@@ -1,0 +1,2 @@
+ts_start,ts_end,mech,bytes_tx,bytes_rx,cpu_avg,mem_mb,energy_j
+0.0,0.045479,ecdh,167,217,13.9,144,0.2684

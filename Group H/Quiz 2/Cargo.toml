@@ -1,0 +1,29 @@
+[package]
+name = "crypto-on-chip"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+rand = { version = "0.8", features = ["small_rng"] }
+digest = "0.10"
+sha1 = { version = "0.10" }   # RustCrypto
+sha2 = { version = "0.10" }   # RustCrypto
+hex = "0.4"
+anyhow = "1"
+
+[features]
+# Accel build uses ARMv8 backends
+accel = ["sha1/asm", "sha2/asm-aarch64"]
+# Only needed if you want to *force* software even when HW is present
+softforce = ["sha1/force-soft", "sha2/force-soft"]
+
+
+[[bin]]
+name = "soft"
+path = "src/main.rs"
+
+[[bin]]
+name = "accel"
+path = "src/main.rs"
+required-features = ["accel"]

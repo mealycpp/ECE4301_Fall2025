@@ -1,0 +1,5 @@
+sha1 v0.10.6
+└── crypto-on-chip v0.1.0 (/home/calebjalapeno/crypto-on-chip)
+
+sha2 v0.10.9
+└── crypto-on-chip v0.1.0 (/home/calebjalapeno/crypto-on-chip)

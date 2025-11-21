@@ -1,0 +1,5 @@
+=== SHA-1 benchmark (5 trials) ===
+size =    1024 bytes, total =   0.00 MiB, time =  0.0000 s, throughput =   235.21 MB/s
+size =    8192 bytes, total =   0.04 MiB, time =  0.0001 s, throughput =   272.39 MB/s
+size =   65536 bytes, total =   0.31 MiB, time =  0.0011 s, throughput =   275.04 MB/s
+size = 1048576 bytes, total =   5.00 MiB, time =  0.0182 s, throughput =   274.45 MB/s

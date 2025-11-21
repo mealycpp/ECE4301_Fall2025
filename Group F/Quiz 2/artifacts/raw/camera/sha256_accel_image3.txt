@@ -1,0 +1,3 @@
+=== Hashing file: image1.jpg (mode: sha256) ===
+SHA-256 digest: c25166bd0253c4e938d614f09fc71c8456d73713a36684590461329c1d6bc9d2
+Time: 0.004265 s

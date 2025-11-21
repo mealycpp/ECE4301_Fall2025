@@ -1,0 +1,71 @@
+========================================
+QUICK USAGE GUIDE - SHA Benchmark Quiz #2
+========================================
+
+READY TO USE - All code is implemented!
+
+STEP 1: Build (if not already done)
+------------------------------------
+./build.sh
+
+This creates:
+  - quiz2-soft  (software-only)
+  - quiz2-accel (hardware-accelerated)
+
+STEP 2: Run Benchmarks
+-----------------------
+./run-benchmarks.sh
+
+This will:
+  - Run both Rust builds with 10 trials
+  - Run OpenSSL baselines
+  - Save everything to results/ directory
+
+STEP 3: Camera Demo
+--------------------
+./camera-demo.sh
+
+This will:
+  - Capture 5 images
+  - Hash them with both builds
+  - Show timing comparison
+
+MANUAL TESTING
+--------------
+# Benchmark manually
+taskset -c 3 ./quiz2-soft bench --trials 10
+taskset -c 3 ./quiz2-accel bench --trials 10
+
+# Hash files manually
+./quiz2-soft hash camera_images/*.jpg
+./quiz2-accel hash camera_images/*.jpg
+
+WHAT YOU GET
+------------
+Two implementations:
+  1. Software-only (pure Rust)
+  2. Accelerated (AArch64 SHA instructions)
+
+Benchmark data for:
+  - 1 KiB buffers
+  - 8 KiB buffers
+  - 64 KiB buffers
+  - 1 MiB buffers
+
+Output in MB/s for easy plotting.
+
+FOR YOUR REPORT
+---------------
+1. Run the benchmarks on Pi 5
+2. Parse results/ directory for data
+3. Plot: size vs throughput (3 curves each)
+4. Calculate speedup: accel/soft
+5. Compare to OpenSSL engine
+6. Analyze small vs large packets
+
+DOCUMENTATION
+-------------
+See README.md for complete documentation.
+
+All code is complete and tested!
+Just run it on your Pi 5.

@@ -1,0 +1,14 @@
+Doing sha256 ops for 3s on 16 size blocks: 9746827 sha256 ops in 3.00s
+Doing sha256 ops for 3s on 64 size blocks: 9079963 sha256 ops in 3.00s
+Doing sha256 ops for 3s on 256 size blocks: 6426715 sha256 ops in 3.00s
+Doing sha256 ops for 3s on 1024 size blocks: 3087235 sha256 ops in 3.00s
+Doing sha256 ops for 3s on 8192 size blocks: 531114 sha256 ops in 2.99s
+Doing sha256 ops for 3s on 16384 size blocks: 273280 sha256 ops in 3.00s
+version: 3.5.1
+built on: Wed Oct  8 17:05:30 2025 UTC
+options: bn(64,64)
+compiler: gcc -fPIC -pthread -Wa,--noexecstack -Wall -fzero-call-used-regs=used-gpr -Wa,--noexecstack -g -O2 -Werror=implicit-function-declaration -ffile-prefix-map=/build/openssl-pJ4EtL/openssl-3.5.1=. -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -mbranch-protection=standard -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BUILDING_OPENSSL -DZLIB -DZSTD -DNDEBUG -Wdate-time -D_FORTIFY_SOURCE=2
+CPUINFO: OPENSSL_armcap=0xbd
+The 'numbers' are in 1000s of bytes per second processed.
+type             16 bytes     64 bytes    256 bytes   1024 bytes   8192 bytes  16384 bytes
+sha256           51983.08k   193705.88k   548413.01k  1053776.21k  1455145.78k  1492473.17k

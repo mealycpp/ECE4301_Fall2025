@@ -1,0 +1,32 @@
+=== System Information ===
+OS: Debian GNU/Linux 13 (trixie)
+Kernel: 6.12.47+rpt-rpi-2712
+sha1 crate: 0.1.0
+sha2 crate: 0.1.0
+Build: Accelerated (AArch64 instructions enabled)
+
+=== File: camera_images/image1.jpg ===
+Size: 590 KiB
+SHA-1:   8468e603bedc3c1150b3c89317bcf68d912a4e14 (0.001316 s)
+SHA-256: 38712c97112994157102788e373f3f7c9c22e7b0a8048a254b5adc7c668eac5c (0.004466 s)
+
+=== File: camera_images/image2.jpg ===
+Size: 590 KiB
+SHA-1:   c79dbf0e8a3778e1e0ab191aeacb9b6fb228c681 (0.001318 s)
+SHA-256: 74d7ec0901298300838b1b2f6374b99bba7404197cb5307b90df6efb39dde530 (0.002560 s)
+
+=== File: camera_images/image3.jpg ===
+Size: 347 KiB
+SHA-1:   bff39548dbb8eb3ca801115800d8b6e3cc8f1e24 (0.000776 s)
+SHA-256: 9e2e8110dae0cf270889103ce45a87eb104329d2b8a2226e54ebfd48a45c7b96 (0.001522 s)
+
+=== File: camera_images/image4.jpg ===
+Size: 549 KiB
+SHA-1:   c3c0f7d1e19a1b70cb8748dbd1c21bea9f70e34e (0.002274 s)
+SHA-256: e15feff690c3b6325e174cdc0a58217c24613c941bf5af309a6814ba57fd77f9 (0.002347 s)
+
+=== File: camera_images/image5.jpg ===
+Size: 590 KiB
+SHA-1:   477799497dd682ca36d199b64e08b2d24e883dd5 (0.001324 s)
+SHA-256: 63dd4fce4123efc5510047baf82c76843a9059f0ce773aa27a2d1c194a42a6ba (0.002746 s)
+

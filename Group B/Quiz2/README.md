@@ -103,6 +103,8 @@ mkdir -p imgs
 rpicam-still -o imgs/img_1.jpg -n
 rpicam-still -o imgs/img_2.jpg -n
 rpicam-still -o imgs/img_3.jpg -n
+rpicam-still -o imgs/img_4.jpg -n
+rpicam-still -o imgs/img_5.jpg -n
 ```
 
 ### Hash Using Soft Version
@@ -125,16 +127,6 @@ python3 scripts/plot.py   --rust-soft data/rust_soft.csv   --rust-accel data/rus
 This generates:
 - `sha1_throughput.png`
 - `sha256_throughput.png`
-
----
-
-## Contribution Statement
-```
-- Member A: Rust CLI + hashing pipeline
-- Member B: Benchmarking + engine tests
-- Member C: Plotting + analysis + report writing
-- Member D: Camera demo + repo organization
-```
 
 ---
 

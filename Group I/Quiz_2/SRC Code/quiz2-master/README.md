@@ -5,9 +5,9 @@ ECE 4301 — Crypto on Chip - Quiz #2
 ## Overview
 
 This Rust CLI benchmarks SHA-1 and SHA-256 hashing performance on Raspberry Pi 5, comparing software-only implementation against AArch64 hardware-accelerated instructions.
+Read USAGE.txt for shortend instructions
 
 ## Build Instructions
-Read USAGE.txt for shortend instructions
 
 ### Prerequisites
 

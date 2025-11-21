@@ -1,0 +1,42 @@
+# Rust build and target outputs
+/target/
+/Cargo.lock
+
+# Build artifacts
+*.rlib
+*.d
+*.so
+*.dll
+*.dylib
+*.exe
+*.pdb
+
+# Backup and temporary files
+*.bak
+*.swp
+*.tmp
+*~
+*.log
+
+# IDE/editor files
+.vscode/
+.idea/
+*.iml
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Output and test folders
+output_pipe/
+images/
+*.jpg
+*.png
+*.jpeg
+
+# Compiled demo artifacts
+*.out
+*.bin
+
+# Environment files
+.env

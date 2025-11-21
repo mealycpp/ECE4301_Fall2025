@@ -13,16 +13,19 @@ sha1 = "0.10"
 sha2 = "0.10"
 
 [features]
-accel = []
+# No default acceleration so we can produce truly different builds
+default = []
+soft = []
+# Enable ARMv8 SHA1/SHA2 assembly in RustCrypto crates
+accel = ["sha1/asm", "sha2/asm"]
 
-[target.'cfg(target_arch = "aarch64")'.dependencies]
-sha1 = { version = "0.10", features = ["asm"] }
-sha2 = { version = "0.10", features = ["asm"] }
-
+# Each binary only builds when its feature is enabled
 [[bin]]
 name = "soft"
 path = "src/bin/soft.rs"
+required-features = ["soft"]
 
 [[bin]]
 name = "accel"
 path = "src/bin/accel.rs"
+required-features = ["accel"]

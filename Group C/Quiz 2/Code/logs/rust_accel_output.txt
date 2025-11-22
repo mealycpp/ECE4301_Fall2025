@@ -1,0 +1,25 @@
+=== SHA-1 & SHA-256 Benchmark ===
+Trials per size: 10
+CPU pinning: Use 'taskset -c 3' for consistent results
+
+System Information:
+  Features	: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm lrcpc dcpop asimddp
+  Rust version: 0.1.0
+  sha1 crate: 0
+  sha2 crate: 0
+  Kernel: Linux version 6.12.47+rpt-rpi-2712
+
+Algorithm    Size         Avg Time (ms)   Throughput (MB/s)
+------------------------------------------------------------
+SHA-1        1 KiB        0.001           677.65         
+SHA-256      1 KiB        0.001           670.90         
+
+SHA-1        8 KiB        0.010           781.99         
+SHA-256      8 KiB        0.010           775.06         
+
+SHA-1        64 KiB       0.079           793.28         
+SHA-256      64 KiB       0.079           787.54         
+
+SHA-1        1 MiB        1.271           786.67         
+SHA-256      1 MiB        1.278           782.55         
+

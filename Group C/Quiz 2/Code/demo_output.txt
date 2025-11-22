@@ -1,0 +1,91 @@
+=== SHA Benchmark Camera Demo ===
+Date: Mon Nov 17 01:37:26 PM PST 2025
+
+Using USB camera via ffmpeg at /dev/video0
+
+=== Capturing Images ===
+Capturing image 1/5...
+Capturing image 2/5...
+Capturing image 3/5...
+Capturing image 4/5...
+Capturing image 5/5...
+
+Captured images:
+-rw-rw-r-- 1 johnpi5 johnpi5 37K Nov 17 13:37 images/capture_1.jpg
+-rw-rw-r-- 1 johnpi5 johnpi5 26K Nov 17 13:37 images/capture_2.jpg
+-rw-rw-r-- 1 johnpi5 johnpi5 79K Nov 17 13:37 images/capture_3.jpg
+-rw-rw-r-- 1 johnpi5 johnpi5 42K Nov 17 13:37 images/capture_4.jpg
+-rw-rw-r-- 1 johnpi5 johnpi5 30K Nov 17 13:37 images/capture_5.jpg
+
+=== Hashing with Software-Only Version ===
+
+=== Hashing Files ===
+
+File: images/capture_1.jpg
+  Size: 37073 bytes (36.20 KB)
+  Read time: 0.027 ms
+  SHA-1:   2b850a39d43ca442580c1ba3409f46260e22a421 (0.132 ms)
+  SHA-256: e432715e1389e014f59cf749b03671a43098296e30b88a989335d93a4b4e1b64 (0.343 ms)
+
+File: images/capture_2.jpg
+  Size: 26118 bytes (25.51 KB)
+  Read time: 0.022 ms
+  SHA-1:   ac46f8c2d18439bfef5c1f02a8b42f2cb750ba38 (0.091 ms)
+  SHA-256: ea734e37a5c8b29fc41d18e76eadb717fd974cc311be34e6e433d38e6d21be8e (0.174 ms)
+
+File: images/capture_3.jpg
+  Size: 80639 bytes (78.75 KB)
+  Read time: 0.035 ms
+  SHA-1:   4d3a5c9917fd4bbdfea616e76b2feca0d9bbc76e (0.278 ms)
+  SHA-256: acd11f23c5a5ab83a67a053c41784eff47a95232e9fabb3ba749b0ff2b84fff8 (0.536 ms)
+
+File: images/capture_4.jpg
+  Size: 42745 bytes (41.74 KB)
+  Read time: 0.017 ms
+  SHA-1:   8c5152335846f1f6946376a528f71711e9d48f0b (0.148 ms)
+  SHA-256: 7c48152eb8394464c7c1cae1ffcb9c05609bbe9bb1eba74c6612ee82166b5d08 (0.285 ms)
+
+File: images/capture_5.jpg
+  Size: 30604 bytes (29.89 KB)
+  Read time: 0.013 ms
+  SHA-1:   9136f5bb4d34b201a8704ac307f537b94724ac8b (0.106 ms)
+  SHA-256: abf5628e01de6a2098f013a99b7298d99920dd58ba358e6630b9eef55a9c8b64 (0.204 ms)
+
+
+=== Hashing with Hardware-Accelerated Version ===
+
+=== Hashing Files ===
+
+File: images/capture_1.jpg
+  Size: 37073 bytes (36.20 KB)
+  Read time: 0.022 ms
+  SHA-1:   2b850a39d43ca442580c1ba3409f46260e22a421 (0.027 ms)
+  SHA-256: e432715e1389e014f59cf749b03671a43098296e30b88a989335d93a4b4e1b64 (0.029 ms)
+
+File: images/capture_2.jpg
+  Size: 26118 bytes (25.51 KB)
+  Read time: 0.011 ms
+  SHA-1:   ac46f8c2d18439bfef5c1f02a8b42f2cb750ba38 (0.019 ms)
+  SHA-256: ea734e37a5c8b29fc41d18e76eadb717fd974cc311be34e6e433d38e6d21be8e (0.020 ms)
+
+File: images/capture_3.jpg
+  Size: 80639 bytes (78.75 KB)
+  Read time: 0.027 ms
+  SHA-1:   4d3a5c9917fd4bbdfea616e76b2feca0d9bbc76e (0.066 ms)
+  SHA-256: acd11f23c5a5ab83a67a053c41784eff47a95232e9fabb3ba749b0ff2b84fff8 (0.061 ms)
+
+File: images/capture_4.jpg
+  Size: 42745 bytes (41.74 KB)
+  Read time: 0.014 ms
+  SHA-1:   8c5152335846f1f6946376a528f71711e9d48f0b (0.031 ms)
+  SHA-256: 7c48152eb8394464c7c1cae1ffcb9c05609bbe9bb1eba74c6612ee82166b5d08 (0.033 ms)
+
+File: images/capture_5.jpg
+  Size: 30604 bytes (29.89 KB)
+  Read time: 0.010 ms
+  SHA-1:   9136f5bb4d34b201a8704ac307f537b94724ac8b (0.022 ms)
+  SHA-256: abf5628e01de6a2098f013a99b7298d99920dd58ba358e6630b9eef55a9c8b64 (0.023 ms)
+
+
+=== Demo Complete ===
+

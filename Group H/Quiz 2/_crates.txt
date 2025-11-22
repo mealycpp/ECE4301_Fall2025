@@ -1,5 +1,5 @@
 sha1 v0.10.6
-└── crypto-on-chip v0.1.0 (/home/calebjalapeno/crypto-on-chip)
+└── crypto-on-chip v0.1.0 (/home/calebjalapeno/ECE4301_Fall2025/Group H/Quiz 2)
 
 sha2 v0.10.9
-└── crypto-on-chip v0.1.0 (/home/calebjalapeno/crypto-on-chip)
+└── crypto-on-chip v0.1.0 (/home/calebjalapeno/ECE4301_Fall2025/Group H/Quiz 2)

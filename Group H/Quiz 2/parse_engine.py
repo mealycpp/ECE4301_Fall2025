@@ -32,27 +32,28 @@ def read_rust_csv(path):
 # We expect a "Doing ... on <size> bytes" line followed (or later) by a
 # throughput line with a "<number>k" token (k = *1000* bytes/sec in OpenSSL output).
 # We'll map the last seen <size> to the next seen speed.
-doing_re = re.compile(r"Doing .* on (\d+)\s+bytes", re.I)
-speedk_re = re.compile(r"([\d.]+)\s*k\b")  # "12345.67k"
-# Some builds print "bytes per second: <num>" (rare)
-bps_re = re.compile(r"bytes per second:\s*([\d.]+)", re.I)
+doing_re  = re.compile(r"(?:Doing .* on (\d+)\s+(?:bytes|size blocks))|(?:---- bytes=(\d+) ----)", re.I)
+speedk_re = re.compile(r"\bevp\b[^\n]*?([\d.]+)\s*k\b", re.I)
+bps_re    = re.compile(r"bytes per second:\s*([\d.]+)", re.I)
 
 def parse_engine_txt(path):
-    size_for_next=None
+    size_for_next = None
     results = []  # (size_bytes, mib_per_s)
     with open(path, "r", errors="ignore") as f:
         for line in f:
             m = doing_re.search(line)
             if m:
-                size_for_next = int(m.group(1))
+                size_for_next = int(m.group(1) or m.group(2))
                 continue
+            # Prefer the 'evp ... k' line
             m = speedk_re.search(line)
             if m and size_for_next:
-                kbps = float(m.group(1)) * 1000.0       # k = 1000 bytes/s
+                kbps = float(m.group(1)) * 1000.0   # 'k' means *1000* bytes/s in OpenSSL
                 mibps = kbps / (1024.0*1024.0)
                 results.append((size_for_next, mibps))
                 size_for_next = None
                 continue
+            # Fallback 'bytes per second: NNN' format (rare)
             m = bps_re.search(line)
             if m and size_for_next:
                 bps = float(m.group(1))
@@ -60,11 +61,11 @@ def parse_engine_txt(path):
                 results.append((size_for_next, mibps))
                 size_for_next = None
                 continue
-    # Keep the *last* measurement per size (loop appends 4 sizes sequentially)
+    # Keep the last measurement per size
     last = {}
     for sz, v in results:
         last[sz] = v
-    return last  # {size: mibps}
+    return last
 
 # ---------- load data ----------
 soft = read_rust_csv("rust_soft.csv")

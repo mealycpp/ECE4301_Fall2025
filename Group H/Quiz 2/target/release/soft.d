@@ -1,1 +1,1 @@
-/home/calebjalapeno/crypto-on-chip/target/release/soft: /home/calebjalapeno/crypto-on-chip/src/main.rs
+/home/calebjalapeno/ECE4301_Fall2025/Group\ H/Quiz\ 2/target/release/soft: /home/calebjalapeno/ECE4301_Fall2025/Group\ H/Quiz\ 2/src/main.rs

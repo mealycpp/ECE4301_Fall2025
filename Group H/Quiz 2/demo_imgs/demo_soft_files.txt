@@ -1,0 +1,31 @@
+== Soft ==
+file=demo_imgs/img1.jpg
+build=soft
+SHA1  = 2fb4a9bca2ef3655d742ec9809763418109c3cce
+SHA256= 62002cc9988f4b4b3e8124aff4f454cecbcc8decb6717631c937c03ba8107bf2
+wall  = 0.006464 s
+
+file=demo_imgs/img2.jpg
+build=soft
+SHA1  = 0592115c7b76fe30524d9d010b62f614c566bdf9
+SHA256= 51ae516dbf3d7d0bd130382f129a39346ee292462dbf1b7f991f3cd18a265f50
+wall  = 0.006760 s
+
+file=demo_imgs/img3.jpg
+build=soft
+SHA1  = 1af527bed2387c068603d707022e81127331a6ba
+SHA256= 2ba3fa05c042bbeb6f3d18d8736700bc5a16360c4dfd38d7dd195498a724466e
+wall  = 0.006849 s
+
+file=demo_imgs/img4.jpg
+build=soft
+SHA1  = aa7ad0b373e1721aa76c47c8542f1be4fa339942
+SHA256= e3ce13829a977aa01a8fd82fbe45cc89f6802631f2368d5c0012ab531ac5a0f6
+wall  = 0.007491 s
+
+file=demo_imgs/img5.jpg
+build=soft
+SHA1  = fedcf5bcfb58f1d3b0ccf6bfc33f256db1e7f74c
+SHA256= 84cc77ad4455a343428b2cf63432832d47d744109de0fdc648c48c458bd0ca52
+wall  = 0.007121 s
+

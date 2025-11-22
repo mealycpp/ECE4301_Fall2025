@@ -1,5 +1,5 @@
 ---- accel images/andy1.jpg ----
-images/andy1.jpg, sha1: 0.000105 sec
+images/andy1.jpg, sha1: 0.000109 sec
 images/andy1.jpg, sha256: 0.000110 sec
 ---- accel images/bed5.jpg ----
 images/bed5.jpg, sha1: 0.000102 sec
@@ -8,5 +8,8 @@ images/bed5.jpg, sha256: 0.000106 sec
 images/green5.jpg, sha1: 0.000054 sec
 images/green5.jpg, sha256: 0.000056 sec
 ---- accel images/img1.jpg ----
-images/img1.jpg, sha1: 0.000215 sec
+images/img1.jpg, sha1: 0.000214 sec
 images/img1.jpg, sha256: 0.000223 sec
+---- accel images/testing.jpg ----
+images/testing.jpg, sha1: 0.000080 sec
+images/testing.jpg, sha256: 0.000083 sec

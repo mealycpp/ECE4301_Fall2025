@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Where your images live (adjust if needed)
-IMAGES=(images/andy1.jpg images/bed5.jpg images/green5.jpg images/img1.jpg)
+# image relative pathing. dynamic sizing)
+IMAGES=(images/andy1.jpg images/bed5.jpg images/green5.jpg images/img1.jpg images/testing.jpg)
 
 # Output folder
 mkdir -p output_pipe

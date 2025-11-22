@@ -57,7 +57,7 @@ sha_bench/
 
 - Raspberry Pi 5 (AArch64 / 64-bit OS)
 - Rust toolchain (`rustup`, `cargo`)
-- (Recommended) Images captured beforehand (USB cam users: `fswebcam` or `ffmpeg`; CSI cam users: `libcamera-still`)
+- (Recommended) Images captured beforehand (USB cam: `fswebcam`)
 
 Check that the CPU exposes SHA extensions:
 ```bash
@@ -79,18 +79,18 @@ Build **accelerated** binary (AArch64 asm + CPU features):
 RUSTFLAGS="-C target-cpu=native" cargo build --release --no-default-features --features accel --bin accel
 ```
 
-> `-C target-cpu=native` lets LLVM emit/allow the ARMv8 crypto extensions on your Pi.
+> `-C target-cpu=native` lets LLVM emit/allow the ARMv8 crypto extensions on the Pi.
 
 ---
 
 ## Running manually
 
-Hash your images (software):
+Hash images (software):
 ```bash
 taskset -c 3 cargo run --release --no-default-features --features soft --bin soft -- images/img1.jpg images/img2.jpg
 ```
 
-Hash your images (accelerated):
+Hash images (accelerated):
 ```bash
 RUSTFLAGS="-C target-cpu=native" taskset -c 3 cargo run --release --no-default-features --features accel --bin accel -- images/img1.jpg images/img2.jpg
 ```
@@ -109,8 +109,8 @@ RUSTFLAGS="-C target-cpu=native" taskset -c 3 cargo run --release --no-default-f
 ## `run_mass.sh` explained
 
 **What it does (high level):**
-1. Builds `soft` and `accel` with the **correct** feature flags (so they truly differ).
-2. Pins execution to CPU core **3** (per assignment’s “pin to one core” guidance).
+1. Builds `soft` and `accel` with the **correct** feature flags.
+2. Pins execution to CPU core **3** (“pin to one core”).
 3. Runs both binaries over a fixed list of images.
 4. Appends results to `output_pipe/soft.txt` and `output_pipe/accel.txt`.
 
@@ -124,9 +124,9 @@ chmod +x run_mass.sh
 
 ## Capturing images
 
-**USB webcam** (V4L2 device like `/dev/video0`) — choose either:
+**USB webcam** (`/dev/video0`) 
 
-- `fswebcam` (simple):
+- `fswebcam` :
   ```bash
   sudo apt-get install -y fswebcam
   mkdir -p images
@@ -136,31 +136,9 @@ chmod +x run_mass.sh
   done
   ```
 
-- `ffmpeg` (more control):
-  ```bash
-  sudo apt-get install -y ffmpeg v4l-utils
-  mkdir -p images
-  for i in 1 2 3 4 5; do
-    ffmpeg -y -f video4linux2 -input_format mjpeg -video_size 1280x720 -i /dev/video0 -frames:v 1 "images/img$i.jpg"
-    sleep 0.5
-  done
-  ```
-
-**CSI Pi Camera** (libcamera):
-```bash
-sudo apt-get install -y libcamera-apps
-mkdir -p images
-for i in 1 2 3 4 5; do
-  libcamera-still -n -o "images/img$i.jpg"
-done
-```
-
 ---
 
-## Engine baselines (optional but recommended for the report)
-
-Use **either** Linux kernel crypto API (`kcapi-speed`) or **OpenSSL EVP**:
-
+## Engine baselines
 OpenSSL EVP:
 ```bash
 openssl speed -evp sha1
@@ -169,23 +147,6 @@ openssl speed -evp sha256
 
 Try to use the same sizes as the Rust benchmark (1 KiB, 8 KiB, 64 KiB, 1 MiB) and save console output for your report.
 
----
-
-## Troubleshooting
-
-- **Accel ≈ Soft performance**
-  - Ensure different builds: `--no-default-features --features soft|accel`
-  - Build accel with: `RUSTFLAGS="-C target-cpu=native"`
-  - Check CPU has SHA extensions: `grep -i features /proc/cpuinfo` → look for `sha1 sha2`
-  - Pin to one core consistently: `taskset -c 3`
-
-- **Permission denied on `/dev/video0`**
-  - Add user to `video` group: `sudo usermod -aG video $USER` then reboot.
-
-- **Multiple cameras**
-  - Check devices: `v4l2-ctl --list-devices`, then use `/dev/video1`, etc.
-
----
 
 ## Repro commands (quick)
 

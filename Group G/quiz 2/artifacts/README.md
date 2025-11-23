@@ -37,4 +37,4 @@ cd ~/quiz-2/scripts\
 ./capture_and_hash.sh
 
 ## 2. RAW LOGS of BENCHMARK
-### can be found in artifacts.zip under 
+### can be found in artifacts.zip under the out folder

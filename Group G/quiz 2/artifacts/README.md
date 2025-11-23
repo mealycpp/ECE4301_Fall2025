@@ -14,8 +14,24 @@ All results (logs, CSVs, plots, images) live in the `out/` and `demo_imgs/` dire
 
 Run all commands from the repo root:
 
-```bash
-cd ~/quiz-2
-cargo build --release --bin soft  --features soft
-cargo build --release --bin accel --features accel
+### To build and run soft
+\cd ~/quiz-2/sha-cli
+cargo build --release
+./target/release/sha-cli sha1 soft
+./target/release/sha-cli sha256 soft
 
+### To build and run accel
+cd ~/quiz-2/sha-cli
+RUSTFLAGS="-C target-feature=+crypto" cargo build --release
+
+### CRYPTO ENGINE SCRIPT
+cd ~/quiz-2/scripts
+python3 make_engine_csv.py
+
+#### BENCHMARK SCRIPT (bench.sh)
+cd ~/quiz-2/scripts
+./bench.sh
+
+### Camera Demo
+cd ~/quiz-2/scripts
+./capture_and_hash.sh

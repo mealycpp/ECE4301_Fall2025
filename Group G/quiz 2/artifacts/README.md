@@ -18,20 +18,20 @@ Run all commands from the repo root:
 \cd ~/quiz-2/sha-cli\
 cargo build --release\
 ./target/release/sha-cli sha1 soft\
-./target/release/sha-cli sha256 soft\
+./target/release/sha-cli sha256 soft
 
 ### To build and run accel
 cd ~/quiz-2/sha-cli\
-RUSTFLAGS="-C target-feature=+crypto" cargo build --release\
+RUSTFLAGS="-C target-feature=+crypto" cargo build --release
 
 ### CRYPTO ENGINE SCRIPT
 cd ~/quiz-2/scripts\
-python3 make_engine_csv.py\
+python3 make_engine_csv.py
 
 #### BENCHMARK SCRIPT (bench.sh)
 cd ~/quiz-2/scripts\
-./bench.sh\
+./bench.sh
 
 ### Camera Demo
 cd ~/quiz-2/scripts\
-./capture_and_hash.sh\
+./capture_and_hash.sh

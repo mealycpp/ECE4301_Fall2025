@@ -1,0 +1,16 @@
+Benchmarking with 5 trials per size
+Sizes: 1 KiB, 8 KiB, 64 KiB, 1 MiB
+Throughput reported in MiB/s (2^20 bytes).
+
+SHA-1         1024 bytes:   666.61 MiB/s (5 trials)
+SHA-256       1024 bytes:   646.48 MiB/s (5 trials)
+
+SHA-1         8192 bytes:   804.13 MiB/s (5 trials)
+SHA-256       8192 bytes:   774.90 MiB/s (5 trials)
+
+SHA-1        65536 bytes:   818.37 MiB/s (5 trials)
+SHA-256      65536 bytes:   785.29 MiB/s (5 trials)
+
+SHA-1      1048576 bytes:   818.15 MiB/s (5 trials)
+SHA-256    1048576 bytes:   788.27 MiB/s (5 trials)
+

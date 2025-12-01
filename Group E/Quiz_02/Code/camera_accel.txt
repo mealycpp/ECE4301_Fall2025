@@ -1,0 +1,25 @@
+images/img1.jpg:
+  SHA-1   = 5eaaf5da3adb536ca914b9206a297bfc4ab245f1
+  SHA-256 = f91e56bc23ae64d65d65a5e7484a9ee0a7a270cdf9c7aa1cf75e02df61456772
+  time    = 0.000214 s
+
+images/img2.jpg:
+  SHA-1   = 95a696bc0ca727a84c3ee46c0b671f570280e13d
+  SHA-256 = 37ce37b682294f9dd66aa5c953e5175f2dec3760cf02a4d5973c3a8f85b92589
+  time    = 0.000246 s
+
+images/img3.jpg:
+  SHA-1   = bc7468e9ea4373bb8f8309cc8d0e6cf8eee2cc1f
+  SHA-256 = a537a1ddd9fd5eba9a341f42c9bd8755c46d8157ed61009bbfa02a07f1490a88
+  time    = 0.000272 s
+
+images/img4.jpg:
+  SHA-1   = a97e02fd5509336d9b4b5d0071abe3525e35ad95
+  SHA-256 = 982c0a3b0cd0b8ebb762c9a4f029935faa5ca73f43aff26e094a55f51f85fa44
+  time    = 0.000725 s
+
+images/img5.jpg:
+  SHA-1   = 6fcde801ee1d962f89d6a8a0b49cc54357365024
+  SHA-256 = 8bd63c0d70bfe5dcbd1b69de594edb0e79cf19df2badf58f32c28d56e9b281cd
+  time    = 0.000401 s
+

@@ -1,0 +1,19 @@
+iliketrains2314@raspberrypi:~/py $ sudo python3 trng_stats.py
+Total bits:   800000
+Ones:         400623 (0.5008)
+Zeros:        399377 (0.4992)
+
+Example counts for first few byte values:
+value   0: 396 occurrences
+value   1: 403 occurrences
+value   2: 368 occurrences
+value   3: 369 occurrences
+value   4: 352 occurrences
+value   5: 361 occurrences
+value   6: 415 occurrences
+value   7: 370 occurrences
+value   8: 408 occurrences
+value   9: 414 occurrences
+QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-root'
+
+Histogram saved to: histograms/byte_histogram.png

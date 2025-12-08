@@ -1,0 +1,51 @@
+# Vivado and Vitis Project .gitignore
+
+# General exclusions
+# Ignore common log, journal, and backup files
+*.log
+*.jou
+*.backup.log
+*.backup.jou
+*.upgrade_log
+*.dmp
+vivado_pid*
+*~
+
+# Vivado specific exclusions
+# Ignore Vivado project files and directories that are generated
+# It's recommended to use a TCL script to recreate the project from source
+# If you are not using TCL scripts, you might need to adjust these
+/vivado_proj/*
+.Xil/
+cache/
+runs/
+webtalk/
+hw_platform/
+metadata/
+build/
+pre-built/
+images/
+linux/
+
+# Vitis specific exclusions
+# Ignore Vitis build artifacts and temporary files
+build-vitis/
+.metadata/
+.sdk/
+RemoteSystemsTempFiles/
+Debug/
+Release/
+*.o
+*.d
+*.a
+
+# PetaLinux specific exclusions (if applicable)
+petalinux/
+!petalinux/config.mk # Keep configuration file if needed
+!petalinux/project-spec/meta-user/recipes-core/images/petalinux-image-full-cmdline.bb # Keep image recipe if needed
+
+# IP related exclusions
+# Exclude IP core generation files, keep only the XCI or IP definition files
+ip/
+!ip/*.xci # Keep XCI files if they define your custom IP
+!ip/repo/ # Keep custom IP repositories if they are part of your source

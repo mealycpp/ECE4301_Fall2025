@@ -1,0 +1,30 @@
+// BMM LOC annotation file.
+//
+// SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+// Vivado v2025.2 (64-bit)
+// Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+///////////////////////////////////////////////////////////////////////////////
+//
+// Processor 'poseidon_block_i_processing_system7', ID 100, memory map.
+//
+///////////////////////////////////////////////////////////////////////////////
+
+ADDRESS_MAP poseidon_block_i_processing_system7 ARM 100 poseidon_block_i/processing_system7
+
+    ///////////////////////////////////////////////////////////////////////////////
+    //
+    // Processor 'poseidon_block_i_processing_system7' address space 'poseidon_block_i_axi_bram_ctrl_0' 0X0000000040000000:0X0000000040001FFF (8 KBytes).
+    //
+    ///////////////////////////////////////////////////////////////////////////////
+
+    ADDRESS_SPACE poseidon_block_i_axi_bram_ctrl_0 RAMB32 [0X0000000040000000:0X0000000040001FFF] poseidon_block_i/axi_bram_ctrl_0
+        BUS_BLOCK
+            poseidon_block_i/axi_bram_ctrl_0_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[1].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.TDP_SP36_NO_ECC_ATTR.ram RAMB32 [31:16] [0:2047] PLACED = X3Y16;
+            poseidon_block_i/axi_bram_ctrl_0_bram/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[0].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.SIMPLE_PRIM36.TDP_SP36_NO_ECC_ATTR.ram RAMB32 [15:0] [0:2047] PLACED = X3Y15;
+        END_BUS_BLOCK;
+    END_ADDRESS_SPACE;
+
+END_ADDRESS_MAP;
+

@@ -1,0 +1,34 @@
+vhdl xpm  \
+"/opt/Xilinx/2025.2/data/ip/xpm/xpm_VCOMP.vhd" \
+
+vhdl proc_sys_reset_v5_0_17  \
+"../../../poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/9438/hdl/proc_sys_reset_v5_0_vh_rfs.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_smartconnect_0_1/bd_0/ip/ip_1/sim/bd_8597_psr_aclk_0.vhd" \
+
+vhdl smartconnect_v1_0  \
+"../../../poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/cb42/hdl/sc_ultralite_v1_0_rfs.vhd" \
+
+vhdl axi_lite_ipif_v3_0_4  \
+"../../../poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd" \
+
+vhdl interrupt_control_v3_1_5  \
+"../../../poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/d8cc/hdl/interrupt_control_v3_1_vh_rfs.vhd" \
+
+vhdl axi_gpio_v2_0_37  \
+"../../../poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/0271/hdl/axi_gpio_v2_0_vh_rfs.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_axi_gpio_0_1/sim/poseidon_block_axi_gpio_0_1.vhd" \
+"../../../poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_leds_0/sim/poseidon_block_leds_0.vhd" \
+
+vhdl axi_bram_ctrl_v4_1_13  \
+"../../../poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/2f03/hdl/axi_bram_ctrl_v4_1_rfs.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_axi_bram_ctrl_0_0/sim/poseidon_block_axi_bram_ctrl_0_0.vhd" \
+"../../../poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_rst_ps7_0_100M_0/sim/poseidon_block_rst_ps7_0_100M_0.vhd" \
+
+# Do not sort compile order
+nosort

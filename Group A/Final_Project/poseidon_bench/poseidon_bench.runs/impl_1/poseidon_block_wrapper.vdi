@@ -1,0 +1,1460 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Mon Dec  8 05:02:20 2025
+# Process ID         : 647798
+# Current directory  : /home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/impl_1
+# Command line       : vivado -log poseidon_block_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source poseidon_block_wrapper.tcl -notrace
+# Log file           : /home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/impl_1/poseidon_block_wrapper.vdi
+# Journal file       : /home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/impl_1/vivado.jou
+# Running On         : ckpai
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.3 LTS
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i7-1370P
+# CPU Frequency      : 1404.582 MHz
+# CPU Physical cores : 14
+# CPU Logical cores  : 20
+# Host memory        : 16330 MB
+# Swap memory        : 4294 MB
+# Total Virtual      : 20625 MB
+# Available Virtual  : 9363 MB
+#-----------------------------------------------------------
+source poseidon_block_wrapper.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/ckpai/ece4301/Group A/Final_Project/ip_repo/poseidon_accel_1_0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/ckpai/ece4301/Group A/Final_Project/ip_repo/poseidon_accel_axi_l_1_0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/2025.2/data/ip'.
+Command: link_design -top poseidon_block_wrapper -part xc7z020clg400-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Project 1-5699] Read binary netlist with skipMacroContent - 1
+INFO: [Project 1-454] Reading design checkpoint '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_axi_bram_ctrl_0_0/poseidon_block_axi_bram_ctrl_0_0.dcp' for cell 'poseidon_block_i/axi_bram_ctrl_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_axi_bram_ctrl_0_bram_0/poseidon_block_axi_bram_ctrl_0_bram_0.dcp' for cell 'poseidon_block_i/axi_bram_ctrl_0_bram'
+INFO: [Project 1-454] Reading design checkpoint '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_axi_gpio_0_1/poseidon_block_axi_gpio_0_1.dcp' for cell 'poseidon_block_i/leds'
+INFO: [Project 1-454] Reading design checkpoint '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_poseidon_accel_axi_l_0_2/poseidon_block_poseidon_accel_axi_l_0_2.dcp' for cell 'poseidon_block_i/poseidon_accel_axi_l_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_processing_system7_0_1/poseidon_block_processing_system7_0_1.dcp' for cell 'poseidon_block_i/processing_system7'
+INFO: [Project 1-454] Reading design checkpoint '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_rst_ps7_0_100M_0/poseidon_block_rst_ps7_0_100M_0.dcp' for cell 'poseidon_block_i/rst_ps7_0_100M'
+INFO: [Project 1-454] Reading design checkpoint '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_smartconnect_0_1/poseidon_block_smartconnect_0_1.dcp' for cell 'poseidon_block_i/smartconnect_0'
+INFO: [Project 1-454] Reading design checkpoint '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_leds_0/poseidon_block_leds_0.dcp' for cell 'poseidon_block_i/switches'
+Netlist sorting complete. Time (s): cpu = 00:00:00.18 ; elapsed = 00:00:00.18 . Memory (MB): peak = 1853.898 ; gain = 0.000 ; free physical = 1554 ; free virtual = 8358
+INFO: [Netlist 29-17] Analyzing 359 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2025.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_processing_system7_0_1/poseidon_block_processing_system7_0_1.xdc] for cell 'poseidon_block_i/processing_system7/inst'
+Finished Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_processing_system7_0_1/poseidon_block_processing_system7_0_1.xdc] for cell 'poseidon_block_i/processing_system7/inst'
+Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_smartconnect_0_1/bd_0/ip/ip_1/bd_8597_psr_aclk_0_board.xdc] for cell 'poseidon_block_i/smartconnect_0/inst/clk_map/psr_aclk/U0'
+Finished Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_smartconnect_0_1/bd_0/ip/ip_1/bd_8597_psr_aclk_0_board.xdc] for cell 'poseidon_block_i/smartconnect_0/inst/clk_map/psr_aclk/U0'
+Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_smartconnect_0_1/smartconnect.xdc] for cell 'poseidon_block_i/smartconnect_0/inst'
+Finished Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_smartconnect_0_1/smartconnect.xdc] for cell 'poseidon_block_i/smartconnect_0/inst'
+Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_axi_gpio_0_1/poseidon_block_axi_gpio_0_1_board.xdc] for cell 'poseidon_block_i/leds/U0'
+Finished Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_axi_gpio_0_1/poseidon_block_axi_gpio_0_1_board.xdc] for cell 'poseidon_block_i/leds/U0'
+Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_leds_0/poseidon_block_leds_0_board.xdc] for cell 'poseidon_block_i/switches/U0'
+Finished Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_leds_0/poseidon_block_leds_0_board.xdc] for cell 'poseidon_block_i/switches/U0'
+Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_rst_ps7_0_100M_0/poseidon_block_rst_ps7_0_100M_0_board.xdc] for cell 'poseidon_block_i/rst_ps7_0_100M/U0'
+Finished Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_rst_ps7_0_100M_0/poseidon_block_rst_ps7_0_100M_0_board.xdc] for cell 'poseidon_block_i/rst_ps7_0_100M/U0'
+Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/PYNQ-Z2 v1.0.xdc]
+Finished Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/PYNQ-Z2 v1.0.xdc]
+INFO: [Project 1-1714] 103 XPM XDC files have been applied to the design.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Generating merged BMM file for the design top 'poseidon_block_wrapper'...
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2614.020 ; gain = 0.000 ; free physical = 796 ; free virtual = 7600
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 174 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 4 instances
+  RAM16X1D => RAM32X1D (RAMD32(x2)): 4 instances
+  RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 143 instances
+  RAM32X1D => RAM32X1D (RAMD32(x2)): 23 instances
+
+21 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:10 . Memory (MB): peak = 2614.055 ; gain = 989.578 ; free physical = 796 ; free virtual = 7600
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.73 . Memory (MB): peak = 2617.988 ; gain = 3.934 ; free physical = 898 ; free virtual = 7702
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 1b11f144b
+
+Time (s): cpu = 00:00:00.92 ; elapsed = 00:00:00.4 . Memory (MB): peak = 2617.988 ; gain = 0.000 ; free physical = 895 ; free virtual = 7699
+
+Starting Logic Optimization Task
+
+Phase 1 Initialization
+
+Phase 1.1 Core Generation And Design Setup
+Phase 1.1 Core Generation And Design Setup | Checksum: 1b11f144b
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2966.801 ; gain = 0.000 ; free physical = 533 ; free virtual = 7339
+
+Phase 1.2 Setup Constraints And Sort Netlist
+Phase 1.2 Setup Constraints And Sort Netlist | Checksum: 1b11f144b
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2966.801 ; gain = 0.000 ; free physical = 533 ; free virtual = 7339
+Phase 1 Initialization | Checksum: 1b11f144b
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.05 . Memory (MB): peak = 2966.801 ; gain = 0.000 ; free physical = 533 ; free virtual = 7339
+
+Phase 2 Timer Update And Timing Data Collection
+
+Phase 2.1 Detect if minReqCache needed
+Phase 2.1 Detect if minReqCache needed | Checksum: 1b11f144b
+
+Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2966.801 ; gain = 0.000 ; free physical = 525 ; free virtual = 7330
+
+Phase 2.2 Timer Update
+Phase 2.2 Timer Update | Checksum: 1b11f144b
+
+Time (s): cpu = 00:00:00.63 ; elapsed = 00:00:00.19 . Memory (MB): peak = 2966.801 ; gain = 0.000 ; free physical = 525 ; free virtual = 7329
+
+Phase 2.3 Timing Data Collection
+Phase 2.3 Timing Data Collection | Checksum: 1b11f144b
+
+Time (s): cpu = 00:00:00.64 ; elapsed = 00:00:00.2 . Memory (MB): peak = 2966.801 ; gain = 0.000 ; free physical = 525 ; free virtual = 7329
+Phase 2 Timer Update And Timing Data Collection | Checksum: 1b11f144b
+
+Time (s): cpu = 00:00:00.64 ; elapsed = 00:00:00.21 . Memory (MB): peak = 2966.801 ; gain = 0.000 ; free physical = 525 ; free virtual = 7329
+
+Phase 3 Retarget
+INFO: [Opt 31-1851] Number of loadless carry chains removed were: 0
+INFO: [Opt 31-1834] Total Chains To Be Transformed Were: 0 AND Number of Transformed insts Created are: 0
+INFO: [Opt 31-1566] Pulled 1 inverters resulting in an inversion of 11 pins
+INFO: [Opt 31-138] Pushed 26 inverter(s) to 200 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 3 Retarget | Checksum: 1a0eebe18
+
+Time (s): cpu = 00:00:00.94 ; elapsed = 00:00:00.4 . Memory (MB): peak = 2966.801 ; gain = 0.000 ; free physical = 525 ; free virtual = 7329
+Retarget | Checksum: 1a0eebe18
+INFO: [Opt 31-389] Phase Retarget created 36 cells and removed 111 cells
+INFO: [Opt 31-1021] In phase Retarget, 106 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 4 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 4 Constant propagation | Checksum: 1f2edf082
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.49 . Memory (MB): peak = 2966.801 ; gain = 0.000 ; free physical = 525 ; free virtual = 7329
+Constant propagation | Checksum: 1f2edf082
+INFO: [Opt 31-389] Phase Constant propagation created 106 cells and removed 233 cells
+INFO: [Opt 31-1021] In phase Constant propagation, 100 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 5 Sweep
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2966.801 ; gain = 0.000 ; free physical = 525 ; free virtual = 7329
+INFO: [Constraints 18-11670] Building netlist checker database with flags, 0x8
+Done building netlist checker database: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2966.801 ; gain = 0.000 ; free physical = 526 ; free virtual = 7330
+Phase 5 Sweep | Checksum: 11de4d788
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2966.801 ; gain = 0.000 ; free physical = 526 ; free virtual = 7330
+Sweep | Checksum: 11de4d788
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 1168 cells
+INFO: [Opt 31-1021] In phase Sweep, 125 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 6 BUFG optimization
+Phase 6 BUFG optimization | Checksum: 11de4d788
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2998.816 ; gain = 32.016 ; free physical = 526 ; free virtual = 7330
+BUFG optimization | Checksum: 11de4d788
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 7 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 7 Shift Register Optimization | Checksum: 11de4d788
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2998.816 ; gain = 32.016 ; free physical = 526 ; free virtual = 7330
+Shift Register Optimization | Checksum: 11de4d788
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 8 Post Processing Netlist
+Phase 8 Post Processing Netlist | Checksum: 11de4d788
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2998.816 ; gain = 32.016 ; free physical = 526 ; free virtual = 7330
+Post Processing Netlist | Checksum: 11de4d788
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+INFO: [Opt 31-1021] In phase Post Processing Netlist, 100 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
+
+Phase 9 Finalization
+
+Phase 9.1 Finalizing Design Cores and Updating Shapes
+Phase 9.1 Finalizing Design Cores and Updating Shapes | Checksum: 200b4d1e5
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2998.816 ; gain = 32.016 ; free physical = 526 ; free virtual = 7330
+
+Phase 9.2 Verifying Netlist Connectivity
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2998.816 ; gain = 0.000 ; free physical = 526 ; free virtual = 7330
+Phase 9.2 Verifying Netlist Connectivity | Checksum: 200b4d1e5
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2998.816 ; gain = 32.016 ; free physical = 526 ; free virtual = 7330
+Phase 9 Finalization | Checksum: 200b4d1e5
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2998.816 ; gain = 32.016 ; free physical = 526 ; free virtual = 7330
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |              36  |             111  |                                            106  |
+|  Constant propagation         |             106  |             233  |                                            100  |
+|  Sweep                        |               0  |            1168  |                                            125  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                            100  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Ending Logic Optimization Task | Checksum: 200b4d1e5
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2998.816 ; gain = 32.016 ; free physical = 526 ; free virtual = 7330
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 2 BRAM(s) out of a total of 2 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+Number of BRAM Ports augmented: 2 newly gated: 0 Total Ports: 4
+Ending PowerOpt Patch Enables Task | Checksum: 1d5675f32
+
+Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.04 . Memory (MB): peak = 3166.867 ; gain = 0.000 ; free physical = 496 ; free virtual = 7300
+Ending Power Optimization Task | Checksum: 1d5675f32
+
+Time (s): cpu = 00:00:04 ; elapsed = 00:00:02 . Memory (MB): peak = 3166.867 ; gain = 168.051 ; free physical = 496 ; free virtual = 7300
+
+Starting Final Cleanup Task
+
+Starting Logic Optimization Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Logic Optimization Task | Checksum: 24ff0674b
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.59 . Memory (MB): peak = 3166.867 ; gain = 0.000 ; free physical = 494 ; free virtual = 7298
+Ending Final Cleanup Task | Checksum: 24ff0674b
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 3166.867 ; gain = 0.000 ; free physical = 494 ; free virtual = 7298
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3166.867 ; gain = 0.000 ; free physical = 494 ; free virtual = 7298
+INFO: [Common 17-83] Releasing license: Implementation
+53 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:14 ; elapsed = 00:00:09 . Memory (MB): peak = 3166.867 ; gain = 552.812 ; free physical = 494 ; free virtual = 7298
+INFO: [Vivado 12-24828] Executing command : report_drc -file poseidon_block_wrapper_drc_opted.rpt -pb poseidon_block_wrapper_drc_opted.pb -rpx poseidon_block_wrapper_drc_opted.rpx
+Command: report_drc -file poseidon_block_wrapper_drc_opted.rpt -pb poseidon_block_wrapper_drc_opted.pb -rpx poseidon_block_wrapper_drc_opted.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file /home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/impl_1/poseidon_block_wrapper_drc_opted.rpt.
+report_drc completed successfully
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3166.867 ; gain = 0.000 ; free physical = 488 ; free virtual = 7293
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3166.867 ; gain = 0.000 ; free physical = 488 ; free virtual = 7293
+Writing XDEF routing.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3166.867 ; gain = 0.000 ; free physical = 488 ; free virtual = 7294
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.04 . Memory (MB): peak = 3166.867 ; gain = 0.000 ; free physical = 488 ; free virtual = 7294
+Wrote PlaceStorage: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3166.867 ; gain = 0.000 ; free physical = 488 ; free virtual = 7295
+Wrote Netlist Cache: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3166.867 ; gain = 0.000 ; free physical = 488 ; free virtual = 7295
+Wrote Device Cache: Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3166.867 ; gain = 0.000 ; free physical = 488 ; free virtual = 7296
+Write Physdb Complete: Time (s): cpu = 00:00:00.22 ; elapsed = 00:00:00.06 . Memory (MB): peak = 3166.867 ; gain = 0.000 ; free physical = 488 ; free virtual = 7296
+INFO: [Common 17-1381] The checkpoint '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/impl_1/poseidon_block_wrapper_opt.dcp' has been generated.
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-83] Releasing license: Implementation
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 8 CPUs
+
+Starting Placer Task
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 477 ; free virtual = 7286
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 1c8cea27e
+
+Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 477 ; free virtual = 7286
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 477 ; free virtual = 7286
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 93247c3c
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.77 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 481 ; free virtual = 7289
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 1edc8bdf1
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 550 ; free virtual = 7358
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 1edc8bdf1
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 550 ; free virtual = 7358
+Phase 1 Placer Initialization | Checksum: 1edc8bdf1
+
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:03 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 550 ; free virtual = 7358
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 1baa16a37
+
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:04 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 543 ; free virtual = 7351
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 193cf29ae
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:04 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 544 ; free virtual = 7353
+
+Phase 2.3 Post-Processing in Floorplanning
+Phase 2.3 Post-Processing in Floorplanning | Checksum: 24e084972
+
+Time (s): cpu = 00:00:12 ; elapsed = 00:00:04 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 544 ; free virtual = 7353
+
+Phase 2.4 Global Place Phase1
+Phase 2.4 Global Place Phase1 | Checksum: 10b771dce
+
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:10 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 551 ; free virtual = 7359
+
+Phase 2.5 Global Place Phase2
+
+Phase 2.5.1 UpdateTiming Before Physical Synthesis
+Phase 2.5.1 UpdateTiming Before Physical Synthesis | Checksum: 1858f67b0
+
+Time (s): cpu = 00:00:37 ; elapsed = 00:00:11 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 550 ; free virtual = 7358
+
+Phase 2.5.2 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 0 LUTNM shape to break, 591 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 0, two critical 0, total 0, new lutff created 0
+INFO: [Physopt 32-1138] End 1 Pass. Optimized 243 nets or LUTs. Breaked 0 LUT, combined 243 existing LUTs and moved 0 existing LUT
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1123] No candidate cells found for Shift Register to Pipeline optimization
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-1401] No candidate cells found for Shift Register optimization.
+INFO: [Physopt 32-677] No candidate cells for Shift Register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-526] No candidate cells for BRAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 549 ; free virtual = 7357
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |            0  |            243  |                   243  |           0  |           1  |  00:00:00  |
+|  Retime                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Shift Register                                   |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Total                                            |            0  |            243  |                   243  |           0  |           9  |  00:00:00  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Phase 2.5.2 Physical Synthesis In Placer | Checksum: 1c3c67e7d
+
+Time (s): cpu = 00:00:40 ; elapsed = 00:00:12 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 373 ; free virtual = 7181
+Phase 2.5 Global Place Phase2 | Checksum: 1bbc2a2d4
+
+Time (s): cpu = 00:00:41 ; elapsed = 00:00:12 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 365 ; free virtual = 7173
+Phase 2 Global Placement | Checksum: 1bbc2a2d4
+
+Time (s): cpu = 00:00:42 ; elapsed = 00:00:12 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 349 ; free virtual = 7157
+
+Phase 3 Detail Placement
+
+Phase 3.1 Commit Multi Column Macros
+Phase 3.1 Commit Multi Column Macros | Checksum: 1ecc2a9e0
+
+Time (s): cpu = 00:00:44 ; elapsed = 00:00:13 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 523 ; free virtual = 7331
+
+Phase 3.2 Commit Most Macros & LUTRAMs
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 130a7ea5a
+
+Time (s): cpu = 00:00:47 ; elapsed = 00:00:14 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 515 ; free virtual = 7323
+
+Phase 3.3 Area Swap Optimization
+Phase 3.3 Area Swap Optimization | Checksum: 1763258fc
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:14 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 515 ; free virtual = 7323
+
+Phase 3.4 Pipeline Register Optimization
+Phase 3.4 Pipeline Register Optimization | Checksum: f4856098
+
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:14 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 515 ; free virtual = 7323
+
+Phase 3.5 Fast Optimization
+Phase 3.5 Fast Optimization | Checksum: 1873d5830
+
+Time (s): cpu = 00:00:53 ; elapsed = 00:00:16 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 507 ; free virtual = 7315
+
+Phase 3.6 Small Shape Detail Placement
+Phase 3.6 Small Shape Detail Placement | Checksum: 168a9922d
+
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:18 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 512 ; free virtual = 7320
+
+Phase 3.7 Re-assign LUT pins
+Phase 3.7 Re-assign LUT pins | Checksum: 14f857b63
+
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:18 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 513 ; free virtual = 7321
+
+Phase 3.8 Pipeline Register Optimization
+Phase 3.8 Pipeline Register Optimization | Checksum: 1ce1a634f
+
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:18 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 514 ; free virtual = 7322
+
+Phase 3.9 Fast Optimization
+Phase 3.9 Fast Optimization | Checksum: 15a8f36c8
+
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:22 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 521 ; free virtual = 7328
+Phase 3 Detail Placement | Checksum: 15a8f36c8
+
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:22 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 521 ; free virtual = 7328
+
+Phase 4 Post Placement Optimization and Clean-Up
+
+Phase 4.1 Post Commit Optimization
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+
+Phase 4.1.1 Post Placement Optimization
+Post Placement Optimization Initialization | Checksum: 15bfa75fc
+
+Phase 4.1.1.1 BUFG Insertion
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 8 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-18.681 | TNS=-2925.594 |
+Phase 1 Physical Synthesis Initialization | Checksum: 14b1e3bc0
+
+Time (s): cpu = 00:00:00.63 ; elapsed = 00:00:00.14 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 529 ; free virtual = 7337
+INFO: [Place 46-56] BUFG insertion identified 0 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 0, Skipped due to Timing Degradation: 0, Skipped due to netlist editing failed: 0.
+Ending Physical Synthesis Task | Checksum: 18e97a0f9
+
+Time (s): cpu = 00:00:00.69 ; elapsed = 00:00:00.18 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 529 ; free virtual = 7337
+Phase 4.1.1.1 BUFG Insertion | Checksum: 15bfa75fc
+
+Time (s): cpu = 00:01:13 ; elapsed = 00:00:23 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 529 ; free virtual = 7337
+
+Phase 4.1.1.2 Post Placement Timing Optimization
+INFO: [Place 30-746] Post Placement Timing Summary WNS=-18.151. For the most accurate timing information please run report_timing.
+Phase 4.1.1.2 Post Placement Timing Optimization | Checksum: 1c9d92f5e
+
+Time (s): cpu = 00:01:34 ; elapsed = 00:00:36 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 546 ; free virtual = 7354
+
+Time (s): cpu = 00:01:34 ; elapsed = 00:00:36 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 546 ; free virtual = 7354
+Phase 4.1 Post Commit Optimization | Checksum: 1c9d92f5e
+
+Time (s): cpu = 00:01:34 ; elapsed = 00:00:36 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 546 ; free virtual = 7354
+
+Phase 4.2 Post Placement Cleanup
+Phase 4.2 Post Placement Cleanup | Checksum: 1c9d92f5e
+
+Time (s): cpu = 00:01:34 ; elapsed = 00:00:36 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 546 ; free virtual = 7353
+
+Phase 4.3 Placer Reporting
+
+Phase 4.3.1 Print Estimated Congestion
+INFO: [Place 30-612] Post-Placement Estimated Congestion 
+ ____________________________________________________
+|           | Global Congestion | Short Congestion  |
+| Direction | Region Size       | Region Size       |
+|___________|___________________|___________________|
+|      North|                1x1|                2x2|
+|___________|___________________|___________________|
+|      South|                1x1|                2x2|
+|___________|___________________|___________________|
+|       East|                1x1|                1x1|
+|___________|___________________|___________________|
+|       West|                1x1|                1x1|
+|___________|___________________|___________________|
+
+Phase 4.3.1 Print Estimated Congestion | Checksum: 1c9d92f5e
+
+Time (s): cpu = 00:01:34 ; elapsed = 00:00:36 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 546 ; free virtual = 7353
+Phase 4.3 Placer Reporting | Checksum: 1c9d92f5e
+
+Time (s): cpu = 00:01:34 ; elapsed = 00:00:36 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 546 ; free virtual = 7353
+
+Phase 4.4 Final Placement Cleanup
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 546 ; free virtual = 7353
+
+Time (s): cpu = 00:01:34 ; elapsed = 00:00:36 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 546 ; free virtual = 7353
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 218f1430b
+
+Time (s): cpu = 00:01:34 ; elapsed = 00:00:36 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 546 ; free virtual = 7353
+Ending Placer Task | Checksum: 156d0b5d4
+
+Time (s): cpu = 00:01:34 ; elapsed = 00:00:36 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 545 ; free virtual = 7353
+96 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+place_design completed successfully
+place_design: Time (s): cpu = 00:01:38 ; elapsed = 00:00:38 . Memory (MB): peak = 3209.953 ; gain = 43.086 ; free physical = 545 ; free virtual = 7353
+INFO: [Vivado 12-24838] Running report commands "report_control_sets, report_io, report_utilization" in parallel.
+Running report generation with 3 threads.
+INFO: [Vivado 12-24828] Executing command : report_control_sets -verbose -file poseidon_block_wrapper_control_sets_placed.rpt
+report_control_sets: Time (s): cpu = 00:00:00.24 ; elapsed = 00:00:00.16 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 510 ; free virtual = 7317
+INFO: [Vivado 12-24828] Executing command : report_io -file poseidon_block_wrapper_io_placed.rpt
+report_io: Time (s): cpu = 00:00:00.3 ; elapsed = 00:00:00.21 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 521 ; free virtual = 7329
+INFO: [Vivado 12-24828] Executing command : report_utilization -file poseidon_block_wrapper_utilization_placed.rpt -pb poseidon_block_wrapper_utilization_placed.pb
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 531 ; free virtual = 7340
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 531 ; free virtual = 7340
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.04 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 529 ; free virtual = 7340
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.17 ; elapsed = 00:00:00.04 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 529 ; free virtual = 7340
+Wrote PlaceStorage: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.43 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 518 ; free virtual = 7340
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 518 ; free virtual = 7341
+Wrote Device Cache: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 512 ; free virtual = 7336
+Write Physdb Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.49 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 512 ; free virtual = 7336
+INFO: [Common 17-1381] The checkpoint '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/impl_1/poseidon_block_wrapper_placed.dcp' has been generated.
+Command: phys_opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+
+Starting Initial Update Timing Task
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:00.98 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 523 ; free virtual = 7337
+INFO: [Vivado_Tcl 4-1435] PhysOpt_Tcl_Interface Runtime Before Starting Physical Synthesis Task | CPU: 5.16s |  WALL: 1.00s
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 523 ; free virtual = 7337
+
+Starting Physical Synthesis Task
+
+Phase 1 Physical Synthesis Initialization
+INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 8 CPUs
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-18.135 | TNS=-2903.441 |
+Phase 1 Physical Synthesis Initialization | Checksum: 10e059269
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.83 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 523 ; free virtual = 7339
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-18.135 | TNS=-2903.441 |
+
+Phase 2 DSP Register Optimization
+INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in the design.
+INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Phase 2 DSP Register Optimization | Checksum: 10e059269
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.89 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 523 ; free virtual = 7340
+
+Phase 3 Critical Path Optimization
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-18.135 | TNS=-2903.441 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2[30]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/processing_system7/inst/FCLK_CLK_unbuffered[0]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/m2[30]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_8_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.998 | TNS=-2901.949 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_8_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.971 | TNS=-2901.110 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_7_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.962 | TNS=-2900.959 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1[29]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/m1[29]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_1_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_1
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.948 | TNS=-2898.819 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_6_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.941 | TNS=-2898.541 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_7_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.921 | TNS=-2898.521 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_5_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.901 | TNS=-2898.281 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0[31]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/m0[31]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_6_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.894 | TNS=-2898.225 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_7_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_3_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_3
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.891 | TNS=-2898.201 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_7_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.891 | TNS=-2897.736 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_8_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.886 | TNS=-2897.312 |
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_2_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_2
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.874 | TNS=-2896.940 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_6_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 21 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.872 | TNS=-2896.836 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_8_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_4_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_4
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.861 | TNS=-2896.496 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_8_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_4_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_4
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.849 | TNS=-2896.188 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1[31]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/m1[31]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__6_i_7_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.841 | TNS=-2895.820 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_8_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_4_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_4
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.839 | TNS=-2895.787 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_7_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_3_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_3
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.838 | TNS=-2895.723 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_7_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.836 | TNS=-2895.299 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_5_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.835 | TNS=-2894.887 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_6_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_2_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_2
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.821 | TNS=-2894.795 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_1_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_1
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.819 | TNS=-2894.477 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_6_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_2_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_2
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.818 | TNS=-2894.469 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__6_i_6_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.811 | TNS=-2894.375 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_1_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_1
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.801 | TNS=-2894.109 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_8_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 24 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.793 | TNS=-2894.037 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 20 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.792 | TNS=-2893.959 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_6_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.787 | TNS=-2893.813 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_7_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 12 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.782 | TNS=-2893.765 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_8_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.781 | TNS=-2893.631 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 14 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.776 | TNS=-2893.555 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_8_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_4_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_4
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.775 | TNS=-2893.405 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__6_i_7_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.772 | TNS=-2893.365 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_7_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.768 | TNS=-2892.026 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_7_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 20 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.767 | TNS=-2891.951 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_5_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.764 | TNS=-2891.933 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__3_i_5_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.763 | TNS=-2890.382 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__3_i_5_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.755 | TNS=-2889.263 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 24 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.742 | TNS=-2888.612 |
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_1_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_1
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.741 | TNS=-2888.568 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__6_i_7_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__6_i_3_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__6_i_3
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__6_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.737 | TNS=-2888.498 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 18 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.731 | TNS=-2888.116 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_7_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 17 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.730 | TNS=-2887.828 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_1_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_1
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.724 | TNS=-2887.780 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__6_i_5_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.724 | TNS=-2887.780 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__6_i_6_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 21 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__6_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.724 | TNS=-2887.634 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 20 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.717 | TNS=-2887.562 |
+INFO: [Physopt 32-601] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_4_n_0. Net driver poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_4 was replaced.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.715 | TNS=-2887.529 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 24 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.713 | TNS=-2887.360 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 6 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.712 | TNS=-2887.352 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 23 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.706 | TNS=-2887.272 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__8[19]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_carry_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2[30]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_i_1_n_6. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_i_2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 9 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_i_19_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.696 | TNS=-2884.300 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 18 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.692 | TNS=-2884.276 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_8_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 24 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.685 | TNS=-2883.882 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__6_i_7_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__6_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.685 | TNS=-2883.788 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.679 | TNS=-2883.740 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.668 | TNS=-2883.092 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_6_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_2_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_2
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.662 | TNS=-2883.027 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__6_i_6_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__6_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.661 | TNS=-2882.997 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 18 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.660 | TNS=-2882.389 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 18 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.655 | TNS=-2882.349 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_6_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 17 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.639 | TNS=-2882.062 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 21 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.638 | TNS=-2882.054 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 18 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__4_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.638 | TNS=-2882.054 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__3_i_5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__3_i_1_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__3_i_1
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__3_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.638 | TNS=-2881.061 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__8[25]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_carry_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 10 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_i_15_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.637 | TNS=-2880.832 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 12 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.628 | TNS=-2879.950 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 10 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_i_16_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.627 | TNS=-2878.366 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0[23]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/m0[23]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__3_i_5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__3_i_1_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__3_i_1
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__3_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.623 | TNS=-2877.156 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_6_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_2_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_2
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.621 | TNS=-2877.124 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 18 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__4_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.613 | TNS=-2875.900 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 23 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.609 | TNS=-2875.788 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__5_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.599 | TNS=-2875.138 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__9[23]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_inferred__0/i__carry_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_3__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1[29]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_1_n_4. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_19_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__2_i_1_n_6. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__2_i_2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__2_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__2_i_16_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__4_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return1__4_n_102. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/x[14]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return2_inferred__0/i__carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry__1_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.593 | TNS=-2874.496 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry__1_i_4__2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.591 | TNS=-2873.747 |
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__3_i_1_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__3_i_1
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__3_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.586 | TNS=-2872.897 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return2_inferred__0/i__carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry__0_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.563 | TNS=-2870.470 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st00__1_carry__6_i_5_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.560 | TNS=-2870.312 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry__0_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.552 | TNS=-2869.296 |
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__3_i_1_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__3_i_1
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__3_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.549 | TNS=-2868.626 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_1_n_0.  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_1
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__6_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.549 | TNS=-2868.504 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_inferred__1/i__carry__0_n_4. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_inferred__1/i__carry_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_3__2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__5_i_1_n_4. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__5_i_2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__5_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__5_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 9 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__5_i_19_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.538 | TNS=-2867.107 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return2_inferred__0/i__carry_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_2_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.533 | TNS=-2866.623 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 9 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_i_18_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.526 | TNS=-2866.385 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.526 | TNS=-2862.460 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_i_16_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return1__8[31]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0_i_2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 9 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0_i_19_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.508 | TNS=-2859.970 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 21 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry__2_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.508 | TNS=-2859.832 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 9 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__5_i_18_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.506 | TNS=-2857.082 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_1_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.465 | TNS=-2855.531 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry__0_i_3_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.462 | TNS=-2855.246 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry__0_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.459 | TNS=-2854.961 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry__0_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return1__3_n_106. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-81] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]. Replicated 5 times.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.451 | TNS=-2853.189 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 9 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__5_i_17_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.443 | TNS=-2852.430 |
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-81] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[0]. Replicated 4 times.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[0]. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.437 | TNS=-2851.053 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry__0_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.432 | TNS=-2849.941 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 10 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__5_i_15_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.425 | TNS=-2849.525 |
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_4_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-17.422 | TNS=-2846.461 |
+INFO: [Common 17-14] Message 'Physopt 32-619' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__5_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__5_i_1_n_6. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__5_i_2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__5_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__5_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 9 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__5_i_19_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 9 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__5_i_18_n_0. Optimization improves timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 9 pins.
+INFO: [Physopt 32-735] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__5_i_17_n_0. Optimization improves timing on the net.
+INFO: [Common 17-14] Message 'Physopt 32-735' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Physopt 32-81] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[2]. Replicated 5 times.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 10 pins.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 22 pins.
+INFO: [Physopt 32-81] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[1]. Replicated 4 times.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-663] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2[0].  Re-placed instance poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[0]
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[0]_repN. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1[29]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/processing_system7/inst/FCLK_CLK_unbuffered[0]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/m1[29]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 26 pins.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2[30]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/m2[30]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_8_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st20__1_carry__5_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_inferred__1/i__carry__0_n_4. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_3__2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2[30]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__5_i_1_n_4. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__5_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__5_i_1_n_6. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__7_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return1__7_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/x0_out[16]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-608] Optimized 1 net.  Swapped 19 pins.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__9[22]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_3__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1[29]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_1_n_4. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_19_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__2_i_1_n_6. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__2_i_16_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__4_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return1__4_n_102. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/x[14]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[0]_repN. Optimizations did not improve timing on the net.
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 525 ; free virtual = 7339
+Phase 3 Critical Path Optimization | Checksum: 55730a46
+
+Time (s): cpu = 00:01:00 ; elapsed = 00:00:16 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 525 ; free virtual = 7339
+
+Phase 4 Critical Path Optimization
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1[29]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/processing_system7/inst/FCLK_CLK_unbuffered[0]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/m1[29]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__9[22]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return_inferred__0/i__carry_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_3__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1[29]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_1_n_4. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_19_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__2_i_1_n_6. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__2_i_2_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__2_i_3_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__2_i_16_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__4_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return1__4_n_102. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/x[14]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return2_inferred__0/i__carry__1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return2_inferred__0/i__carry__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return2_inferred__0/i__carry_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return1__3_n_106. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[0]_repN. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1[29]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/processing_system7/inst/FCLK_CLK_unbuffered[0]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/m1[29]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_5_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st10__1_carry__4_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__9[22]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_3__0_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1[29]_i_1_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_1_n_4. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_i_19_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return__2_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__2_i_1_n_6. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__2_i_16_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return0__4_n_105. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/sbox_return1__4_n_102. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/x[14]. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/i__carry_i_4_n_0. Optimizations did not improve timing on the net.
+INFO: [Physopt 32-702] Processed net poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[0]_repN. Optimizations did not improve timing on the net.
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 526 ; free virtual = 7340
+Phase 4 Critical Path Optimization | Checksum: 55730a46
+
+Time (s): cpu = 00:01:03 ; elapsed = 00:00:17 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 526 ; free virtual = 7340
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 526 ; free virtual = 7340
+INFO: [Physopt 32-603] Post Physical Optimization Timing Summary | WNS=-17.252 | TNS=-2822.355 |
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization   |  WNS Gain (ns)  |  TNS Gain (ns)  |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+|  DSP Register   |          0.000  |          0.000  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  Critical Path  |          0.883  |         81.086  |           18  |              0  |                   107  |           0  |           2  |  00:00:16  |
+|  Total          |          0.883  |         81.086  |           18  |              0  |                   107  |           0  |           3  |  00:00:16  |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 526 ; free virtual = 7340
+Ending Physical Synthesis Task | Checksum: 739edc26
+
+Time (s): cpu = 00:01:03 ; elapsed = 00:00:17 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 526 ; free virtual = 7340
+INFO: [Common 17-83] Releasing license: Implementation
+606 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+phys_opt_design completed successfully
+phys_opt_design: Time (s): cpu = 00:01:08 ; elapsed = 00:00:18 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 526 ; free virtual = 7340
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 526 ; free virtual = 7341
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 526 ; free virtual = 7341
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 525 ; free virtual = 7342
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.17 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 525 ; free virtual = 7342
+Wrote PlaceStorage: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.39 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 518 ; free virtual = 7346
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 519 ; free virtual = 7348
+Wrote Device Cache: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 519 ; free virtual = 7349
+Write Physdb Complete: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.45 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 519 ; free virtual = 7349
+INFO: [Common 17-1381] The checkpoint '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/impl_1/poseidon_block_wrapper_physopt.dcp' has been generated.
+Command: route_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+
+Starting Routing Task
+INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 8 CPUs
+
+Phase 1 Build RT Design
+Checksum: PlaceDB: 3fd8d0c5 ConstDB: 0 ShapeSum: be0ddd1 RouteDB: 15f972f0
+Post Restoration Checksum: NetGraph: 65f9bb04 | NumContArr: f40ff031 | Constraints: c2a8fa9d | Timing: c2a8fa9d
+Phase 1 Build RT Design | Checksum: 2df5ba06f
+
+Time (s): cpu = 00:00:24 ; elapsed = 00:00:15 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 530 ; free virtual = 7350
+
+Phase 2 Router Initialization
+
+Phase 2.1 Fix Topology Constraints
+Phase 2.1 Fix Topology Constraints | Checksum: 2df5ba06f
+
+Time (s): cpu = 00:00:24 ; elapsed = 00:00:15 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 530 ; free virtual = 7350
+
+Phase 2.2 Pre Route Cleanup
+Phase 2.2 Pre Route Cleanup | Checksum: 2df5ba06f
+
+Time (s): cpu = 00:00:24 ; elapsed = 00:00:15 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 530 ; free virtual = 7350
+ Number of Nodes with overlaps = 0
+
+Phase 2.3 Update Timing
+Phase 2.3 Update Timing | Checksum: 280e949b7
+
+Time (s): cpu = 00:00:33 ; elapsed = 00:00:17 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 527 ; free virtual = 7347
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-17.251| TNS=-2820.575| WHS=-0.346 | THS=-416.965|
+
+
+Phase 2.4 Soft Constraint Pins - Fast Budgeting
+Phase 2.4 Soft Constraint Pins - Fast Budgeting | Checksum: 1e0690f46
+
+Time (s): cpu = 00:00:36 ; elapsed = 00:00:18 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 518 ; free virtual = 7338
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 0 %
+  Global Horizontal Routing Utilization  = 0 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 10746
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 10746
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+Phase 2 Router Initialization | Checksum: 1a790ff91
+
+Time (s): cpu = 00:00:36 ; elapsed = 00:00:18 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 519 ; free virtual = 7339
+
+Phase 3 Global Routing
+Phase 3 Global Routing | Checksum: 1a790ff91
+
+Time (s): cpu = 00:00:36 ; elapsed = 00:00:18 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 519 ; free virtual = 7339
+
+Phase 4 Initial Routing
+
+Phase 4.1 Initial Net Routing Pass
+Phase 4.1 Initial Net Routing Pass | Checksum: 1f5f25ff3
+
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:19 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 517 ; free virtual = 7337
+Phase 4 Initial Routing | Checksum: 1f5f25ff3
+
+Time (s): cpu = 00:00:39 ; elapsed = 00:00:19 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 517 ; free virtual = 7337
+
+Phase 5 Rip-up And Reroute
+
+Phase 5.1 Global Iteration 0
+ Number of Nodes with overlaps = 1427
+ Number of Nodes with overlaps = 214
+ Number of Nodes with overlaps = 85
+ Number of Nodes with overlaps = 8
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-18.101| TNS=-2894.795| WHS=N/A    | THS=N/A    |
+
+Phase 5.1 Global Iteration 0 | Checksum: 22b4c4cac
+
+Time (s): cpu = 00:00:53 ; elapsed = 00:00:27 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 518 ; free virtual = 7338
+
+Phase 5.2 Global Iteration 1
+ Number of Nodes with overlaps = 588
+ Number of Nodes with overlaps = 159
+ Number of Nodes with overlaps = 13
+ Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-18.209| TNS=-2926.775| WHS=N/A    | THS=N/A    |
+
+Phase 5.2 Global Iteration 1 | Checksum: 22db90203
+
+Time (s): cpu = 00:01:02 ; elapsed = 00:00:33 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 519 ; free virtual = 7339
+Phase 5 Rip-up And Reroute | Checksum: 22db90203
+
+Time (s): cpu = 00:01:02 ; elapsed = 00:00:33 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 519 ; free virtual = 7339
+
+Phase 6 Delay and Skew Optimization
+
+Phase 6.1 Delay CleanUp
+
+Phase 6.1.1 Update Timing
+Phase 6.1.1 Update Timing | Checksum: 2ec8aa6e0
+
+Time (s): cpu = 00:01:03 ; elapsed = 00:00:33 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 519 ; free virtual = 7339
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-17.970| TNS=-2866.475| WHS=N/A    | THS=N/A    |
+
+ Number of Nodes with overlaps = 0
+Phase 6.1 Delay CleanUp | Checksum: 1b86f20e0
+
+Time (s): cpu = 00:01:04 ; elapsed = 00:00:33 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 516 ; free virtual = 7337
+
+Phase 6.2 Clock Skew Optimization
+Phase 6.2 Clock Skew Optimization | Checksum: 1b86f20e0
+
+Time (s): cpu = 00:01:04 ; elapsed = 00:00:33 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 516 ; free virtual = 7337
+Phase 6 Delay and Skew Optimization | Checksum: 1b86f20e0
+
+Time (s): cpu = 00:01:04 ; elapsed = 00:00:33 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 516 ; free virtual = 7337
+
+Phase 7 Post Hold Fix
+
+Phase 7.1 Hold Fix Iter
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=-17.937| TNS=-2863.336| WHS=0.012  | THS=0.000  |
+
+Phase 7.1 Hold Fix Iter | Checksum: 1ffd3e19f
+
+Time (s): cpu = 00:01:05 ; elapsed = 00:00:34 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 516 ; free virtual = 7336
+Phase 7 Post Hold Fix | Checksum: 1ffd3e19f
+
+Time (s): cpu = 00:01:05 ; elapsed = 00:00:34 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 516 ; free virtual = 7336
+
+Phase 8 Route finalize
+
+Router Utilization Summary
+  Global Vertical Routing Utilization    = 2.02175 %
+  Global Horizontal Routing Utilization  = 2.43171 %
+  Routable Net Status*
+  *Does not include unroutable nets such as driverless and loadless.
+  Run report_route_status for detailed report.
+  Number of Failed Nets               = 0
+    (Failed Nets is the sum of unrouted and partially routed nets)
+  Number of Unrouted Nets             = 0
+  Number of Partially Routed Nets     = 0
+  Number of Node Overlaps             = 0
+
+
+--GLOBAL Congestion:
+Utilization threshold used for congestion level computation: 0.85
+Congestion Report
+North Dir 1x1 Area, Max Cong = 58.5586%, No Congested Regions.
+South Dir 1x1 Area, Max Cong = 67.5676%, No Congested Regions.
+East Dir 1x1 Area, Max Cong = 58.8235%, No Congested Regions.
+West Dir 1x1 Area, Max Cong = 76.4706%, No Congested Regions.
+
+------------------------------
+Reporting congestion hotspots
+------------------------------
+Direction: North
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: South
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: East
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+Direction: West
+----------------
+Congested clusters found at Level 0
+Effective congestion level: 0 Aspect Ratio: 1 Sparse Ratio: 0
+
+Phase 8 Route finalize | Checksum: 1ffd3e19f
+
+Time (s): cpu = 00:01:05 ; elapsed = 00:00:34 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 516 ; free virtual = 7336
+
+Phase 9 Verifying routed nets
+
+ Verification completed successfully
+Phase 9 Verifying routed nets | Checksum: 1ffd3e19f
+
+Time (s): cpu = 00:01:05 ; elapsed = 00:00:34 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 515 ; free virtual = 7335
+
+Phase 10 Depositing Routes
+Phase 10 Depositing Routes | Checksum: 1dac7474d
+
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:34 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 515 ; free virtual = 7335
+
+Phase 11 Post Process Routing
+Phase 11 Post Process Routing | Checksum: 1dac7474d
+
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:34 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 515 ; free virtual = 7335
+
+Phase 12 Post Router Timing
+INFO: [Route 35-57] Estimated Timing Summary | WNS=-17.937| TNS=-2863.336| WHS=0.012  | THS=0.000  |
+
+WARNING: [Route 35-328] Router estimated timing not met.
+Resolution: For a complete and accurate timing signoff, report_timing_summary must be run after route_design. Alternatively, route_design can be run with the -timing_summary option to enable a complete timing signoff at the end of route_design.
+Phase 12 Post Router Timing | Checksum: 1dac7474d
+
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:34 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 515 ; free virtual = 7335
+Total Elapsed time in route_design: 34.25 secs
+
+Phase 13 Post-Route Event Processing
+Phase 13 Post-Route Event Processing | Checksum: 64619a64
+
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:34 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 515 ; free virtual = 7335
+INFO: [Route 35-16] Router Completed Successfully
+Ending Routing Task | Checksum: 64619a64
+
+Time (s): cpu = 00:01:06 ; elapsed = 00:00:34 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 515 ; free virtual = 7335
+
+Routing Is Done.
+INFO: [Common 17-83] Releasing license: Implementation
+621 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+route_design completed successfully
+route_design: Time (s): cpu = 00:01:07 ; elapsed = 00:00:35 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 515 ; free virtual = 7335
+INFO: [Vivado 12-24828] Executing command : report_drc -file poseidon_block_wrapper_drc_routed.rpt -pb poseidon_block_wrapper_drc_routed.pb -rpx poseidon_block_wrapper_drc_routed.rpx
+Command: report_drc -file poseidon_block_wrapper_drc_routed.rpt -pb poseidon_block_wrapper_drc_routed.pb -rpx poseidon_block_wrapper_drc_routed.rpx
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file /home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/impl_1/poseidon_block_wrapper_drc_routed.rpt.
+report_drc completed successfully
+INFO: [Vivado 12-24828] Executing command : report_methodology -file poseidon_block_wrapper_methodology_drc_routed.rpt -pb poseidon_block_wrapper_methodology_drc_routed.pb -rpx poseidon_block_wrapper_methodology_drc_routed.rpx
+Command: report_methodology -file poseidon_block_wrapper_methodology_drc_routed.rpt -pb poseidon_block_wrapper_methodology_drc_routed.pb -rpx poseidon_block_wrapper_methodology_drc_routed.rpx
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-133] Running Methodology with 8 threads
+INFO: [Vivado_Tcl 2-1520] The results of Report Methodology are in file /home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/impl_1/poseidon_block_wrapper_methodology_drc_routed.rpt.
+report_methodology completed successfully
+INFO: [Vivado 12-24828] Executing command : report_timing_summary -max_paths 10 -routable_nets -report_unconstrained -file poseidon_block_wrapper_timing_summary_routed.rpt -pb poseidon_block_wrapper_timing_summary_routed.pb -rpx poseidon_block_wrapper_timing_summary_routed.rpx -warn_on_violation 
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+CRITICAL WARNING: [Timing 38-282] The design failed to meet the timing requirements. Please see the timing summary report for details on the timing violations.
+INFO: [Vivado 12-24838] Running report commands "report_bus_skew, report_incremental_reuse, report_route_status" in parallel.
+Running report generation with 3 threads.
+INFO: [Vivado 12-24828] Executing command : report_incremental_reuse -file poseidon_block_wrapper_incremental_reuse_routed.rpt
+INFO: [Vivado_Tcl 4-1062] Incremental flow is disabled. No incremental reuse Info to report.
+INFO: [Vivado 12-24828] Executing command : report_bus_skew -warn_on_violation -file poseidon_block_wrapper_bus_skew_routed.rpt -pb poseidon_block_wrapper_bus_skew_routed.pb -rpx poseidon_block_wrapper_bus_skew_routed.rpx
+INFO: [Timing 38-91] UpdateTimingParams: Speed grade: -1, Delay Type: min_max.
+INFO: [Timing 38-191] Multithreading enabled for timing update using a maximum of 8 CPUs
+INFO: [Vivado 12-24828] Executing command : report_route_status -file poseidon_block_wrapper_route_status.rpt -pb poseidon_block_wrapper_route_status.pb
+INFO: [Vivado 12-24828] Executing command : report_power -file poseidon_block_wrapper_power_routed.rpt -pb poseidon_block_wrapper_power_summary_routed.pb -rpx poseidon_block_wrapper_power_routed.rpx
+Command: report_power -file poseidon_block_wrapper_power_routed.rpt -pb poseidon_block_wrapper_power_summary_routed.pb -rpx poseidon_block_wrapper_power_routed.rpx
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+641 Infos, 1 Warnings, 1 Critical Warnings and 0 Errors encountered.
+report_power completed successfully
+INFO: [Vivado 12-24828] Executing command : report_clock_utilization -file poseidon_block_wrapper_clock_utilization_routed.rpt
+generate_parallel_reports: Time (s): cpu = 00:00:34 ; elapsed = 00:00:09 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 457 ; free virtual = 7286
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Wrote PlaceDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 456 ; free virtual = 7286
+Wrote PulsedLatchDB: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 456 ; free virtual = 7286
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00.15 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 452 ; free virtual = 7285
+Writing XDEF routing special nets.
+Wrote RouteStorage: Time (s): cpu = 00:00:00.49 ; elapsed = 00:00:00.1 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 450 ; free virtual = 7287
+Wrote PlaceStorage: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.4 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 436 ; free virtual = 7282
+Wrote Netlist Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 434 ; free virtual = 7280
+Wrote Device Cache: Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 434 ; free virtual = 7281
+Write Physdb Complete: Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.52 . Memory (MB): peak = 3209.953 ; gain = 0.000 ; free physical = 434 ; free virtual = 7281
+INFO: [Common 17-1381] The checkpoint '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/impl_1/poseidon_block_wrapper_routed.dcp' has been generated.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_w_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_aw_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_aw_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/s00_nodes/s00_ar_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_w_node/inst/inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_w_node/inst/inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_r_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_r_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_b_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_b_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m03_nodes/m03_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_w_node/inst/inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_w_node/inst/inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_r_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_b_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_b_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m02_nodes/m02_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_w_node/inst/inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_w_node/inst/inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_r_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_r_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_b_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_b_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m01_nodes/m01_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_w_node/inst/inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_w_node/inst/inst_si_handler/gen_si_handler.gen_request_fifos.gen_req_fifo[0].inst_req_fifo/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_w_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_r_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_r_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_r_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_b_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_b_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_b_node/inst/inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_aw_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+INFO: [Memdata 28-167] Found XPM memory block poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst with a P_MEMORY_PRIMITIVE property set to distributed. A value of block is required. You will not be able to use the updatemem program to update the bitstream with new data for the poseidon_block_i/smartconnect_0/inst/m00_nodes/m00_ar_node/inst/inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory/xpm_memory_base_inst block.
+Command: write_bitstream -force poseidon_block_wrapper.bit
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command write_bitstream
+INFO: [IP_Flow 19-1839] IP Catalog is up to date.
+INFO: [DRC 23-27] Running DRC with 8 threads
+INFO: [Vivado 12-3199] DRC finished with 0 Errors
+INFO: [Vivado 12-3200] Please refer to the DRC report (report_drc) for more information.
+Integrating Hard IP ELF/MEM with the PDI.
+INFO: [Designutils 20-2272] Running write_bitstream with 8 threads.
+Loading data files...
+Loading site data...
+Loading route data...
+Processing options...
+Creating bitmap...
+Creating bitstream...
+Writing bitstream ./poseidon_block_wrapper.bit...
+INFO: [Vivado 12-1842] Bitgen Completed Successfully.
+INFO: [Common 17-83] Releasing license: Implementation
+692 Infos, 1 Warnings, 1 Critical Warnings and 0 Errors encountered.
+write_bitstream completed successfully
+write_bitstream: Time (s): cpu = 00:00:14 ; elapsed = 00:00:25 . Memory (MB): peak = 3389.547 ; gain = 179.594 ; free physical = 236 ; free virtual = 6926
+INFO: [Common 17-206] Exiting Vivado at Mon Dec  8 05:04:55 2025...

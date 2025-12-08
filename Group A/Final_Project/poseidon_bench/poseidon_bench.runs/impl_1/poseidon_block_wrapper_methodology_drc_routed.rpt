@@ -1,0 +1,1046 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date         : Mon Dec  8 05:04:24 2025
+| Host         : ckpai running 64-bit Ubuntu 24.04.3 LTS
+| Command      : report_methodology -file poseidon_block_wrapper_methodology_drc_routed.rpt -pb poseidon_block_wrapper_methodology_drc_routed.pb -rpx poseidon_block_wrapper_methodology_drc_routed.rpx
+| Design       : poseidon_block_wrapper
+| Device       : xc7z020clg400-1
+| Speed File   : -1
+| Design State : Fully Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max checks: <unlimited>
+             Checks found: 202
++-----------+----------+-------------------------------+--------+
+| Rule      | Severity | Description                   | Checks |
++-----------+----------+-------------------------------+--------+
+| TIMING-16 | Warning  | Large setup violation         | 192    |
+| TIMING-18 | Warning  | Missing input or output delay | 10     |
++-----------+----------+-------------------------------+--------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -11.259 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[0]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -11.268 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[0]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -11.340 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[0]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -11.434 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[1]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#5 Warning
+Large setup violation  
+There is a large setup violation of -11.445 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[1]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#6 Warning
+Large setup violation  
+There is a large setup violation of -11.726 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[2]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#7 Warning
+Large setup violation  
+There is a large setup violation of -11.772 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[2]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#8 Warning
+Large setup violation  
+There is a large setup violation of -11.789 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[1]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#9 Warning
+Large setup violation  
+There is a large setup violation of -11.888 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[3]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#10 Warning
+Large setup violation  
+There is a large setup violation of -12.174 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[2]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#11 Warning
+Large setup violation  
+There is a large setup violation of -12.217 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[0]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#12 Warning
+Large setup violation  
+There is a large setup violation of -12.228 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[0]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#13 Warning
+Large setup violation  
+There is a large setup violation of -12.266 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[3]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#14 Warning
+Large setup violation  
+There is a large setup violation of -12.278 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[3]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#15 Warning
+Large setup violation  
+There is a large setup violation of -12.350 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[4]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#16 Warning
+Large setup violation  
+There is a large setup violation of -12.517 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[1]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#17 Warning
+Large setup violation  
+There is a large setup violation of -12.527 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[5]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#18 Warning
+Large setup violation  
+There is a large setup violation of -12.599 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[1]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#19 Warning
+Large setup violation  
+There is a large setup violation of -12.620 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[4]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#20 Warning
+Large setup violation  
+There is a large setup violation of -12.644 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[6]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#21 Warning
+Large setup violation  
+There is a large setup violation of -12.650 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[6]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#22 Warning
+Large setup violation  
+There is a large setup violation of -12.652 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[4]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#23 Warning
+Large setup violation  
+There is a large setup violation of -12.672 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[1]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#24 Warning
+Large setup violation  
+There is a large setup violation of -12.673 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[6]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#25 Warning
+Large setup violation  
+There is a large setup violation of -12.683 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[2]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#26 Warning
+Large setup violation  
+There is a large setup violation of -12.709 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[7]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#27 Warning
+Large setup violation  
+There is a large setup violation of -12.719 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[7]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#28 Warning
+Large setup violation  
+There is a large setup violation of -12.725 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[5]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#29 Warning
+Large setup violation  
+There is a large setup violation of -12.738 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[8]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#30 Warning
+Large setup violation  
+There is a large setup violation of -12.746 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[7]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#31 Warning
+Large setup violation  
+There is a large setup violation of -12.762 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[10]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#32 Warning
+Large setup violation  
+There is a large setup violation of -12.765 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[5]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#33 Warning
+Large setup violation  
+There is a large setup violation of -12.767 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[0]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#34 Warning
+Large setup violation  
+There is a large setup violation of -12.837 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[8]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#35 Warning
+Large setup violation  
+There is a large setup violation of -12.837 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[11]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#36 Warning
+Large setup violation  
+There is a large setup violation of -12.843 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[9]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#37 Warning
+Large setup violation  
+There is a large setup violation of -12.847 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[3]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#38 Warning
+Large setup violation  
+There is a large setup violation of -12.858 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[10]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#39 Warning
+Large setup violation  
+There is a large setup violation of -12.871 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[8]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#40 Warning
+Large setup violation  
+There is a large setup violation of -12.892 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[10]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#41 Warning
+Large setup violation  
+There is a large setup violation of -12.912 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[12]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#42 Warning
+Large setup violation  
+There is a large setup violation of -12.931 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[11]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#43 Warning
+Large setup violation  
+There is a large setup violation of -12.936 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[14]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#44 Warning
+Large setup violation  
+There is a large setup violation of -12.950 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[9]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#45 Warning
+Large setup violation  
+There is a large setup violation of -12.951 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[12]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#46 Warning
+Large setup violation  
+There is a large setup violation of -12.965 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[11]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#47 Warning
+Large setup violation  
+There is a large setup violation of -12.972 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[14]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#48 Warning
+Large setup violation  
+There is a large setup violation of -12.984 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[9]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#49 Warning
+Large setup violation  
+There is a large setup violation of -12.985 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[12]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#50 Warning
+Large setup violation  
+There is a large setup violation of -13.006 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[14]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#51 Warning
+Large setup violation  
+There is a large setup violation of -13.006 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[2]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#52 Warning
+Large setup violation  
+There is a large setup violation of -13.011 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[15]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#53 Warning
+Large setup violation  
+There is a large setup violation of -13.017 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[13]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#54 Warning
+Large setup violation  
+There is a large setup violation of -13.030 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[16]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#55 Warning
+Large setup violation  
+There is a large setup violation of -13.045 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[15]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#56 Warning
+Large setup violation  
+There is a large setup violation of -13.064 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[13]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#57 Warning
+Large setup violation  
+There is a large setup violation of -13.066 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[16]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#58 Warning
+Large setup violation  
+There is a large setup violation of -13.067 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[2]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#59 Warning
+Large setup violation  
+There is a large setup violation of -13.079 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[15]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#60 Warning
+Large setup violation  
+There is a large setup violation of -13.098 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[13]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#61 Warning
+Large setup violation  
+There is a large setup violation of -13.100 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[16]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#62 Warning
+Large setup violation  
+There is a large setup violation of -13.205 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[3]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#63 Warning
+Large setup violation  
+There is a large setup violation of -13.346 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[4]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#64 Warning
+Large setup violation  
+There is a large setup violation of -13.427 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[4]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#65 Warning
+Large setup violation  
+There is a large setup violation of -13.437 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[3]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#66 Warning
+Large setup violation  
+There is a large setup violation of -13.492 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[7]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#67 Warning
+Large setup violation  
+There is a large setup violation of -13.508 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[6]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#68 Warning
+Large setup violation  
+There is a large setup violation of -13.532 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[7]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#69 Warning
+Large setup violation  
+There is a large setup violation of -13.605 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[8]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#70 Warning
+Large setup violation  
+There is a large setup violation of -13.618 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#71 Warning
+Large setup violation  
+There is a large setup violation of -13.634 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[5]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#72 Warning
+Large setup violation  
+There is a large setup violation of -13.677 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[11]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#73 Warning
+Large setup violation  
+There is a large setup violation of -13.689 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[12]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#74 Warning
+Large setup violation  
+There is a large setup violation of -13.706 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[10]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#75 Warning
+Large setup violation  
+There is a large setup violation of -13.756 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[6]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#76 Warning
+Large setup violation  
+There is a large setup violation of -13.777 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[11]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#77 Warning
+Large setup violation  
+There is a large setup violation of -13.785 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[4]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#78 Warning
+Large setup violation  
+There is a large setup violation of -13.792 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[15]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#79 Warning
+Large setup violation  
+There is a large setup violation of -13.797 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[6]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#80 Warning
+Large setup violation  
+There is a large setup violation of -13.803 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[9]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#81 Warning
+Large setup violation  
+There is a large setup violation of -13.809 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[12]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#82 Warning
+Large setup violation  
+There is a large setup violation of -13.824 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[14]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#83 Warning
+Large setup violation  
+There is a large setup violation of -13.866 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[8]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#84 Warning
+Large setup violation  
+There is a large setup violation of -13.883 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[8]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#85 Warning
+Large setup violation  
+There is a large setup violation of -13.892 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[15]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#86 Warning
+Large setup violation  
+There is a large setup violation of -13.893 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[7]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#87 Warning
+Large setup violation  
+There is a large setup violation of -13.911 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[13]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#88 Warning
+Large setup violation  
+There is a large setup violation of -13.918 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[16]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#89 Warning
+Large setup violation  
+There is a large setup violation of -13.926 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[12]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#90 Warning
+Large setup violation  
+There is a large setup violation of -13.932 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[10]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#91 Warning
+Large setup violation  
+There is a large setup violation of -13.934 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[2]_replica/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#92 Warning
+Large setup violation  
+There is a large setup violation of -13.963 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[14]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#93 Warning
+Large setup violation  
+There is a large setup violation of -13.990 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[16]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#94 Warning
+Large setup violation  
+There is a large setup violation of -13.997 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[11]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#95 Warning
+Large setup violation  
+There is a large setup violation of -14.004 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[9]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#96 Warning
+Large setup violation  
+There is a large setup violation of -14.040 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[10]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#97 Warning
+Large setup violation  
+There is a large setup violation of -14.091 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[9]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#98 Warning
+Large setup violation  
+There is a large setup violation of -14.095 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[14]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#99 Warning
+Large setup violation  
+There is a large setup violation of -14.186 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[15]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#100 Warning
+Large setup violation  
+There is a large setup violation of -14.197 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[16]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#101 Warning
+Large setup violation  
+There is a large setup violation of -14.205 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[13]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#102 Warning
+Large setup violation  
+There is a large setup violation of -14.237 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/round_ctr_reg[3]_replica_1/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[13]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#103 Warning
+Large setup violation  
+There is a large setup violation of -14.900 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[17]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#104 Warning
+Large setup violation  
+There is a large setup violation of -15.042 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[17]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#105 Warning
+Large setup violation  
+There is a large setup violation of -15.309 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[17]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#106 Warning
+Large setup violation  
+There is a large setup violation of -15.671 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[18]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#107 Warning
+Large setup violation  
+There is a large setup violation of -15.687 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[18]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#108 Warning
+Large setup violation  
+There is a large setup violation of -15.888 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[17]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#109 Warning
+Large setup violation  
+There is a large setup violation of -15.912 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[18]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#110 Warning
+Large setup violation  
+There is a large setup violation of -15.973 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[19]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#111 Warning
+Large setup violation  
+There is a large setup violation of -16.002 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[19]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#112 Warning
+Large setup violation  
+There is a large setup violation of -16.016 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[19]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#113 Warning
+Large setup violation  
+There is a large setup violation of -16.016 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[17]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#114 Warning
+Large setup violation  
+There is a large setup violation of -16.277 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[17]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#115 Warning
+Large setup violation  
+There is a large setup violation of -16.340 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[20]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#116 Warning
+Large setup violation  
+There is a large setup violation of -16.362 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[20]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#117 Warning
+Large setup violation  
+There is a large setup violation of -16.411 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[20]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#118 Warning
+Large setup violation  
+There is a large setup violation of -16.439 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[22]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#119 Warning
+Large setup violation  
+There is a large setup violation of -16.453 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[21]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#120 Warning
+Large setup violation  
+There is a large setup violation of -16.477 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[21]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#121 Warning
+Large setup violation  
+There is a large setup violation of -16.498 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[18]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#122 Warning
+Large setup violation  
+There is a large setup violation of -16.510 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[23]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#123 Warning
+Large setup violation  
+There is a large setup violation of -16.516 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[21]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#124 Warning
+Large setup violation  
+There is a large setup violation of -16.571 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[22]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#125 Warning
+Large setup violation  
+There is a large setup violation of -16.600 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[22]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#126 Warning
+Large setup violation  
+There is a large setup violation of -16.630 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[23]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#127 Warning
+Large setup violation  
+There is a large setup violation of -16.659 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[23]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#128 Warning
+Large setup violation  
+There is a large setup violation of -16.663 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[18]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#129 Warning
+Large setup violation  
+There is a large setup violation of -16.671 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[18]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#130 Warning
+Large setup violation  
+There is a large setup violation of -16.764 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[24]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#131 Warning
+Large setup violation  
+There is a large setup violation of -16.792 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[24]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#132 Warning
+Large setup violation  
+There is a large setup violation of -16.795 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[19]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#133 Warning
+Large setup violation  
+There is a large setup violation of -16.816 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[19]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#134 Warning
+Large setup violation  
+There is a large setup violation of -16.821 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[24]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#135 Warning
+Large setup violation  
+There is a large setup violation of -16.842 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[26]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#136 Warning
+Large setup violation  
+There is a large setup violation of -16.869 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[25]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#137 Warning
+Large setup violation  
+There is a large setup violation of -16.890 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[26]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#138 Warning
+Large setup violation  
+There is a large setup violation of -16.904 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[26]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#139 Warning
+Large setup violation  
+There is a large setup violation of -16.905 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[25]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#140 Warning
+Large setup violation  
+There is a large setup violation of -16.915 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[27]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#141 Warning
+Large setup violation  
+There is a large setup violation of -16.934 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[25]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#142 Warning
+Large setup violation  
+There is a large setup violation of -16.954 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[27]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#143 Warning
+Large setup violation  
+There is a large setup violation of -16.963 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[27]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#144 Warning
+Large setup violation  
+There is a large setup violation of -16.995 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[19]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#145 Warning
+Large setup violation  
+There is a large setup violation of -17.037 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[28]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#146 Warning
+Large setup violation  
+There is a large setup violation of -17.058 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[30]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#147 Warning
+Large setup violation  
+There is a large setup violation of -17.064 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[21]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#148 Warning
+Large setup violation  
+There is a large setup violation of -17.069 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[20]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#149 Warning
+Large setup violation  
+There is a large setup violation of -17.093 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[28]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#150 Warning
+Large setup violation  
+There is a large setup violation of -17.108 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[20]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#151 Warning
+Large setup violation  
+There is a large setup violation of -17.117 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[30]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#152 Warning
+Large setup violation  
+There is a large setup violation of -17.126 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[28]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#153 Warning
+Large setup violation  
+There is a large setup violation of -17.131 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[31]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#154 Warning
+Large setup violation  
+There is a large setup violation of -17.147 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[30]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#155 Warning
+Large setup violation  
+There is a large setup violation of -17.150 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out0_reg[29]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#156 Warning
+Large setup violation  
+There is a large setup violation of -17.192 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[31]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#157 Warning
+Large setup violation  
+There is a large setup violation of -17.198 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out2_reg[29]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#158 Warning
+Large setup violation  
+There is a large setup violation of -17.212 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[20]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#159 Warning
+Large setup violation  
+There is a large setup violation of -17.220 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[31]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#160 Warning
+Large setup violation  
+There is a large setup violation of -17.239 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/out1_reg[29]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#161 Warning
+Large setup violation  
+There is a large setup violation of -17.290 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[21]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#162 Warning
+Large setup violation  
+There is a large setup violation of -17.323 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[22]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#163 Warning
+Large setup violation  
+There is a large setup violation of -17.379 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[23]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#164 Warning
+Large setup violation  
+There is a large setup violation of -17.382 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[21]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#165 Warning
+Large setup violation  
+There is a large setup violation of -17.385 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[24]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#166 Warning
+Large setup violation  
+There is a large setup violation of -17.416 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[22]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#167 Warning
+Large setup violation  
+There is a large setup violation of -17.421 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[22]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#168 Warning
+Large setup violation  
+There is a large setup violation of -17.436 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[23]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#169 Warning
+Large setup violation  
+There is a large setup violation of -17.498 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[27]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#170 Warning
+Large setup violation  
+There is a large setup violation of -17.521 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[25]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#171 Warning
+Large setup violation  
+There is a large setup violation of -17.527 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[25]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#172 Warning
+Large setup violation  
+There is a large setup violation of -17.580 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[23]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#173 Warning
+Large setup violation  
+There is a large setup violation of -17.583 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[24]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#174 Warning
+Large setup violation  
+There is a large setup violation of -17.589 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[27]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#175 Warning
+Large setup violation  
+There is a large setup violation of -17.594 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[27]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#176 Warning
+Large setup violation  
+There is a large setup violation of -17.605 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[26]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#177 Warning
+Large setup violation  
+There is a large setup violation of -17.637 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[30]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#178 Warning
+Large setup violation  
+There is a large setup violation of -17.655 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[28]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#179 Warning
+Large setup violation  
+There is a large setup violation of -17.675 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[26]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#180 Warning
+Large setup violation  
+There is a large setup violation of -17.696 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[24]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#181 Warning
+Large setup violation  
+There is a large setup violation of -17.704 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[26]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#182 Warning
+Large setup violation  
+There is a large setup violation of -17.715 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[28]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#183 Warning
+Large setup violation  
+There is a large setup violation of -17.717 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[25]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#184 Warning
+Large setup violation  
+There is a large setup violation of -17.730 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[30]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#185 Warning
+Large setup violation  
+There is a large setup violation of -17.731 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[29]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#186 Warning
+Large setup violation  
+There is a large setup violation of -17.732 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[28]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#187 Warning
+Large setup violation  
+There is a large setup violation of -17.757 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[31]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#188 Warning
+Large setup violation  
+There is a large setup violation of -17.826 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[31]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#189 Warning
+Large setup violation  
+There is a large setup violation of -17.830 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[29]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#190 Warning
+Large setup violation  
+There is a large setup violation of -17.833 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[31]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#191 Warning
+Large setup violation  
+There is a large setup violation of -17.855 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st1_reg[29]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#192 Warning
+Large setup violation  
+There is a large setup violation of -17.932 ns between poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st0_reg[5]/C (clocked by clk_fpga_0) and poseidon_block_i/poseidon_accel_axi_l_0/inst/u_poseidon_core/st2_reg[30]/D (clocked by clk_fpga_0). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on leds_4bits_tri_io[0] relative to the rising and/or falling clock edge(s) of clk_fpga_0.
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on leds_4bits_tri_io[1] relative to the rising and/or falling clock edge(s) of clk_fpga_0.
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An input delay is missing on leds_4bits_tri_io[2] relative to the rising and/or falling clock edge(s) of clk_fpga_0.
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An input delay is missing on leds_4bits_tri_io[3] relative to the rising and/or falling clock edge(s) of clk_fpga_0.
+Related violations: <none>
+
+TIMING-18#5 Warning
+Missing input or output delay  
+An input delay is missing on sws_2bits_tri_i[0] relative to the rising and/or falling clock edge(s) of clk_fpga_0.
+Related violations: <none>
+
+TIMING-18#6 Warning
+Missing input or output delay  
+An input delay is missing on sws_2bits_tri_i[1] relative to the rising and/or falling clock edge(s) of clk_fpga_0.
+Related violations: <none>
+
+TIMING-18#7 Warning
+Missing input or output delay  
+An output delay is missing on leds_4bits_tri_io[0] relative to the rising and/or falling clock edge(s) of clk_fpga_0.
+Related violations: <none>
+
+TIMING-18#8 Warning
+Missing input or output delay  
+An output delay is missing on leds_4bits_tri_io[1] relative to the rising and/or falling clock edge(s) of clk_fpga_0.
+Related violations: <none>
+
+TIMING-18#9 Warning
+Missing input or output delay  
+An output delay is missing on leds_4bits_tri_io[2] relative to the rising and/or falling clock edge(s) of clk_fpga_0.
+Related violations: <none>
+
+TIMING-18#10 Warning
+Missing input or output delay  
+An output delay is missing on leds_4bits_tri_io[3] relative to the rising and/or falling clock edge(s) of clk_fpga_0.
+Related violations: <none>
+
+

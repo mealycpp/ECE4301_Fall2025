@@ -84,17 +84,4 @@ echo "Installing systemd service..."
 cp "$PROJECT_DIR/systemd/pqc-chat-server.service" /etc/systemd/system/
 systemctl daemon-reload
 
-echo ""
 echo "=== Installation Complete ==="
-echo ""
-echo "To start the server:"
-echo "  sudo systemctl start pqc-chat-server"
-echo ""
-echo "To enable on boot:"
-echo "  sudo systemctl enable pqc-chat-server"
-echo ""
-echo "To check status:"
-echo "  sudo systemctl status pqc-chat-server"
-echo ""
-echo "Configuration file: $CONFIG_DIR/server.toml"
-echo "Log file: $LOG_DIR/server.log"

@@ -1,0 +1,35 @@
+# PQC Chat Client Configuration for Raspberry Pi Network
+# This file should be used on CLIENT Pi 2 (192.168.10.103)
+
+# Server connection settings - connect to the server Pi
+server_host = "192.168.10.101"  # Server Pi IP address
+signaling_port = 8443
+audio_port = 10000
+video_port = 10001
+
+# Alternative: You can use hostname if you configured /etc/hosts
+# server_host = "pqc-server"
+
+# TLS certificate configuration
+# ca_certfile = "ca.crt"  # Optional: CA certificate for server verification
+# certfile = "client.crt"  # Optional: Client certificate for mutual TLS
+# keyfile = "client.key"   # Optional: Client private key
+
+# Default username for this client
+default_username = "Pi-Client-2"
+
+# Logging level: trace, debug, info, warn, error
+log_level = "info"
+
+# Video capture settings
+[video]
+width = 640
+height = 480
+fps = 30
+device_index = 0  # Use first camera device
+
+# Audio capture settings
+[audio]
+sample_rate = 48000
+channels = 1
+# device_index = 0  # Optional: specific audio device

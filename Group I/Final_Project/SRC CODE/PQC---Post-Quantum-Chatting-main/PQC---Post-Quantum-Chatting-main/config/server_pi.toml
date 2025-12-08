@@ -1,0 +1,23 @@
+# PQC Chat Server Configuration for Raspberry Pi Network
+# This file should be used on the SERVER Pi (192.168.10.101)
+
+# Network binding - bind to all interfaces to accept connections from clients
+signaling_host = "0.0.0.0"
+signaling_port = 8443
+
+# Media ports - bind to all interfaces
+media_host = "0.0.0.0"
+audio_port = 10000
+video_port = 10001
+
+# TLS certificate configuration
+# Generate certificates with: ./scripts/generate_certs.sh
+certfile = "server.crt"
+keyfile = "server.key"
+# ca_certfile = "ca.crt"  # Optional: for client certificate verification
+
+# Room settings for 3 Raspberry Pis
+default_max_participants = 3
+
+# Logging level: trace, debug, info, warn, error
+log_level = "info"

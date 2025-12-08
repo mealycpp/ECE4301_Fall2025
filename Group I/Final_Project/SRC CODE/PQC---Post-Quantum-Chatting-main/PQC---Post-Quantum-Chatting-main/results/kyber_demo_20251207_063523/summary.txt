@@ -1,0 +1,5 @@
+✅ Success Rate: 100.0%
+⏱️  Average Total Time: 28.3ms
+🔐 Average Kyber KeyGen: 0.0ms  
+🔐 Average Kyber Exchange: 0.0ms
+📊 Min/Max Total: 28ms / 29ms

@@ -83,20 +83,4 @@ Type=Application
 Categories=Network;Chat;VideoConference;
 EOF
 
-echo ""
 echo "=== Installation Complete ==="
-echo ""
-echo "To start the client GUI:"
-echo "  /opt/pqc-chat/bin/pqc-enhanced-gui"
-echo ""
-echo "To start the CLI client:"
-echo "  /opt/pqc-chat/bin/pqc-interactive"
-echo ""
-echo "Or use the desktop shortcut 'PQC Chat'"
-echo ""
-echo "To enable auto-start for user 'pi':"
-echo "  sudo systemctl enable pqc-chat-client@pi"
-echo ""
-echo "Configuration file: $CONFIG_DIR/client.toml"
-echo ""
-echo "Note: Edit $CONFIG_DIR/client.toml to set the server address"

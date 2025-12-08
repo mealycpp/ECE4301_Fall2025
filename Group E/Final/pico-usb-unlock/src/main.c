@@ -5,8 +5,7 @@
 #include "pico/stdlib.h"
 #include "ed25519.h"
 
-// 🔐 PASTE YOUR REAL 64-BYTE PRIVATE COMBINED KEY HERE
-// Format: [0..31] = secret seed, [32..63] = public key
+
 static const unsigned char ed25519_sk[64] = {
     0x54,
     0x9c,

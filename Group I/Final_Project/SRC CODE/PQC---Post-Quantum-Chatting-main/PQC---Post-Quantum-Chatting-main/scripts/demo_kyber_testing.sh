@@ -11,23 +11,23 @@ BASE_RESULTS_DIR="./results"
 RESULTS_DIR="$BASE_RESULTS_DIR/kyber_demo_${TIMESTAMP}"
 mkdir -p "$RESULTS_DIR"
 
-echo "🔐 PQC Chat - Kyber Performance Testing Demo"
+echo " PQC Chat - Kyber Performance Testing Demo"
 echo "============================================"
-echo "📁 Results directory: $BASE_RESULTS_DIR/"
-echo "📁 This test saved to: $RESULTS_DIR/"
+echo " Results directory: $BASE_RESULTS_DIR/"
+echo " This test saved to: $RESULTS_DIR/"
 echo ""
 
 # Check if server is running
 if ! systemctl is-active --quiet pqc-chat-server; then
-    echo "⚠️ Starting PQC server..."
+    echo " Starting PQC server..."
     sudo systemctl start pqc-chat-server
     sleep 3
 fi
 
 # Verify server is actually listening on the expected port
-echo "🔍 Checking server connectivity..."
+echo " Checking server connectivity..."
 if ! ss -tln | grep -q ":8443 "; then
-    echo "❌ Server not listening on port 8443. Checking what's running..."
+    echo "Server not listening on port 8443. Checking what's running..."
     echo "Listening ports:"
     ss -tln | grep LISTEN
     echo ""
@@ -36,18 +36,18 @@ if ! ss -tln | grep -q ":8443 "; then
     exit 1
 fi
 
-echo "✅ Server is running and listening on port 8443"
+echo "Server is running and listening on port 8443"
 echo ""
 
 # Build the test client if needed
 if [[ ! -f "./target/release/pqc-kyber-test" ]]; then
     echo "🔨 Building Kyber test client..."
     cargo build --release --bin pqc-kyber-test
-    echo "✅ Build complete"
+    echo "Build complete"
     echo ""
 fi
 
-echo "🧪 Running Kyber performance tests..."
+echo "Running Kyber performance tests..."
 echo ""
 
 # Test 1: Quick single connection
@@ -63,26 +63,26 @@ echo "--------------------------------------------"
 echo ""
 
 # Test 3: JSON output for analysis
-echo "📊 Test 3: JSON Data Export"
+echo "📊Test 3: JSON Data Export"
 echo "---------------------------"
 json_file="$RESULTS_DIR/test3_json_data.json"
 ./target/release/pqc-kyber-test --server 127.0.0.1 --port 8443 --attempts 3 --json --username json_test_$(date +%s) > "$json_file"
-echo "✅ JSON results saved to: $json_file"
+echo "JSON results saved to: $json_file"
 echo ""
 
 # Show JSON results summary
-echo "📋 Results Summary:"
+echo " Results Summary:"
 echo "-------------------"
 summary_output=$(python3 -c "
 import json
 try:
     with open('$json_file') as f:
         data = json.load(f)
-    summary = f'''✅ Success Rate: {data[\"success_rate\"]:.1f}%
-⏱️  Average Total Time: {data[\"summary\"][\"avg_total_duration_ms\"]:.1f}ms
-🔐 Average Kyber KeyGen: {data[\"summary\"][\"avg_kyber_keygen_ms\"]:.1f}ms  
-🔐 Average Kyber Exchange: {data[\"summary\"][\"avg_kyber_exchange_ms\"]:.1f}ms
-📊 Min/Max Total: {data[\"summary\"][\"min_total_duration_ms\"]}ms / {data[\"summary\"][\"max_total_duration_ms\"]}ms'''
+    summary = f'''Success Rate: {data[\"success_rate\"]:.1f}%
+  Average Total Time: {data[\"summary\"][\"avg_total_duration_ms\"]:.1f}ms
+ Average Kyber KeyGen: {data[\"summary\"][\"avg_kyber_keygen_ms\"]:.1f}ms  
+ Average Kyber Exchange: {data[\"summary\"][\"avg_kyber_exchange_ms\"]:.1f}ms
+ Min/Max Total: {data[\"summary\"][\"min_total_duration_ms\"]}ms / {data[\"summary\"][\"max_total_duration_ms\"]}ms'''
     print(summary)
     # Save summary to file
     with open('$RESULTS_DIR/summary.txt', 'w') as f:
@@ -117,7 +117,7 @@ echo "-----------------------------"
     systemctl status pqc-chat-server --no-pager || echo "Server status unavailable"
 } > "$RESULTS_DIR/system_info.txt"
 
-echo "✅ System information saved"
+echo "System information saved"
 
 # Create README for results directory
 cat > "$RESULTS_DIR/README.md" << EOF
@@ -145,22 +145,3 @@ $(cat "$RESULTS_DIR/summary.txt" 2>/dev/null || echo "Summary not available")
 - Import JSON data: \`python3 -c "import json; data = json.load(open('test3_json_data.json'))"\`
 - View logs: \`less test1_single_connection.log\`  
 - Analyze timing: See avg_kyber_* fields in JSON data
-
-EOF
-
-echo ""
-echo "🎉 Demo completed!"
-echo ""
-echo "📁 All results saved to: $RESULTS_DIR/"
-echo "📁 View all results: ls -la $BASE_RESULTS_DIR/"
-echo "   📄 README.md - Overview and instructions"
-echo "   📊 test*_*.log - Human-readable test outputs"
-echo "   🔬 test3_json_data.json - Raw data for analysis"
-echo "   📋 summary.txt - Key performance metrics"
-echo "   📝 server_logs.txt - Server-side logs"
-echo "   💻 system_info.txt - System configuration"
-echo ""
-echo "📚 For more advanced testing, see:"
-echo "   - KYBER_TESTING_GUIDE.md"
-echo "   - ./scripts/kyber_test.sh"
-echo "   - ./scripts/kyber_performance_logger.py"

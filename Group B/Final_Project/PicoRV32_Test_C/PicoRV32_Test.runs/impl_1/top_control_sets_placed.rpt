@@ -1,0 +1,126 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+| Date         : Mon Dec  8 12:49:29 2025
+| Host         : MSI running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file top_control_sets_placed.rpt
+| Design       : top
+| Device       : xc7a100t
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    48 |
+|    Minimum number of control sets                        |    48 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |   109 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    48 |
+| >= 0 to < 4        |     3 |
+| >= 4 to < 6        |    10 |
+| >= 6 to < 8        |     3 |
+| >= 8 to < 10       |     3 |
+| >= 10 to < 12      |     1 |
+| >= 12 to < 14      |     2 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    26 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |             134 |           66 |
+| No           | No                    | Yes                    |              12 |            7 |
+| No           | Yes                   | No                     |             128 |           39 |
+| Yes          | No                    | No                     |             463 |          171 |
+| Yes          | No                    | Yes                    |              59 |           24 |
+| Yes          | Yes                   | No                     |             511 |          182 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++-----------------------+-----------------------------------------+---------------------------------------+------------------+----------------+--------------+
+|      Clock Signal     |              Enable Signal              |            Set/Reset Signal           | Slice Load Count | Bel Load Count | Bels / Slice |
++-----------------------+-----------------------------------------+---------------------------------------+------------------+----------------+--------------+
+|  clk_100mhz_IBUF_BUFG | UTX/tx_i_1_n_0                          | reset                                 |                1 |              1 |         1.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/instr_lui0                          | cpu/decoded_imm_j[18]_i_1_n_0         |                1 |              2 |         2.00 |
+|  clk_100mhz_IBUF_BUFG |                                         | rst_sync[2]_i_1_n_0                   |                2 |              3 |         1.50 |
+|  clk_100mhz_IBUF_BUFG |                                         | cpu/pcpi_mul/instr_mulhu_i_1_n_0      |                1 |              4 |         4.00 |
+|  clk_100mhz_IBUF_BUFG |                                         | cpu/pcpi_div/instr_rem_i_1_n_0        |                1 |              4 |         4.00 |
+|  clk_100mhz_IBUF_BUFG | UTX/bitpos[3]_i_1_n_0                   | UTX/cnt[15]_i_1_n_0                   |                1 |              4 |         4.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/is_lui_auipc_jal_jalr_addi_add_sub0 | cpu/instr_lbu_i_1_n_0                 |                1 |              4 |         4.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/mem_wstrb[3]_i_2_n_0                | cpu/mem_wstrb[3]_i_1_n_0              |                1 |              4 |         4.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/pcpi_timeout_counter[3]_i_2_n_0     | cpu/pcpi_div/SS[0]                    |                1 |              4 |         4.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/mem_rdata_q[11]_i_1_n_0             |                                       |                2 |              5 |         2.50 |
+|  clk_100mhz_IBUF_BUFG | cpu/mem_rdata_q[19]_i_1_n_0             |                                       |                2 |              5 |         2.50 |
+|  clk_100mhz_IBUF_BUFG | cpu/instr_lui0                          | cpu/decoded_rs1[0]_i_1_n_0            |                3 |              5 |         1.67 |
+|  clk_100mhz_IBUF_BUFG | cpu/mem_rdata_q[24]_i_1_n_0             |                                       |                3 |              5 |         1.67 |
+|  clk_100mhz_IBUF_BUFG | cpu/latched_rd[5]_i_1_n_0               |                                       |                3 |              6 |         2.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/pcpi_div/E[0]                       |                                       |                4 |              6 |         1.50 |
+|  clk_100mhz_IBUF_BUFG | cpu/mem_rdata_q[6]_i_1_n_0              |                                       |                6 |              7 |         1.17 |
+|  clk_100mhz_IBUF_BUFG | UTX/tx1_out                             | reset                                 |                2 |              8 |         4.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/is_lui_auipc_jal_jalr_addi_add_sub0 | cpu/decoded_imm[19]_i_1_n_0           |                3 |              8 |         2.67 |
+|  clk_100mhz_IBUF_BUFG | UTX/E[0]                                |                                       |                2 |              8 |         4.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/mem_rdata_q[31]_i_1_n_0             |                                       |                5 |             10 |         2.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/is_lui_auipc_jal_jalr_addi_add_sub0 | cpu/decoded_imm[31]_i_1_n_0           |                2 |             12 |         6.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/mem_valid_reg_0[0]                  | reset                                 |                8 |             13 |         1.62 |
+|  clk_100mhz_IBUF_BUFG | UTX/uart_busy                           | UTX/cnt[15]_i_1_n_0                   |                5 |             16 |         3.20 |
+|  clk_100mhz_IBUF_BUFG | cpu/mem_16bit_buffer                    | cpu/mem_16bit_buffer[15]_i_1_n_0      |               10 |             16 |         1.60 |
+|  clk_100mhz_IBUF_BUFG | cpu/is_lui_auipc_jal_jalr_addi_add_sub0 | reset                                 |                7 |             23 |         3.29 |
+|  clk_100mhz_IBUF_BUFG | cpu/mem_addr[31]_i_1_n_0                |                                       |               13 |             30 |         2.31 |
+|  clk_100mhz_IBUF_BUFG | cpu/pcpi_mul/E[0]                       | cpu/pcpi_mul/rs1[62]_i_1_n_0          |                4 |             31 |         7.75 |
+|  clk_100mhz_IBUF_BUFG | cpu/pcpi_div/divisor                    | cpu/pcpi_div/divisor[30]_i_1_n_0      |               11 |             31 |         2.82 |
+|  clk_100mhz_IBUF_BUFG | cpu/irq_mask                            | reset                                 |               20 |             32 |         1.60 |
+|  clk_100mhz_IBUF_BUFG | cpu/pcpi_div/dividend                   |                                       |                8 |             32 |         4.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/mem_wdata[31]_i_1_n_0               |                                       |               12 |             32 |         2.67 |
+|  clk_100mhz_IBUF_BUFG | cpu/reg_op1[31]_i_1_n_0                 |                                       |               11 |             32 |         2.91 |
+|  clk_100mhz_IBUF_BUFG | cpu/pcpi_mul/pcpi_wr_i_1_n_0            |                                       |               14 |             32 |         2.29 |
+|  clk_100mhz_IBUF_BUFG | cpu/pcpi_div/divisor                    |                                       |               11 |             32 |         2.91 |
+|  clk_100mhz_IBUF_BUFG | cpu/reg_op2[31]_i_1_n_0                 |                                       |               15 |             32 |         2.13 |
+|  clk_100mhz_IBUF_BUFG | cpu/pcpi_div/quotient                   | cpu/pcpi_div/quotient_msk[31]_i_1_n_0 |               12 |             32 |         2.67 |
+|  clk_100mhz_IBUF_BUFG | cpu/pcpi_div/quotient_msk[31]_i_2_n_0   | cpu/pcpi_div/quotient_msk[31]_i_1_n_0 |                8 |             32 |         4.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/timer                               | reset                                 |               16 |             32 |         2.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/instr_lui0                          |                                       |               16 |             44 |         2.75 |
+|  clk_100mhz_IBUF_BUFG | cpu/E[0]                                | reset                                 |               16 |             46 |         2.88 |
+|  clk_100mhz_IBUF_BUFG | cpu/is_lui_auipc_jal_jalr_addi_add_sub0 |                                       |               18 |             47 |         2.61 |
+|  clk_100mhz_IBUF_BUFG | cpu/reg_pc                              | reset                                 |               25 |             64 |         2.56 |
+|  clk_100mhz_IBUF_BUFG | cpu/irq_delay                           | reset                                 |               17 |             65 |         3.82 |
+|  clk_100mhz_IBUF_BUFG | cpu/pcpi_mul/E[0]                       | cpu/pcpi_mul/mul_counter[6]_i_1_n_0   |               31 |             85 |         2.74 |
+|  clk_100mhz_IBUF_BUFG | cpu/p_0_in__0                           |                                       |               22 |             88 |         4.00 |
+|  clk_100mhz_IBUF_BUFG | cpu/pcpi_mul/E[0]                       |                                       |               26 |             98 |         3.77 |
+|  clk_100mhz_IBUF_BUFG |                                         | reset                                 |               42 |            129 |         3.07 |
+|  clk_100mhz_IBUF_BUFG |                                         |                                       |               66 |            134 |         2.03 |
++-----------------------+-----------------------------------------+---------------------------------------+------------------+----------------+--------------+
+
+

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Dec  8 12:50:49 2025
+# Process ID: 11952
+# Current directory: C:/ECE/4301_Crypt/ECE4301_Fall2025/Group B/Final_Project/PicoRV32_Test_Rust/PicoRV32_Test.runs/impl_1
+# Command line: vivado.exe -log top.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source top.tcl -notrace
+# Log file: C:/ECE/4301_Crypt/ECE4301_Fall2025/Group B/Final_Project/PicoRV32_Test_Rust/PicoRV32_Test.runs/impl_1/top.vdi
+# Journal file: C:/ECE/4301_Crypt/ECE4301_Fall2025/Group B/Final_Project/PicoRV32_Test_Rust/PicoRV32_Test.runs/impl_1\vivado.jou
+#-----------------------------------------------------------
+source top.tcl -notrace

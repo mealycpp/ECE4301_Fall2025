@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Sat Dec  6 00:06:18 2025
+# Process ID: 32952
+# Current directory: C:/ECE/4301_Crypt/ECE4301_Fall2025/Group B/Final_Project/VexRiscv_Test/VexRiscv_Test.runs/synth_1
+# Command line: vivado.exe -log top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top.tcl
+# Log file: C:/ECE/4301_Crypt/ECE4301_Fall2025/Group B/Final_Project/VexRiscv_Test/VexRiscv_Test.runs/synth_1/top.vds
+# Journal file: C:/ECE/4301_Crypt/ECE4301_Fall2025/Group B/Final_Project/VexRiscv_Test/VexRiscv_Test.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source top.tcl -notrace

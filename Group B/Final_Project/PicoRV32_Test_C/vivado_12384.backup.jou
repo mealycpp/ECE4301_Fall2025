@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Nov 24 21:26:38 2025
+# Process ID: 12384
+# Current directory: C:/Users/Carson Quesada/PicoRV32_Test
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent3996 C:\Users\Carson Quesada\PicoRV32_Test\PicoRV32_Test.xpr
+# Log file: C:/Users/Carson Quesada/PicoRV32_Test/vivado.log
+# Journal file: C:/Users/Carson Quesada/PicoRV32_Test\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/Users/Carson Quesada/PicoRV32_Test/PicoRV32_Test.xpr}
+update_compile_order -fileset sources_1

@@ -1,0 +1,186 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Dec  4 10:38:57 2025
+# Process ID: 18604
+# Current directory: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent5184 C:\ECE\4300\ECE4300_FALL2025\Group-B\VexRiscv_Test\VexRiscv_Test.xpr
+# Log file: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/vivado.log
+# Journal file: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2020.2/data/ip'.
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:08 . Memory (MB): peak = 1070.887 ; gain = 0.000
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Thu Dec  4 10:39:32 2025] Launched synth_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Thu Dec  4 10:40:26 2025] Launched impl_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Thu Dec  4 10:41:35 2025] Launched impl_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/runme.log
+open_hw_manager
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2020.2
+  **** Build date : Nov 18 2020 at 10:01:48
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2020.2
+  ****** Build date   : Nov 03 2020-13:02:56
+    **** Build number : 2020.2.1604437376
+      ** Copyright 2017-2020 Xilinx, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:08 . Memory (MB): peak = 1075.367 ; gain = 0.000
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210292BD00EBA
+set_property PROGRAM.FILE {C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/top.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/top.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+close_hw_manager
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Thu Dec  4 11:10:41 2025] Launched synth_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Thu Dec  4 11:18:06 2025] Launched impl_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Thu Dec  4 11:19:19 2025] Launched impl_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/runme.log
+open_hw_manager
+connect_hw_server -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2020.2
+  **** Build date : Nov 18 2020 at 10:01:48
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2020.2
+  ****** Build date   : Nov 03 2020-13:02:56
+    **** Build number : 2020.2.1604437376
+      ** Copyright 2017-2020 Xilinx, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:00 ; elapsed = 00:00:08 . Memory (MB): peak = 2666.023 ; gain = 0.000
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210292BD00EBA
+set_property PROGRAM.FILE {C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/top.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/top.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Thu Dec  4 11:21:58 2025] Launched synth_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Thu Dec  4 11:22:48 2025] Launched impl_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Thu Dec  4 11:23:53 2025] Launched impl_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/top.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Thu Dec  4 12:09:41 2025] Launched synth_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Thu Dec  4 12:10:31 2025] Launched impl_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Thu Dec  4 12:11:38 2025] Launched impl_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/top.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Thu Dec  4 12:19:56 2025] Launched synth_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Thu Dec  4 12:20:47 2025] Launched impl_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Thu Dec  4 12:22:00 2025] Launched impl_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/top.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+reset_run synth_1
+launch_runs synth_1 -jobs 8
+[Thu Dec  4 12:37:16 2025] Launched synth_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 8
+[Thu Dec  4 12:38:05 2025] Launched impl_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Thu Dec  4 12:39:11 2025] Launched impl_1...
+Run output will be captured here: C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/ECE/4300/ECE4300_FALL2025/Group-B/VexRiscv_Test/VexRiscv_Test.runs/impl_1/top.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210292BD00EBA
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Dec  4 13:29:32 2025...

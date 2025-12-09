@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Dec  8 12:59:20 2025
+# Process ID: 11968
+# Current directory: C:/ECE/4301_Crypt/ECE4301_Fall2025/Group B/Final_Project/VexRiscv_Test_Rust
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent24040 C:\ECE\4301_Crypt\ECE4301_Fall2025\Group B\Final_Project\VexRiscv_Test_Rust\VexRiscv_Test.xpr
+# Log file: C:/ECE/4301_Crypt/ECE4301_Fall2025/Group B/Final_Project/VexRiscv_Test_Rust/vivado.log
+# Journal file: C:/ECE/4301_Crypt/ECE4301_Fall2025/Group B/Final_Project/VexRiscv_Test_Rust\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project {C:/ECE/4301_Crypt/ECE4301_Fall2025/Group B/Final_Project/VexRiscv_Test_Rust/VexRiscv_Test.xpr}
+update_compile_order -fileset sources_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/ECE/4301_Crypt/ECE4301_Fall2025/Group B/Final_Project/VexRiscv_Test_Rust/VexRiscv_Test.runs/impl_1/top.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/ECE/4301_Crypt/ECE4301_Fall2025/Group B/Final_Project/VexRiscv_Test_Rust/VexRiscv_Test.runs/impl_1/top.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]

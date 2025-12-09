@@ -1,0 +1,6 @@
+Dec 07 06:29:29 Vpi pqc-chat-server[11080]: [2025-12-07T06:29:29Z INFO  pqc_server] New TLS connection from 192.168.10.102:40000
+Dec 07 06:29:29 Vpi pqc-chat-server[11080]: [2025-12-07T06:29:29Z INFO  pqc_server] Kyber key exchange completed for 46bc9d84-c812-4983-a5dd-df4d89403d1f
+Dec 07 06:29:29 Vpi pqc-chat-server[11080]: [2025-12-07T06:29:29Z INFO  pqc_server] User 46bc9d84-c812-4983-a5dd-df4d89403d1f logged in as iliketrains2314
+Dec 07 06:29:38 Vpi pqc-chat-server[11080]: [2025-12-07T06:29:38Z INFO  pqc_chat::room] Participant iliketrains2314 joined room test
+Dec 07 06:29:38 Vpi pqc-chat-server[11080]: [2025-12-07T06:29:38Z INFO  pqc_server] Broadcasting ParticipantJoined { participant_id: "46bc9d84-c812-4983-a5dd-df4d89403d1f", username: "iliketrains2314" } to room 81b1e007-5445-4cbe-acc5-b1cc11669464 (except sender 46bc9d84-c812-4983-a5dd-df4d89403d1f)
+Dec 07 06:29:38 Vpi pqc-chat-server[11080]: [2025-12-07T06:29:38Z INFO  pqc_server] Participants in room: ["46bc9d84-c812-4983-a5dd-df4d89403d1f"]

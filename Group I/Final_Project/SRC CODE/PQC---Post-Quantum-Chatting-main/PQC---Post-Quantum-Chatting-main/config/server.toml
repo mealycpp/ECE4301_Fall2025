@@ -1,0 +1,23 @@
+# PQC Chat Server Configuration
+# This file contains the configuration for the PQC Chat server
+
+# Network binding
+signaling_host = "0.0.0.0"
+signaling_port = 8443
+
+# Media ports
+media_host = "0.0.0.0"
+audio_port = 10000
+video_port = 10001
+
+# TLS certificate configuration
+# Generate certificates with: ./scripts/generate_certs.sh
+certfile = "server.crt"
+keyfile = "server.key"
+# ca_certfile = "ca.crt"  # Optional: for client certificate verification
+
+# Default room settings
+default_max_participants = 10
+
+# Logging level: trace, debug, info, warn, error
+log_level = "info"

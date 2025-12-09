@@ -1,0 +1,56 @@
+{
+  "server": "127.0.0.1",
+  "port": 8444,
+  "username": "json_test_1765088977",
+  "total_attempts": 3,
+  "successful_attempts": 0,
+  "success_rate": 0.0,
+  "metrics": [
+    {
+      "attempt_number": 1,
+      "timestamp": "2025-12-07T06:29:37.752655011+00:00",
+      "tcp_connect_duration_ms": 0,
+      "tls_handshake_duration_ms": 0,
+      "kyber_keygen_duration_ms": 0,
+      "kyber_exchange_duration_ms": 0,
+      "login_duration_ms": 0,
+      "total_duration_ms": 0,
+      "success": false,
+      "error": "TCP connection failed: Connection refused (os error 111)"
+    },
+    {
+      "attempt_number": 2,
+      "timestamp": "2025-12-07T06:29:38.753828274+00:00",
+      "tcp_connect_duration_ms": 0,
+      "tls_handshake_duration_ms": 0,
+      "kyber_keygen_duration_ms": 0,
+      "kyber_exchange_duration_ms": 0,
+      "login_duration_ms": 0,
+      "total_duration_ms": 0,
+      "success": false,
+      "error": "TCP connection failed: Connection refused (os error 111)"
+    },
+    {
+      "attempt_number": 3,
+      "timestamp": "2025-12-07T06:29:39.755027372+00:00",
+      "tcp_connect_duration_ms": 0,
+      "tls_handshake_duration_ms": 0,
+      "kyber_keygen_duration_ms": 0,
+      "kyber_exchange_duration_ms": 0,
+      "login_duration_ms": 0,
+      "total_duration_ms": 0,
+      "success": false,
+      "error": "TCP connection failed: Connection refused (os error 111)"
+    }
+  ],
+  "summary": {
+    "avg_tcp_connect_ms": 0.0,
+    "avg_tls_handshake_ms": 0.0,
+    "avg_kyber_keygen_ms": 0.0,
+    "avg_kyber_exchange_ms": 0.0,
+    "avg_login_ms": 0.0,
+    "avg_total_duration_ms": 0.0,
+    "min_total_duration_ms": 18446744073709551615,
+    "max_total_duration_ms": 0
+  }
+}

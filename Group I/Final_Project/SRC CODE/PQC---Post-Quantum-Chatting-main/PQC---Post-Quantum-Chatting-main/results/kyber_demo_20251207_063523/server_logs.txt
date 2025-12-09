@@ -1,0 +1,40 @@
+Dec 07 06:35:15 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:15Z INFO  pqc_server] New TLS connection from 127.0.0.1:54562
+Dec 07 06:35:15 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:15Z INFO  pqc_server] Kyber key exchange completed for 2146a52e-646e-4878-8f5b-01b80bd89cd2
+Dec 07 06:35:15 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:15Z INFO  pqc_server] User 2146a52e-646e-4878-8f5b-01b80bd89cd2 logged in as test_connection
+Dec 07 06:35:15 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:15Z INFO  pqc_server] Client 127.0.0.1:54562 disconnected
+Dec 07 06:35:23 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:23Z INFO  pqc_server] New TLS connection from 127.0.0.1:54568
+Dec 07 06:35:23 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:23Z INFO  pqc_server] Kyber key exchange completed for 0ae366b1-9d54-4de3-996b-a7cbab69feb8
+Dec 07 06:35:23 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:23Z INFO  pqc_server] User 0ae366b1-9d54-4de3-996b-a7cbab69feb8 logged in as demo_user_1765089323
+Dec 07 06:35:23 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:23Z INFO  pqc_server] Client 127.0.0.1:54568 disconnected
+Dec 07 06:35:23 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:23Z INFO  pqc_server] New TLS connection from 127.0.0.1:54572
+Dec 07 06:35:23 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:23Z INFO  pqc_server] Kyber key exchange completed for eeb29319-bcb6-4cab-8d95-f838e59cf62d
+Dec 07 06:35:23 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:23Z INFO  pqc_server] User eeb29319-bcb6-4cab-8d95-f838e59cf62d logged in as stats_test_1765089323
+Dec 07 06:35:23 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:23Z INFO  pqc_server] Client 127.0.0.1:54572 disconnected
+Dec 07 06:35:24 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:24Z INFO  pqc_server] New TLS connection from 127.0.0.1:38682
+Dec 07 06:35:24 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:24Z INFO  pqc_server] Kyber key exchange completed for 0376e8f0-a2eb-41e3-8167-96d15340896c
+Dec 07 06:35:24 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:24Z INFO  pqc_server] User 0376e8f0-a2eb-41e3-8167-96d15340896c logged in as stats_test_1765089323
+Dec 07 06:35:24 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:24Z INFO  pqc_server] Client 127.0.0.1:38682 disconnected
+Dec 07 06:35:25 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:25Z INFO  pqc_server] New TLS connection from 127.0.0.1:38688
+Dec 07 06:35:25 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:25Z INFO  pqc_server] Kyber key exchange completed for 397d9353-d757-42a0-9b80-67709ed9e95a
+Dec 07 06:35:25 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:25Z INFO  pqc_server] User 397d9353-d757-42a0-9b80-67709ed9e95a logged in as stats_test_1765089323
+Dec 07 06:35:25 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:25Z INFO  pqc_server] Client 127.0.0.1:38688 disconnected
+Dec 07 06:35:26 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:26Z INFO  pqc_server] New TLS connection from 127.0.0.1:38704
+Dec 07 06:35:26 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:26Z INFO  pqc_server] Kyber key exchange completed for a16fbde7-0037-4a1b-ac01-12910cd1202e
+Dec 07 06:35:26 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:26Z INFO  pqc_server] User a16fbde7-0037-4a1b-ac01-12910cd1202e logged in as stats_test_1765089323
+Dec 07 06:35:26 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:26Z INFO  pqc_server] Client 127.0.0.1:38704 disconnected
+Dec 07 06:35:27 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:27Z INFO  pqc_server] New TLS connection from 127.0.0.1:38716
+Dec 07 06:35:27 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:27Z INFO  pqc_server] Kyber key exchange completed for 0c4448d7-4e21-4780-a0f6-97a0b6322516
+Dec 07 06:35:27 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:27Z INFO  pqc_server] User 0c4448d7-4e21-4780-a0f6-97a0b6322516 logged in as stats_test_1765089323
+Dec 07 06:35:27 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:27Z INFO  pqc_server] Client 127.0.0.1:38716 disconnected
+Dec 07 06:35:27 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:27Z INFO  pqc_server] New TLS connection from 127.0.0.1:38724
+Dec 07 06:35:27 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:27Z INFO  pqc_server] Kyber key exchange completed for ade50670-d3e2-46f4-8418-f62fdf76610a
+Dec 07 06:35:27 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:27Z INFO  pqc_server] User ade50670-d3e2-46f4-8418-f62fdf76610a logged in as json_test_1765089327
+Dec 07 06:35:27 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:27Z INFO  pqc_server] Client 127.0.0.1:38724 disconnected
+Dec 07 06:35:28 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:28Z INFO  pqc_server] New TLS connection from 127.0.0.1:38736
+Dec 07 06:35:28 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:28Z INFO  pqc_server] Kyber key exchange completed for e605b0e0-4bea-42d3-a767-034a05503656
+Dec 07 06:35:28 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:28Z INFO  pqc_server] User e605b0e0-4bea-42d3-a767-034a05503656 logged in as json_test_1765089327
+Dec 07 06:35:28 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:28Z INFO  pqc_server] Client 127.0.0.1:38736 disconnected
+Dec 07 06:35:29 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:29Z INFO  pqc_server] New TLS connection from 127.0.0.1:38748
+Dec 07 06:35:29 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:29Z INFO  pqc_server] Kyber key exchange completed for 7d87a913-b19d-48d3-99b9-d8a65ab2587d
+Dec 07 06:35:29 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:29Z INFO  pqc_server] User 7d87a913-b19d-48d3-99b9-d8a65ab2587d logged in as json_test_1765089327
+Dec 07 06:35:29 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:29Z INFO  pqc_server] Client 127.0.0.1:38748 disconnected

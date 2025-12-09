@@ -1,0 +1,31 @@
+[Unit]
+Description=PQC Chat Client - Post-Quantum Secure Chat
+Documentation=https://github.com/Vervion/PQC---Post-Quantum-Chatting
+After=network.target graphical.target
+
+[Service]
+Type=simple
+User=%I
+WorkingDirectory=/opt/pqc-chat
+
+# Set display for GUI (requires X11 or Wayland)
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/%I/.Xauthority
+
+# Main client process (Enhanced GUI)
+ExecStart=/opt/pqc-chat/bin/pqc-enhanced-gui
+
+# Restart configuration
+Restart=on-failure
+RestartSec=5
+
+# Resource limits
+LimitNOFILE=4096
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=pqc-chat-client
+
+[Install]
+WantedBy=graphical.target

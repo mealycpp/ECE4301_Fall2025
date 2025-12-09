@@ -1,0 +1,36 @@
+[Unit]
+Description=PQC Chat Server - Post-Quantum Secure Chat
+Documentation=https://github.com/Vervion/PQC---Post-Quantum-Chatting
+After=network.target
+
+[Service]
+Type=simple
+User=pqc-chat
+Group=pqc-chat
+WorkingDirectory=/etc/pqc-chat
+
+# Main server process (Rust binary)
+ExecStart=/opt/pqc-chat/bin/pqc-server --config /etc/pqc-chat/server.toml
+
+# Restart configuration
+Restart=on-failure
+RestartSec=5
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/log/pqc-chat
+
+# Resource limits
+LimitNOFILE=65535
+LimitNPROC=4096
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=pqc-chat-server
+
+[Install]
+WantedBy=multi-user.target

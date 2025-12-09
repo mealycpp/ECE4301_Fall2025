@@ -1,0 +1,36 @@
+=== System Information ===
+Date: Sun  7 Dec 06:35:29 GMT 2025
+Hostname: Vpi
+CPU: Cortex-A76
+Memory: 15Gi
+OS: Debian GNU/Linux 12 (bookworm)
+
+=== Network Configuration ===
+    inet 127.0.0.1/8 scope host lo
+    inet 192.168.10.101/24 brd 192.168.10.255 scope global noprefixroute eth0
+    inet 10.110.146.164/21 brd 10.110.151.255 scope global dynamic noprefixroute wlan0
+    inet 10.110.145.76/21 metric 1024 brd 10.110.151.255 scope global secondary dynamic wlan0
+    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+    inet 172.18.0.1/16 brd 172.18.255.255 scope global br-9041e20a080e
+
+=== PQC Server Status ===
+● pqc-chat-server.service - PQC Chat Server - Post-Quantum Secure Chat
+     Loaded: loaded (/etc/systemd/system/pqc-chat-server.service; enabled; preset: enabled)
+     Active: active (running) since Sun 2025-12-07 05:20:08 GMT; 1h 15min ago
+       Docs: https://github.com/Vervion/PQC---Post-Quantum-Chatting
+   Main PID: 11080 (pqc-server)
+      Tasks: 5 (limit: 19354)
+        CPU: 5.247s
+     CGroup: /system.slice/pqc-chat-server.service
+             └─11080 /opt/pqc-chat/bin/pqc-server --config /etc/pqc-chat/server.toml
+
+Dec 07 06:35:27 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:27Z INFO  pqc_server] User ade50670-d3e2-46f4-8418-f62fdf76610a logged in as json_test_1765089327
+Dec 07 06:35:27 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:27Z INFO  pqc_server] Client 127.0.0.1:38724 disconnected
+Dec 07 06:35:28 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:28Z INFO  pqc_server] New TLS connection from 127.0.0.1:38736
+Dec 07 06:35:28 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:28Z INFO  pqc_server] Kyber key exchange completed for e605b0e0-4bea-42d3-a767-034a05503656
+Dec 07 06:35:28 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:28Z INFO  pqc_server] User e605b0e0-4bea-42d3-a767-034a05503656 logged in as json_test_1765089327
+Dec 07 06:35:28 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:28Z INFO  pqc_server] Client 127.0.0.1:38736 disconnected
+Dec 07 06:35:29 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:29Z INFO  pqc_server] New TLS connection from 127.0.0.1:38748
+Dec 07 06:35:29 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:29Z INFO  pqc_server] Kyber key exchange completed for 7d87a913-b19d-48d3-99b9-d8a65ab2587d
+Dec 07 06:35:29 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:29Z INFO  pqc_server] User 7d87a913-b19d-48d3-99b9-d8a65ab2587d logged in as json_test_1765089327
+Dec 07 06:35:29 Vpi pqc-chat-server[11080]: [2025-12-07T06:35:29Z INFO  pqc_server] Client 127.0.0.1:38748 disconnected

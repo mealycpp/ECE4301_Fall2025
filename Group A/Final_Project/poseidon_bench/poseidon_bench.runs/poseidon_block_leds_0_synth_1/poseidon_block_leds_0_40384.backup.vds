@@ -1,0 +1,313 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Sun Dec  7 17:30:29 2025
+# Process ID         : 40384
+# Current directory  : /home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/poseidon_block_leds_0_synth_1
+# Command line       : vivado -log poseidon_block_leds_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source poseidon_block_leds_0.tcl
+# Log file           : /home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/poseidon_block_leds_0_synth_1/poseidon_block_leds_0.vds
+# Journal file       : /home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/poseidon_block_leds_0_synth_1/vivado.jou
+# Running On         : ckpai
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.3 LTS
+# Processor Detail   : 13th Gen Intel(R) Core(TM) i7-1370P
+# CPU Frequency      : 1200.542 MHz
+# CPU Physical cores : 14
+# CPU Logical cores  : 20
+# Host memory        : 16330 MB
+# Swap memory        : 4294 MB
+# Total Virtual      : 20625 MB
+# Available Virtual  : 12256 MB
+#-----------------------------------------------------------
+source poseidon_block_leds_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:27 ; elapsed = 00:00:10 . Memory (MB): peak = 1617.984 ; gain = 64.059 ; free physical = 152 ; free virtual = 9018
+Command: synth_design -top poseidon_block_leds_0 -part xc7z020clg400-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 40666
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 2253.688 ; gain = 482.875 ; free physical = 172 ; free virtual = 2838
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'poseidon_block_leds_0' [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_leds_0/synth/poseidon_block_leds_0.vhd:84]
+	Parameter C_FAMILY bound to: zynq - type: string 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 9 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_GPIO_WIDTH bound to: 2 - type: integer 
+	Parameter C_GPIO2_WIDTH bound to: 32 - type: integer 
+	Parameter C_ALL_INPUTS bound to: 1 - type: integer 
+	Parameter C_ALL_INPUTS_2 bound to: 0 - type: integer 
+	Parameter C_ALL_OUTPUTS bound to: 0 - type: integer 
+	Parameter C_ALL_OUTPUTS_2 bound to: 0 - type: integer 
+	Parameter C_INTERRUPT_PRESENT bound to: 0 - type: integer 
+	Parameter C_DOUT_DEFAULT bound to: 32'b00000000000000000000000000000000 
+	Parameter C_TRI_DEFAULT bound to: 32'b11111111111111111111111111111111 
+	Parameter C_IS_DUAL bound to: 0 - type: integer 
+	Parameter C_DOUT_DEFAULT_2 bound to: 32'b00000000000000000000000000000000 
+	Parameter C_TRI_DEFAULT_2 bound to: 32'b11111111111111111111111111111111 
+INFO: [Synth 8-3491] module 'axi_gpio' declared at '/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/0271/hdl/axi_gpio_v2_0_vh_rfs.vhd:1255' bound to instance 'U0' of component 'axi_gpio' [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_leds_0/synth/poseidon_block_leds_0.vhd:173]
+INFO: [Synth 8-638] synthesizing module 'axi_gpio' [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/0271/hdl/axi_gpio_v2_0_vh_rfs.vhd:1341]
+INFO: [Synth 8-638] synthesizing module 'axi_lite_ipif' [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2948]
+INFO: [Synth 8-638] synthesizing module 'slave_attachment' [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2341]
+INFO: [Synth 8-638] synthesizing module 'address_decoder' [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1775]
+INFO: [Synth 8-638] synthesizing module 'pselect_f' [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'pselect_f' (0#1) [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-638] synthesizing module 'pselect_f__parameterized0' [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'pselect_f__parameterized0' (0#1) [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-638] synthesizing module 'pselect_f__parameterized1' [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'pselect_f__parameterized1' (0#1) [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-638] synthesizing module 'pselect_f__parameterized2' [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'pselect_f__parameterized2' (0#1) [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1534]
+INFO: [Synth 8-256] done synthesizing module 'address_decoder' (0#1) [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:1775]
+INFO: [Synth 8-226] default block is never used [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2550]
+INFO: [Synth 8-256] done synthesizing module 'slave_attachment' (0#1) [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2341]
+INFO: [Synth 8-256] done synthesizing module 'axi_lite_ipif' (0#1) [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/66ea/hdl/axi_lite_ipif_v3_0_vh_rfs.vhd:2948]
+INFO: [Synth 8-638] synthesizing module 'GPIO_Core' [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/0271/hdl/axi_gpio_v2_0_vh_rfs.vhd:182]
+INFO: [Synth 8-226] default block is never used [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/0271/hdl/axi_gpio_v2_0_vh_rfs.vhd:447]
+	Parameter DEST_SYNC_FF bound to: 4 - type: integer 
+	Parameter INIT_SYNC_FF bound to: 0 - type: integer 
+	Parameter SIM_ASSERT_CHK bound to: 0 - type: integer 
+	Parameter SRC_INPUT_REG bound to: 0 - type: integer 
+	Parameter WIDTH bound to: 2 - type: integer 
+INFO: [Synth 8-3491] module 'xpm_cdc_array_single' declared at '/opt/Xilinx/2025.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:903' bound to instance 'INPUT_DOUBLE_REGS3' of component 'xpm_cdc_array_single' [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/0271/hdl/axi_gpio_v2_0_vh_rfs.vhd:458]
+INFO: [Synth 8-6157] synthesizing module 'xpm_cdc_array_single' [/opt/Xilinx/2025.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:903]
+INFO: [Synth 8-6155] done synthesizing module 'xpm_cdc_array_single' (0#1) [/opt/Xilinx/2025.2/data/ip/xpm/xpm_cdc/hdl/xpm_cdc.sv:903]
+INFO: [Synth 8-256] done synthesizing module 'GPIO_Core' (0#1) [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/0271/hdl/axi_gpio_v2_0_vh_rfs.vhd:182]
+INFO: [Synth 8-256] done synthesizing module 'axi_gpio' (0#1) [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/0271/hdl/axi_gpio_v2_0_vh_rfs.vhd:1341]
+INFO: [Synth 8-256] done synthesizing module 'poseidon_block_leds_0' (0#1) [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_leds_0/synth/poseidon_block_leds_0.vhd:84]
+INFO: [Synth 8-6014] Unused sequential element Not_Dual.ALLIN1_ND.READ_REG_GEN[0].GPIO_DBus_i_reg was removed.  [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/0271/hdl/axi_gpio_v2_0_vh_rfs.vhd:355]
+INFO: [Synth 8-6014] Unused sequential element Not_Dual.ALLIN1_ND.READ_REG_GEN[1].GPIO_DBus_i_reg was removed.  [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ipshared/0271/hdl/axi_gpio_v2_0_vh_rfs.vhd:355]
+INFO: [Synth 8-7129] Port src_clk in module xpm_cdc_array_single is either unconnected or has no load
+INFO: [Synth 8-7129] Port ABus_Reg[1] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port ABus_Reg[2] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port ABus_Reg[3] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port ABus_Reg[4] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port ABus_Reg[7] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port ABus_Reg[8] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port BE_Reg[0] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port BE_Reg[1] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port BE_Reg[2] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port BE_Reg[3] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[0] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[1] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[2] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[3] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[4] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[5] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[6] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[7] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[8] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[9] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[10] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[11] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[12] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[13] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[14] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[15] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[16] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[17] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[18] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[19] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[20] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[21] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[22] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[23] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[24] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[25] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[26] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[27] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[28] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[29] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[30] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port GPIO2_IO_I[31] in module GPIO_Core is either unconnected or has no load
+INFO: [Synth 8-7129] Port Address_In_Erly[0] in module address_decoder is either unconnected or has no load
+INFO: [Synth 8-7129] Port Address_In_Erly[1] in module address_decoder is either unconnected or has no load
+INFO: [Synth 8-7129] Port Address_In_Erly[2] in module address_decoder is either unconnected or has no load
+INFO: [Synth 8-7129] Port Address_In_Erly[3] in module address_decoder is either unconnected or has no load
+INFO: [Synth 8-7129] Port Address_In_Erly[4] in module address_decoder is either unconnected or has no load
+INFO: [Synth 8-7129] Port Address_In_Erly[7] in module address_decoder is either unconnected or has no load
+INFO: [Synth 8-7129] Port Address_In_Erly[8] in module address_decoder is either unconnected or has no load
+INFO: [Synth 8-7129] Port Bus_RNW in module address_decoder is either unconnected or has no load
+INFO: [Synth 8-7129] Port S_AXI_WSTRB[3] in module slave_attachment is either unconnected or has no load
+INFO: [Synth 8-7129] Port S_AXI_WSTRB[2] in module slave_attachment is either unconnected or has no load
+INFO: [Synth 8-7129] Port S_AXI_WSTRB[1] in module slave_attachment is either unconnected or has no load
+INFO: [Synth 8-7129] Port S_AXI_WSTRB[0] in module slave_attachment is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2347.656 ; gain = 576.844 ; free physical = 172 ; free virtual = 1973
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2362.500 ; gain = 591.688 ; free physical = 168 ; free virtual = 1974
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2362.500 ; gain = 591.688 ; free physical = 168 ; free virtual = 1974
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2362.500 ; gain = 0.000 ; free physical = 168 ; free virtual = 1989
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_leds_0/poseidon_block_leds_0_ooc.xdc] for cell 'U0'
+Finished Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_leds_0/poseidon_block_leds_0_ooc.xdc] for cell 'U0'
+Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_leds_0/poseidon_block_leds_0_board.xdc] for cell 'U0'
+Finished Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.gen/sources_1/bd/poseidon_block/ip/poseidon_block_leds_0/poseidon_block_leds_0_board.xdc] for cell 'U0'
+Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/poseidon_block_leds_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/ckpai/ece4301/Group A/Final_Project/poseidon_bench/poseidon_bench.runs/poseidon_block_leds_0_synth_1/dont_touch.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/opt/Xilinx/2025.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_array_single.tcl]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/poseidon_block_leds_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/poseidon_block_leds_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+INFO: [Project 1-1714] 1 XPM XDC files have been applied to the design.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2468.270 ; gain = 0.000 ; free physical = 1252 ; free virtual = 2904
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2468.305 ; gain = 0.000 ; free physical = 1238 ; free virtual = 2903
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 2468.305 ; gain = 697.492 ; free physical = 182 ; free virtual = 2292
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 2476.273 ; gain = 705.461 ; free physical = 180 ; free virtual = 2291
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 2476.273 ; gain = 705.461 ; free physical = 179 ; free virtual = 2291
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'slave_attachment'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 iSTATE2 |                             0001 |                               00
+                  iSTATE |                             0010 |                               01
+                 iSTATE0 |                             0100 |                               10
+                 iSTATE1 |                             1000 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'slave_attachment'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 2476.273 ; gain = 705.461 ; free physical = 190 ; free virtual = 2314
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    4 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                9 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 10    
+	                1 Bit    Registers := 20    
++---Muxes : 
+	   5 Input   32 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 1     
+	   2 Input    9 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 5     
+	   2 Input    2 Bit        Muxes := 5     
+	   3 Input    2 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 11    
+	   4 Input    1 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7129] Port src_clk in module xpm_cdc_array_single is either unconnected or has no load
+INFO: [Synth 8-7129] Port s_axi_wstrb[3] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port s_axi_wstrb[2] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port s_axi_wstrb[1] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port s_axi_wstrb[0] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[31] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[30] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[29] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[28] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[27] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[26] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[25] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[24] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[23] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[22] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[21] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[20] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[19] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[18] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[17] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[16] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[15] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[14] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[13] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[12] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[11] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[10] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[9] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[8] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[7] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[6] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[5] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[4] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[3] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[2] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[1] in module axi_gpio is either unconnected or has no load
+INFO: [Synth 8-7129] Port gpio2_io_i[0] in module axi_gpio is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 2476.273 ; gain = 705.461 ; free physical = 179 ; free virtual = 2288
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:51 ; elapsed = 00:00:54 . Memory (MB): peak = 2529.273 ; gain = 758.461 ; free physical = 190 ; free virtual = 1836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:51 ; elapsed = 00:00:54 . Memory (MB): peak = 2558.320 ; gain = 787.508 ; free physical = 186 ; free virtual = 1798
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:51 ; elapsed = 00:00:54 . Memory (MB): peak = 2558.320 ; gain = 787.508 ; free physical = 191 ; free virtual = 1770
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------

@@ -1,0 +1,14 @@
+[package]
+name = "ECE4301-Final"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+ciborium = "0.2"
+x25519-dalek = { version = "2", features = ["static_secrets"] }
+rand = "0.8"
+log = "0.4"
+env_logger = "0.11"
+pqc_kyber = "0.7"
